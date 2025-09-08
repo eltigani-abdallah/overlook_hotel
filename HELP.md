@@ -8,6 +8,7 @@ For further reference, please consider the following sections:
 * [Create an OCI image](https://docs.spring.io/spring-boot/3.5.5/maven-plugin/build-image.html)
 * [Spring Web](https://docs.spring.io/spring-boot/3.5.5/reference/web/servlet.html)
 * [Thymeleaf](https://docs.spring.io/spring-boot/3.5.5/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
+* [Spring Security](https://docs.spring.io/spring-boot/3.5.5/reference/web/spring-security.html)
 
 ### Guides
 The following guides illustrate how to use some features concretely:
@@ -16,6 +17,9 @@ The following guides illustrate how to use some features concretely:
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
 * [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
+* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
+* [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
+* [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 
 ### Maven Parent overrides
 
