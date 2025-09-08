@@ -1,9 +1,10 @@
-name: Notify Google Chat on Preprod Push
+name: Notify Google Chat on Preprod/Main Push
 
 on:
   push:
     branches:
       - preprod
+      - main
 
 jobs:
   notify:
@@ -13,7 +14,8 @@ jobs:
         run: |
           curl -X POST "${{ secrets.GCHAT_WEBHOOK }}" \
           -H 'Content-Type: application/json' \
-          -d '{
-                "text": "*${{ github.actor }}* just pushed to preprod! \n
-                commit says: ${{ github.event.head_commit.message }} "
-              }'
+          -d "$(jq -nc \
+                --arg actor "${{ github.actor }}" \
+                --arg branch "${{ github.ref_name }}" \
+                --arg message "${{ github.event.head_commit.message }}" \
+                '{text: ("*\($actor)* just pushed to *\($branch)*\nCommit says: \($message)")}')"
