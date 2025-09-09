@@ -1,6 +1,7 @@
 import { injectGlobalWebcomponentCss } from 'Frontend/generated/jar-resources/theme-util.js';
 
 import '@vaadin/polymer-legacy-adapter/style-modules.js';
+import '@vaadin/login/src/vaadin-login-overlay.js';
 import '@vaadin/vertical-layout/src/vaadin-vertical-layout.js';
 import 'Frontend/generated/jar-resources/flow-component-renderer.js';
 import '@vaadin/combo-box/src/vaadin-combo-box.js';
