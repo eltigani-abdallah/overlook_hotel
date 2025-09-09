@@ -67,6 +67,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-boot-starter</artifactId>
+			<version>24.5.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -95,6 +102,21 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-maven-plugin</artifactId>
+				<version>24.5.0</version>
+				<executions>
+					<execution>
+					<goals>
+						<goal>prepare-frontend</goal>
+						<goal>build-frontend</goal>
+					</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
