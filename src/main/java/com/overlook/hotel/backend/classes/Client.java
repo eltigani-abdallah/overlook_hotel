@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend;
+package com.overlook.hotel.backend.classes;
 
 
 import lombok.Getter;
