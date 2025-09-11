@@ -1,10 +1,10 @@
-package com.overlook.overlook_hotel;
+package com.overlook.hotel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OverlookHotelApplicationTests {
+class HotelApplicationTests {
 
 	@Test
 	void contextLoads() {

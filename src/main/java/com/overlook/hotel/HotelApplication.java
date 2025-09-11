@@ -1,13 +1,13 @@
-package com.overlook.overlook_hotel;
+package com.overlook.hotel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OverlookHotelApplication {
+public class HotelApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OverlookHotelApplication.class, args);
+		SpringApplication.run(HotelApplication.class, args);
 	}
 
 }
