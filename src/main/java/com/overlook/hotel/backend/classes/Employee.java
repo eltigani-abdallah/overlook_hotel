@@ -3,65 +3,19 @@ package com.overlook.hotel.backend.classes;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter @Setter
-public class Employee {
-    /**
-     * employee ID
-     */
-    private int id;
+public class Employee extends User {
+    public Employee(int id, Date birthDate, String gender, String firstName, String lastName, String passwordHash, String email, String address, String phoneNumber){
+        super(id, birthDate, gender, firstName, lastName, passwordHash, email, address, phoneNumber);
+    }
 
-    /**
-     * employee age
-     */
-    private int age;
+    private String presence;
+    private String title;
 
-    /**
-     * employee gender <br>
-     * to help you discriminate against your employees
-     */
-    private String gender;
-
-    /**
-     * employee job role
-     */
-
-    private String role;
-
-    /**
-     * employee first name <br>
-     * you'll forget it in 2 seconds anyway
-     */
-    private String firstName;
-
-    /**
-     * employee last name
-     */
-    private String lastName;
-
-    /**
-     * employee email
-     */
-    private String email;
-
-    /**
-     * password hash for the employee
-     */
-    private String passwordHash;
-
-    /**
-     * employee home address
-     */
-    private String address;
-
-    /**
-     * employee phone number
-     */
-    private String phoneNumber;
-
-    /**
-     * employee status
-     */
-    private String status;
+    public void modifyReservation(){}
+    public void cancelREservaiton(){}
 
 
 

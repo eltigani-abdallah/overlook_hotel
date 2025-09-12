@@ -2,59 +2,21 @@ package com.overlook.hotel.backend.classes;
 
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * @brief clients of the hotel
  */
 @Getter @Setter
-public class Client {
+public class Client extends User{
 
-
-    /**
-     * ID to be taken from the database
-     */
-    private int id;
-
-    /**
-     * client age
-     */
-    private int age;
-
-    /**
-     * client gender
-     */
-    private String gender;
-
-    /**
-     * client first name
-     */
-     private String firstName;
-
-    /**
-     * client last name
-     */
-    private String lastName;
-
-    /**
-     * client email
-     */
-    private String email;
-
-    /**
-     * password hash for the client
-     */
-    private String passwordHash;
-
-    /**
-     * client home address
-     */
-    private String address;
-
-    /**
-     * client phone number
-     */
-    private String phoneNumber;
+    public Client(int id, Date birthDate, String gender, String firstName, String lastName, String passwordHash, String email, String address, String phoneNumber){
+        super(id, birthDate, gender, firstName, lastName, passwordHash, email, address, phoneNumber);
+    }
 
     /**
      * points awarded to loyal customers.<br>
@@ -62,6 +24,27 @@ public class Client {
      * economy I guess
      */
     private int loyaltyPoints;
+
+    /**
+     * reservation history
+     */
+    private ArrayList<Reservation> reservationHistory;
+
+    public Reservation reserveRoom(int id, Client client, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
+        Reservation newReservation= new Reservation(id, client, guestAmount, startDate, endDate, roomList);
+        this.reservationHistory.add(newReservation);
+        return newReservation;
+    }
+
+    public void cancelReservation(Reservation reservation){
+
+    }
+
+    public void modifyReservation(Reservation reservation){
+
+    }
+
+
 
 
 }
