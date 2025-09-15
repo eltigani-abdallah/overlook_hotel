@@ -1,5 +1,7 @@
-package com.overlook.hotel.backend.classes;
+package com.overlook.hotel.backend.classes.logistic;
 
+import com.overlook.hotel.backend.classes.human.Client;
+import com.overlook.hotel.backend.classes.human.Employee;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +21,7 @@ public class Reservation {
      * @param endDate
      * @param roomList
      */
-    public Reservation(int id, Client client, int guestAmount, Date startDate, Date endDate,String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
+    public Reservation(int id, Client client, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
         this.id=id;
         this.client=client;
         this.guestAmount=guestAmount;

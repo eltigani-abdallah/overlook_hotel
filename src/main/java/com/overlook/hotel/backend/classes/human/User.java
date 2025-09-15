@@ -1,6 +1,8 @@
-package com.overlook.hotel.backend.classes;
+package com.overlook.hotel.backend.classes.human;
 
 
+import com.overlook.hotel.backend.classes.logistic.Reservation;
+import com.overlook.hotel.backend.classes.logistic.Room;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -53,5 +55,19 @@ public class User {
     }
     public ArrayList<Room> viewRooms(){
         return null;
+    }
+
+    /**
+     * create a feedback object and add it to the feedback list of the room specified
+     * @param roomToRate
+     * @param id
+     * @param commenter
+     * @param stars
+     * @param message
+     * @param commentDate
+     */
+    public void giveFeedback(Room roomToRate, int id, User commenter, int stars, String message, Date commentDate){
+        Feedback feedback = new Feedback(id, commenter, stars, message, commentDate);
+        roomToRate.addFeedback(feedback);
     }
 }

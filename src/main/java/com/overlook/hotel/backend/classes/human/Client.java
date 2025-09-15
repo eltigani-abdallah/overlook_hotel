@@ -1,8 +1,9 @@
-package com.overlook.hotel.backend.classes;
+package com.overlook.hotel.backend.classes.human;
 
 
+import com.overlook.hotel.backend.classes.logistic.Reservation;
+import com.overlook.hotel.backend.classes.logistic.Room;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.Date;
  * @brief clients of the hotel
  */
 @Getter @Setter
-public class Client extends User{
+public class Client extends User {
 
     public Client(int id, Date birthDate, String gender, String firstName, String lastName, String passwordHash, String email, String address, String phoneNumber){
         super(id, birthDate, gender, firstName, lastName, passwordHash, email, address, phoneNumber);
