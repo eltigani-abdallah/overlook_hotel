@@ -1,0 +1,27 @@
+/* Image + voile pour lisibilité du texte */
+:root {
+  --hero-bg: linear-gradient(
+      0deg,
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.35)
+    ),
+    url("/images/hero.jpg") center / cover no-repeat;
+}
+
+vaadin-button[theme~="primary"] {
+  /* un peu le style du bouton de la maquette */
+  background-color: #FFC549;
+  border-radius: 6px;
+  letter-spacing: .02em;
+}
+
+/* Optionnel : mieux équilibrer le bloc texte */
+.hero .hero-content h1 {
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1.1;
+  color: white;
+}
+.hero .hero-content p {
+  color: white;
+  opacity: .9;
+}
