@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
-public class UserConfig {
+public class    UserConfig {
   @Bean
   public InMemoryUserDetailsManager users() {
     UserDetails admin = User.withUsername("admin")
