@@ -40,11 +40,9 @@ public class User {
     public Reservation reserveRoom(int id, Client client, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
         return new Reservation(id, client, guestAmount, startDate, endDate, roomList);
     }
-    public Reservation reserveSingleRoom(int id, Client client, int guestAmount, Date startDate, Date endDate, Room room){
-        return new Reservation(id, client, guestAmount, startDate, endDate, room);
-    }
-    public Reservation reserveEvent(int id, Client client, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, Room room){
-        return new Reservation(id, client, guestAmount, startDate, endDate, eventName, employeeResponsible, room);
+
+    public Reservation reserveEvent(int id, Client client, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
+        return new Reservation(id, client, guestAmount, startDate, endDate, eventName, employeeResponsible, roomList);
     }
     public void cancelReservation(Room room){
     }
