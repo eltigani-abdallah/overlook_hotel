@@ -18,7 +18,7 @@ public class SecurityConfig extends VaadinWebSecurity {
     return h;
   }
 
-  @Override
+    @Override
   protected void configure(HttpSecurity http) throws Exception {
     // This sets up CSRF, session management, static resource rules,
     // and whitelists all Vaadin internal endpoints.

@@ -58,18 +58,18 @@ public class HomePage extends Div {
         leftTop.setAlignItems(FlexComponent.Alignment.CENTER);
 
         // Centre : logo
-        Span logo = new Span("le M Hôtel");
+        Span logo = new Span("Hello World");
         logo.getStyle()
                 .set("font-weight", "700")
                 .set("font-size", "28px")
                 .set("color", "#d2a736"); // doré
-        // Sous-titre en tout petit (facultatif)
-        // Span subtitle = new Span("HÔTEL");
-        // subtitle.getStyle().set("font-size", "12px").set("letter-spacing", "2px");
+//         Sous-titre en tout petit (facultatif)
+         Span subtitle = new Span("HÔTEL");
+         subtitle.getStyle().set("font-size", "12px").set("letter-spacing", "2px");
 
         // À droite : téléphone + réserver
         TextField phone = new TextField();
-        phone.setValue("09 73 89 07 41");
+        phone.setValue("06 99 99 99 99");
         phone.setClearButtonVisible(false);
         phone.setReadOnly(true);
         phone.setWidth("170px");
@@ -148,11 +148,11 @@ public class HomePage extends Div {
                 .set("max-width", "860px")
                 .set("padding", "2rem");
 
-        H1 title = new H1("Bienvenue à l'hôtel le M");
+        H1 title = new H1("Bienvenue à l'Hello World");
         title.getStyle().set("margin", "0 0 .5rem 0");
 
-        Paragraph subtitle = new Paragraph("HÔTEL 3 ÉTOILES À MARSEILLE");
-        subtitle.getStyle().set("margin", "0 0 1rem 0")
+        Paragraph subtitle2 = new Paragraph("HÔTEL 4 ÉTOILES À MARSEILLE");
+        subtitle2.getStyle().set("margin", "0 0 1rem 0")
                 .set("letter-spacing", ".12em");
 
         Button cta = new Button("Découvrir les chambres");
