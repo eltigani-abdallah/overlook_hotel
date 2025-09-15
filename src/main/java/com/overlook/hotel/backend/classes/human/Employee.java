@@ -1,5 +1,6 @@
 package com.overlook.hotel.backend.classes.human;
 
+import com.overlook.hotel.backend.classes.logistic.Room;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,13 @@ public class Employee extends User {
     private String title;
 
     public void modifyReservation(){}
-    public void cancelREservaiton(){}
+    public void cancelReservation(Room room){
+        if(room.isReserved()){
+            room.setReserved(false);
+        } else{
+            System.err.println(room.getName()+" is not reserved. cannot cancel reservation.");
+        }
+    }
 
 
 
