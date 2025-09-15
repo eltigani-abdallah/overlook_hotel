@@ -31,8 +31,20 @@ public class Client extends User {
      */
     private ArrayList<Reservation> reservationHistory;
 
-    public Reservation reserveRoom(int id, Client client, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
-        Reservation newReservation= new Reservation(id, client, guestAmount, startDate, endDate, roomList);
+    public Reservation reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
+        ArrayList<Room> validReservations= new ArrayList<Room>();
+        if (startDate.after(endDate)){
+            System.err.println("Start date must be before the end date");
+            /// do something here for reservation failure
+        }
+        for (Room room: roomList){
+            if (guestAmount>room.getCapacity()){
+                System.out.println(room.getName()+" cannot be reserved; guests exceed capacity");
+                continue;
+            }
+            validReservations.add(room);
+        }
+        Reservation newReservation= new Reservation(id, this, guestAmount, startDate, endDate, validReservations);
         this.reservationHistory.add(newReservation);
         return newReservation;
     }

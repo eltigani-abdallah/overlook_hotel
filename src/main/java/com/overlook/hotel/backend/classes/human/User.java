@@ -32,22 +32,21 @@ public class User {
     /**
      * Create a reservation for multiple rooms
      * @param id
-     * @param client
      * @param guestAmount
      * @param startDate
      * @param endDate
      * @param roomList
      * @return
      */
-    public Reservation reserveRoom(int id, Client client, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
-        return new Reservation(id, client, guestAmount, startDate, endDate, roomList);
+    public Reservation reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
+        return new Reservation(id, this, guestAmount, startDate, endDate, roomList);
     }
 
-    public Reservation reserveEvent(int id, Client client, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
-        return new Reservation(id, client, guestAmount, startDate, endDate, eventName, employeeResponsible, roomList);
+    public Reservation reserveEvent(int id, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
+        return new Reservation(id, this, guestAmount, startDate, endDate, eventName, employeeResponsible, roomList);
     }
-    public void cancelReservation(Room room){
-    }
+    public void cancelReservation(Room room){}
+
     public void modifyReservation(Room room){}
 
     public ArrayList<Reservation> viewHistory(){

@@ -2,6 +2,7 @@ package com.overlook.hotel.backend.classes.logistic;
 
 import com.overlook.hotel.backend.classes.human.Client;
 import com.overlook.hotel.backend.classes.human.Employee;
+import com.overlook.hotel.backend.classes.human.User;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -15,15 +16,15 @@ public class Reservation {
     /**
      * @brief reserve an event
      * @param id
-     * @param client
+     * @param customer
      * @param guestAmount
      * @param startDate
      * @param endDate
      * @param roomList
      */
-    public Reservation(int id, Client client, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
+    public Reservation(int id, User customer, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
         this.id=id;
-        this.client=client;
+        this.customer=customer;
         this.guestAmount=guestAmount;
         this.startDate=startDate;
         this.endDate=endDate;
@@ -35,7 +36,7 @@ public class Reservation {
 
 
     private final int id;
-    private final Client client;
+    private final User customer;
     private final int guestAmount;
     private final Date startDate;
     private final Date endDate;
