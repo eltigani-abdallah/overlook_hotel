@@ -1,0 +1,41 @@
+# -------------------------------
+# Spring Boot application settings
+# -------------------------------
+spring:
+  application:
+    name: hotel  # Name of the Spring Boot application
+
+  # -------------------------------
+  # Database connection settings
+  # -------------------------------
+  datasource:
+    url: jdbc:postgresql://localhost:5432/overlook_hotel
+    # JDBC URL to connect to PostgreSQL database (host: localhost, port: 5432, database: overlook_hotel)
+    username: postgres  # PostgreSQL username
+    password: YOUR_PASSWORD  # PostgreSQL password (replace with your actual password)
+    driver-class-name: org.postgresql.Driver  # JDBC driver class for PostgreSQL
+
+  # -------------------------------
+  # JPA / Hibernate settings
+  # -------------------------------
+  jpa:
+    hibernate:
+      ddl-auto: update
+      # Automatically create or update database tables based on your Entities
+      # Possible values: none, validate, update, create, create-drop
+    show-sql: true
+    # Print SQL statements in the console (useful for debugging)
+    properties:
+      hibernate:
+        format_sql: true
+        # Format SQL statements for readability in console
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # Hibernate dialect for PostgreSQL (ensures correct SQL syntax)
+
+# -------------------------------
+# Optional: Logging settings
+# -------------------------------
+logging:
+  level:
+    org.hibernate.SQL: DEBUG  # Logs all SQL statements executed by Hibernate
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # Logs binding of parameters in SQL queries
