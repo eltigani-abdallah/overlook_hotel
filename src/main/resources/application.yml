@@ -37,5 +37,5 @@ spring:
 # -------------------------------
 logging:
   level:
-    org.hibernate.SQL: DEBUG  # Logs all SQL statements executed by Hibernate
+    org.hibernate.SQL: DEBUG  # Logs all SQL statements executed by Hibernateввув
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # Logs binding of parameters in SQL queries
