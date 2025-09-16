@@ -45,7 +45,7 @@ public class User {
     public Reservation reserveEvent(int id, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
         return new Reservation(id, this, guestAmount, startDate, endDate, eventName, employeeResponsible, roomList);
     }
-    public void cancelReservation(Room room){
+    public void cancelReservation(Reservation reservation){
     }
 
     public void modifyReservation(Room room){}
