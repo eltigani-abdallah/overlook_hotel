@@ -66,8 +66,8 @@ public class User {
      * @param message
      * @param commentDate
      */
-    public void giveFeedback(Room roomToRate, int id, User commenter, int stars, String message, Date commentDate){
-        Feedback feedback = new Feedback(id, commenter, stars, message, commentDate);
+    public void giveFeedback(Room roomToRate, int id, User commenter, String message, Date commentDate, int stars){
+        Feedback feedback = new Feedback(id, commenter, message, commentDate, stars);
         roomToRate.addFeedback(feedback);
     }
 }
