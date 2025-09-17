@@ -23,6 +23,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextFieldVariant;
 
 
 import com.vaadin.flow.component.html.*;
@@ -91,6 +92,7 @@ public class HomePage extends Div {
         TextField phone = new TextField();
 //        phone.getStyle()
 //                .set("text-align", "center");
+        phone.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
         phone.setValue("06 99 99 99 99");
         phone.setReadOnly(true);
         phone.addClassNames("phone");
