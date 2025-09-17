@@ -85,7 +85,7 @@ public class HomePage extends Div {
                 .set("font-weight", "800")
                 .set("font-size", "26px")
                 .set("letter-spacing", ".5px")
-                .set("color", "#d2a736");
+                .set("color", "#FFC549");
         Div logoWrap = new Div(logo);
         logoWrap.getStyle()
                 .set("text-align", "center")
@@ -96,6 +96,7 @@ public class HomePage extends Div {
         phone.getStyle().set("text-align", "center");
         phone.setValue("06 99 99 99 99");
         phone.setReadOnly(true);
+        phone.addClassNames("phone");
         phone.setWidth("170px");
         phone.getStyle()
                 .set("border", "1px solid #c7d5d8");
@@ -387,6 +388,7 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
         box.getStyle().set("background", "#f6edd8"); // beige clair
 
         H3 title = new H3("Parfaite localisation");
+        title.addClassName("yellow-header");
         Paragraph sub = new Paragraph(
                 "Quartier préféré des voyageurs visitant Marseille. À proximité : Vieux-Port, métro Castellane, Basilique " +
                         "Notre-Dame de la Garde. Aéroport à 23 km.");
