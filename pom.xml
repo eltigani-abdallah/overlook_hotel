@@ -73,6 +73,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Jakarta -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
         <!-- UI Framework -->
         <dependency>
             <groupId>com.vaadin</groupId>

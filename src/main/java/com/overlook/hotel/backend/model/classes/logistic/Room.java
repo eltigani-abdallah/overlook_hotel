@@ -16,7 +16,7 @@ public class Room {
     @NonNull private String name;
     private final int capacity;
     private boolean isReserved;
-    public ArrayList<Feedback> feedbackList;
+    public ArrayList<Feedback> feedbackList = new ArrayList<Feedback>();
 
 
     public void vacate(){

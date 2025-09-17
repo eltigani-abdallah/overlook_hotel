@@ -3,8 +3,10 @@ package com.overlook.hotel.backend.model.classes.human;
 
 import com.overlook.hotel.backend.model.classes.logistic.Reservation;
 import com.overlook.hotel.backend.model.classes.logistic.Room;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,12 +14,8 @@ import java.util.Date;
 /**
  * @brief clients of the hotel
  */
-@Getter @Setter
+@Getter @Setter @SuperBuilder
 public class Client extends User {
-
-    public Client(int id, Date birthDate, String gender, String firstName, String lastName, String passwordHash, String email, String address, String phoneNumber){
-        super(id, birthDate, gender, firstName, lastName, passwordHash, email, address, phoneNumber);
-    }
 
     /**
      * points awarded to loyal customers.<br>
@@ -29,12 +27,15 @@ public class Client extends User {
     /**
      * reservation history
      */
-    private ArrayList<Reservation> reservationHistory;
+    @Builder.Default
+    private ArrayList<Reservation> reservationHistory = new ArrayList<Reservation>();
 
+    @Override
     public Reservation reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
         ArrayList<Room> validReservations= new ArrayList<Room>();
         if (startDate.after(endDate)){
             System.err.println("Start date must be before the end date");
+            return null;
             /// do something here for reservation failure
         }
         for (Room room: roomList){
@@ -44,12 +45,19 @@ public class Client extends User {
             }
             validReservations.add(room);
         }
-        Reservation newReservation= new Reservation(id, this, guestAmount, startDate, endDate, validReservations);
+        Reservation newReservation= Reservation.builder()
+                .id(id)
+                .customer(this)
+                .guestAmount(guestAmount)
+                .startDate(startDate)
+                .endDate(endDate)
+                .roomList(validReservations)
+                .build();
         this.reservationHistory.add(newReservation);
         return newReservation;
     }
 
-
+    @Override
     public void modifyReservation(Reservation reservation){
 
     }
