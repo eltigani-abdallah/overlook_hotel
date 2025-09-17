@@ -1,0 +1,63 @@
+@import "theme-editor.css";
+/* === Thème global pour Vaadin (styles.css) === */
+
+/* ---- Couleurs Lumo ---- */
+:root {
+  /* Couleurs principales */
+  --lumo-primary-color: #FFC549;        /* ta couleur bouton / liens */
+  --lumo-primary-text-color: #1b1b1b;  /* texte sur les boutons primaires */
+
+  /* Couleur de fond générale */
+  --lumo-base-color: #ffffff;
+
+  /* Texte et titres */
+  --lumo-body-text-color: #222;
+  --lumo-header-text-color: #1b1b1b;
+
+  /* Optionnel : couleur accent pour hover/focus */
+  --lumo-primary-color-50pct: rgba(255, 197, 73, 0.5);
+  --lumo-primary-color-10pct: rgba(255, 197, 73, 0.1);
+}
+
+/* ---- Polices ---- */
+html {
+  font-family: "Poppins", "Segoe UI", Roboto, sans-serif;
+  font-size: var(--lumo-font-size-m);
+  color: var(--lumo-body-text-color);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--lumo-header-text-color);
+}
+
+/* ---- Boutons ---- */
+vaadin-button[theme~="primary"] {
+  background-color: var(--lumo-primary-color);
+  color: var(--lumo-primary-text-color);
+  border-radius: 6px;
+  letter-spacing: .02em;
+  font-weight: 600;
+}
+
+vaadin-button[theme~="primary"]:hover {
+  filter: brightness(1.05);
+}
+
+/* ---- Hero Section ---- */
+.hero {
+  background-image: linear-gradient(
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.35)
+    ),
+    url("https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero .hero-content h1,
+.hero .hero-content p {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
