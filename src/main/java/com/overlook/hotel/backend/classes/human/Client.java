@@ -49,9 +49,6 @@ public class Client extends User {
         return newReservation;
     }
 
-    public void cancelReservation(Reservation reservation){
-
-    }
 
     public void modifyReservation(Reservation reservation){
 

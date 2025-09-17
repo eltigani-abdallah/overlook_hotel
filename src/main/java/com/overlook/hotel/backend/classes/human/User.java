@@ -38,12 +38,12 @@ public class User {
      * @param roomList
      * @return
      */
-    public Reservation reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
-        return new Reservation(id, this, guestAmount, startDate, endDate, roomList);
+    public Reservation reserveRoom(int id, Client client, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
+        return new Reservation(id, client, guestAmount, startDate, endDate, roomList);
     }
 
-    public Reservation reserveEvent(int id, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
-        return new Reservation(id, this, guestAmount, startDate, endDate, eventName, employeeResponsible, roomList);
+    public Reservation reserveEvent(int id, Client client, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
+        return new Reservation(id, client, guestAmount, startDate, endDate, eventName, employeeResponsible, roomList);
     }
     public void cancelReservation(Reservation reservation){
     }
@@ -70,4 +70,6 @@ public class User {
         Feedback feedback = new Feedback(id, commenter, message, commentDate, stars);
         roomToRate.addFeedback(feedback);
     }
+
+
 }

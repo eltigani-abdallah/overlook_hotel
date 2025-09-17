@@ -1,6 +1,6 @@
 package com.overlook.hotel.backend.classes.logistic;
 
-import com.overlook.hotel.backend.classes.human.Client;
+
 import com.overlook.hotel.backend.classes.human.Employee;
 import com.overlook.hotel.backend.classes.human.User;
 import lombok.Getter;
@@ -30,6 +30,7 @@ public class Reservation {
         this.endDate=endDate;
         this.eventName=eventName;
         this.roomList=roomList;
+        this.employeeResponsible=employeeResponsible;
     }
 
 
