@@ -80,12 +80,8 @@ public class HomePage extends Div {
         left.setAlignItems(FlexComponent.Alignment.CENTER);
 
         // Logo
-        Span logo = new Span("Hello World");
-        logo.getStyle()
-                .set("font-weight", "800")
-                .set("font-size", "26px")
-                .set("letter-spacing", ".5px")
-                .set("color", "#FFC549");
+        Image logo = new Image("/images/logo.svg", "Hello World");
+        logo.setWidth("250px");
         Div logoWrap = new Div(logo);
         logoWrap.getStyle()
                 .set("text-align", "center")
@@ -93,14 +89,15 @@ public class HomePage extends Div {
 
         // Phone + CTA
         TextField phone = new TextField();
-        phone.getStyle().set("text-align", "center");
+//        phone.getStyle()
+//                .set("text-align", "center");
         phone.setValue("06 99 99 99 99");
         phone.setReadOnly(true);
         phone.addClassNames("phone");
         phone.setWidth("170px");
-        phone.getStyle()
-                .set("border", "1px solid #c7d5d8");
-        phone.addClassNames(LumoUtility.AlignSelf.CENTER);
+//        phone.getStyle()
+//                .set("border", "1px solid #c7d5d8");
+        phone.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.JustifyContent.CENTER);
 
         Button book = new Button("Réserver", e -> UI.getCurrent().getPage().open("#reservation"));
         book.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -149,7 +146,6 @@ right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.EN
         left.setWidth("420px");
         left.getStyle().set("display", "none");
         left.setSpacing(false);
-        left.setPadding(true);
 left.getElement().getThemeList().add("padding-l");
         left.getStyle().set("background", "white")
                 .set("border-right", "1px solid rgba(0,0,0,.06)");
@@ -166,6 +162,7 @@ left.getElement().getThemeList().add("padding-l");
                 new Hr(),
                 menuItem("CONTACT")
         );
+left.addClassNames(LumoUtility.Padding.Horizontal.XLARGE);
         return left;
     }
 
@@ -260,7 +257,8 @@ cta.addClassNames(LumoUtility.AlignSelf.CENTER);
         cta.getStyle().set("margin-top", "12px");
 
         box.add(h, p, cta);
-box.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        box.setAlignItems(FlexComponent.Alignment.CENTER);
+        box.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         return box;
     }
 
@@ -277,10 +275,10 @@ li("Check-in 15h / check-out 11h"),
                 li("Late check-out (supplément)"),
                 li("Bar & snack à la réception"),
                 li("TV, Netflix, bouilloire, frigo…"),
-                li("Litbébéà la demande"),
-                li("Navette aéroport à la demande"),
-                li("Réservation des restaurants"),
-                li("Activités touristiques")
+                li("Litbébéà lademande"),
+                li("Navette aéroportà la demande"),
+                li("Réservationdes restaurants"),
+                li("Activitéstouristiques")
         );
 
         VerticalLayout right = new VerticalLayout(new H3("Services"), bullets);
@@ -424,9 +422,12 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
         cols.setWidthFull();
         cols.setSpacing(true);
         cols.setPadding(true);
-        cols.getStyle().set("background", "#2e6d71").set("color", "white");
+        cols.getStyle()
+                .set("background", "#2e6d71")
+                .set("color", "white");
 
-        Div brand = new Div(new H4("Hello World HOTEL"));
+        Div brand = new Div(new Image("/images/logo.svg", "Hello World HOTEL"));
+brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Padding.Horizontal.XLARGE, LumoUtility.Padding.Vertical.LARGE);
         Div col1 = footerCol("Menu", "Chambres", "Services", "Salle de séminaire", "Galerie", "Contact");
         Div col2 = footerCol("Liens utiles", "Mentions légales", "Cookies");
         Div col3 = footerCol("Contact",
@@ -435,7 +436,7 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
                 "6115-117 rue Paradis, 13006 Marseille");
 
         cols.add(brand, col1, col2, col3);
-        cols.setFlexGrow(1, brand);
+        cols.setFlexGrow(0.4, brand);
         return cols;
     }
 
@@ -452,7 +453,7 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
         return box;
     }
 
-    /* ─────────────────────  UTILITIES  ───────────────────── */
+    /* ────────────────────��  UTILITIES  ───���───────────────── */
 
     private HorizontalLayout twoCols(Component left, Component right) {
         HorizontalLayout row = new HorizontalLayout(left, right);

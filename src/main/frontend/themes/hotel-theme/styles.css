@@ -113,3 +113,26 @@ vaadin-text-field.phone {
 h3.yellow-header {
   color: var(--lumo-primary-color) !important;
 }
+
+vaadin-text-field.phone::part(input-field) {
+  color: var(--lumo-secondary-color);
+  text-align: center;
+  padding-left: 10px;
+}
+
+vaadin-text-field.phone::part(value) {
+  text-align: center;
+  padding-left: 10px;
+}
+
+vaadin-text-field.phone {
+  --lumo-text-field-input-text-align: center;
+  padding-left: 10px;
+}
+
+vaadin-text-field.phone::part(input-field) {
+  box-shadow: none;                /* enlève la “bordure” Lumo */
+  border: 1px solid #c7d5d8;       /* ta bordure */
+  border-radius: 8px;              /* optionnel */
+  background: white;               /* propre en readonly */
+}
