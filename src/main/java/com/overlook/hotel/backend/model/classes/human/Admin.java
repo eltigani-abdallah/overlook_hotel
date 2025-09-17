@@ -1,7 +1,7 @@
-package com.overlook.hotel.backend.classes.human;
+package com.overlook.hotel.backend.model.classes.human;
 
 
-import com.overlook.hotel.backend.classes.logistic.Room;
+import com.overlook.hotel.backend.model.classes.logistic.Room;
 
 
 import java.util.Date;

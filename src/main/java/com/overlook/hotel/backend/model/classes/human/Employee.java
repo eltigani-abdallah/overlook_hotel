@@ -1,7 +1,7 @@
-package com.overlook.hotel.backend.classes.human;
+package com.overlook.hotel.backend.model.classes.human;
 
-import com.overlook.hotel.backend.classes.logistic.Reservation;
-import com.overlook.hotel.backend.classes.logistic.Room;
+import com.overlook.hotel.backend.model.classes.logistic.Reservation;
+import com.overlook.hotel.backend.model.classes.logistic.Room;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,13 +16,20 @@ public class Employee extends User {
     private String presence;
     private String title;
 
+
+
+
     public void modifyReservation(){}
+
     public void cancelReservation(Reservation reservation){
         for(Room room: reservation.getRoomList())
             if(room.isReserved()){
                 room.setReserved(false);
         }
     }
+
+    public void requestLeave(){}
+
 
 
 

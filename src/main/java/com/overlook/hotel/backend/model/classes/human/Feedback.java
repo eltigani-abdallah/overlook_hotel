@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.classes.human;
+package com.overlook.hotel.backend.model.classes.human;
 
 import lombok.Getter;
 import lombok.NonNull;

@@ -1,8 +1,8 @@
-package com.overlook.hotel.backend.classes.logistic;
+package com.overlook.hotel.backend.model.classes.logistic;
 
 
-import com.overlook.hotel.backend.classes.human.Employee;
-import com.overlook.hotel.backend.classes.human.User;
+import com.overlook.hotel.backend.model.classes.human.Employee;
+import com.overlook.hotel.backend.model.classes.human.User;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
