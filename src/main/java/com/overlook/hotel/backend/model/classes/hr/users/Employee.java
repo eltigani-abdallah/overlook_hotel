@@ -1,12 +1,10 @@
-package com.overlook.hotel.backend.model.classes.human;
+package com.overlook.hotel.backend.model.classes.hr.users;
 
 import com.overlook.hotel.backend.model.classes.logistic.Reservation;
 import com.overlook.hotel.backend.model.classes.logistic.Room;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-
-import java.util.Date;
 
 @Getter @Setter @SuperBuilder
 public class Employee extends User {

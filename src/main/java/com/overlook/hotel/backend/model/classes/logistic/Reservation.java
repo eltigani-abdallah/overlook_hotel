@@ -1,9 +1,8 @@
 package com.overlook.hotel.backend.model.classes.logistic;
 
 
-import com.overlook.hotel.backend.model.classes.human.Client;
-import com.overlook.hotel.backend.model.classes.human.Employee;
-import com.overlook.hotel.backend.model.classes.human.User;
+import com.overlook.hotel.backend.model.classes.hr.users.Client;
+import com.overlook.hotel.backend.model.classes.hr.users.Employee;
 import lombok.*;
 
 import java.util.ArrayList;

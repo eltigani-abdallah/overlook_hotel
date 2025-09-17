@@ -1,7 +1,7 @@
 package com.overlook.hotel.backend.model.classes.logistic;
 
 
-import com.overlook.hotel.backend.model.classes.human.Employee;
+import com.overlook.hotel.backend.model.classes.hr.users.Employee;
 import lombok.Getter;
 import lombok.Setter;
 

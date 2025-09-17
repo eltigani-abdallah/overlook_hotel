@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.human;
+package com.overlook.hotel.backend.model.classes.hr.users;
 
 
 import com.overlook.hotel.backend.model.classes.logistic.Room;
