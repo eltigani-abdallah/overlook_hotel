@@ -173,12 +173,13 @@ left.getElement().getThemeList().add("padding-l");
 
     private Component buildHero() {
         // image libre : remplace par la tienne si besoin
-        String img = "https://images.unsplash.com/photo-1551776235-dde6d4829808?q=80&w=1600&auto=format&fit=crop";
+        String img = "/images/familiale4.jpeg";
 
         Div hero = new Div();
+        hero.setWidthFull();
         hero.getStyle().set("display", "flex").set("justify-content", "center").set("align-items", "center");
         hero.getStyle()
-                .set("position", "relative")
+//                .set("position", "relative")
                 .set("height", "340px")
                 .set("background-image", "linear-gradient(0deg, rgba(0,0,0,.35), rgba(0,0,0,.35)), url('" + img + "')")
                 .set("background-size", "cover")
