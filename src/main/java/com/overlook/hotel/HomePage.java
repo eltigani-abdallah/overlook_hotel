@@ -47,6 +47,9 @@ public class HomePage extends Div {
         add(buildFooter());            // pied de page
     }
 
+    private static final String CONTENT_MAX = "1120px";
+
+
     /* ─────────────────────────  TOP BAR  ───────────────────────── */
 
     private Component buildTopbar() {
@@ -87,7 +90,7 @@ public class HomePage extends Div {
         // Phone + CTA
         TextField phone = new TextField();
         phone.setValue("06 99 99 99 99");
-        phone.setReadOnly(true);
+phone.setReadOnly(true);
         phone.setWidth("170px");
         phone.getStyle().set("border", "1px solid #c7d5d8");
 
@@ -210,8 +213,7 @@ left.getElement().getThemeList().add("padding-l");
                 bienvenueText(),
                 picture("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop")
         );
-        row.getStyle().set("background", "#dcebea"); // léger bleu/vert comme la maquette
-        return sectionWrap(row);
+        return sectionWrap(row, "#dcebea");
     }
 
     private Component bienvenueText() {
@@ -220,6 +222,9 @@ left.getElement().getThemeList().add("padding-l");
         box.addClassName("home-page-vertical-layout-1");
         box.setSpacing(false);
         box.setPadding(false);
+        box.getStyle()
+                .set("max-width", "560px")
+                .set("width", "100%");
 
         H3 h = new H3("Bienvenue");
         h.getStyle().set("margin-bottom", "8px");
@@ -262,7 +267,9 @@ li("Check-in 15h / check-out 11h"),
         VerticalLayout right = new VerticalLayout(new H3("Services"), bullets);
         right.setPadding(false);
         right.setSpacing(false);
-        right.getStyle().set("max-width", "560px");
+        right.getStyle()
+                .set("max-width", "560px")
+                .set("width", "100%");
 
         Button cta = new Button("Découvrir les services");
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -272,7 +279,7 @@ li("Check-in 15h / check-out 11h"),
                 picture("https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop"),
                 right
         );
-        return sectionWrap(row);
+        return sectionWrap(row, "transparent");
     }
 
     private ListItem li(String txt) {
@@ -312,7 +319,7 @@ Span s = new Span(" " + txt);
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         wrap.add(title, intro, grid, cta);
-        return sectionWrap(wrap);
+        return sectionWrap(wrap, "");
     }
 
     private String imgRoom(int id) {
@@ -373,7 +380,7 @@ Span s = new Span(" " + txt);
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         box.add(title, sub, icons, cta);
-        return sectionWrap(box);
+        return sectionWrap(box, "#f6edd8");
     }
 
     private Component locationItem(VaadinIcon icon, String label) {
@@ -426,13 +433,16 @@ Span s = new Span(" " + txt);
         //<theme-editor-local-classname>
         row.addClassName("home-page-horizontal-layout-1");
         row.setWidthFull();
-        row.setPadding(true);
+        row.setPadding(false);
+        row.setSpacing(true);
         row.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         row.setFlexGrow(1, left, right);
         row.addClassNames(LumoUtility.Gap.MEDIUM, LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
         row.getStyle().set("padding-left", "24px").set("padding-right", "24px");
         right.getElement().getThemeList().add("spacing-l");
-right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        left.getElement().getStyle().set("max-width", "560px").set("width", "100%");
+        right.getElement().getStyle().set("max-width", "560px").set("width", "100%");
+        right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
         return row;
     }
 
@@ -440,20 +450,33 @@ right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CE
         Image img = new Image(url, "photo");
         //<theme-editor-local-classname>
         img.addClassName("home-page-img-1");
-        img.setWidth("560px");
+        img.setWidth("100%");
         img.setHeight("360px");
-        img.getStyle().set("object-fit", "cover").set("border-radius", "12px");
+        img.getStyle()
+                .set("max-width", "360px")
+                .set("object-fit", "cover")
+                .set("border-radius", "12px");
         return img;
     }
 
-    private Component sectionWrap(Component content) {
-        Div wrap = new Div(content);
-        //<theme-editor-local-classname>
-        wrap.addClassName("home-page-div-1");
-        wrap.setWidthFull();
-        wrap.getStyle().set("padding", "28px 0").set("display", "flex").set("justify-content", "center");
-wrap.addClassNames(LumoUtility.Gap.MEDIUM);
-        return wrap;
+    private Component sectionWrap(Component innerContent, String backgroundColor) {
+        // inner container limited to max width
+        Div fullWidth = new Div();
+        fullWidth.setWidthFull();
+        fullWidth.getStyle()
+                .set("padding", "28px 0")
+                .set("width", "100vw")
+                .set("display", "flex")
+                .set("justify-content", "center"); // centre le container interne
+
+        Div container = new Div(innerContent); // pour limiter le contenu
+        container.getStyle()
+                .set("max-width", "1120px")  // largeur max commune à toutes les sections
+                .set("width", "100%");
+
+        fullWidth.getStyle().set("background", backgroundColor);
+        fullWidth.add(container);
+        return fullWidth;
     }
 
 private Button buildBestPriceBadge() {
