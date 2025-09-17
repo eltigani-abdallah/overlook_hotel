@@ -27,6 +27,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.*;
+
 @PageTitle("Hello World Hotel – Accueil")
 @PermitAll
 @Route("home")
@@ -67,7 +68,8 @@ public class HomePage extends Div {
 
         // Burger + langue
         Button burger = new Button(new Icon(VaadinIcon.MENU), e -> toggleLeftMenu());
-        burger.getStyle().set("border-radius", "999px");
+        burger.getStyle()
+                .set("border-radius", "999px");
 
         ComboBox<String> lang = new ComboBox<>();
         lang.setItems("FR", "EN", "ES");
@@ -85,14 +87,19 @@ public class HomePage extends Div {
                 .set("letter-spacing", ".5px")
                 .set("color", "#d2a736");
         Div logoWrap = new Div(logo);
-        logoWrap.getStyle().set("text-align", "center").set("flex", "1");
+        logoWrap.getStyle()
+                .set("text-align", "center")
+                .set("flex", "1");
 
         // Phone + CTA
         TextField phone = new TextField();
+        phone.getStyle().set("text-align", "center");
         phone.setValue("06 99 99 99 99");
-phone.setReadOnly(true);
+        phone.setReadOnly(true);
         phone.setWidth("170px");
-        phone.getStyle().set("border", "1px solid #c7d5d8");
+        phone.getStyle()
+                .set("border", "1px solid #c7d5d8");
+        phone.addClassNames(LumoUtility.AlignSelf.CENTER);
 
         Button book = new Button("Réserver", e -> UI.getCurrent().getPage().open("#reservation"));
         book.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -100,6 +107,7 @@ phone.setReadOnly(true);
 
         HorizontalLayout right = new HorizontalLayout(phone, book);
         right.setAlignItems(FlexComponent.Alignment.CENTER);
+right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END, LumoUtility.Padding.Horizontal.NONE);
 
         top.setFlexGrow(1, left, logoWrap, right);
         top.add(left, logoWrap, right);
@@ -177,30 +185,39 @@ left.getElement().getThemeList().add("padding-l");
 
         Div hero = new Div();
         hero.setWidthFull();
-        hero.getStyle().set("display", "flex").set("justify-content", "center").set("align-items", "center");
         hero.getStyle()
-//                .set("position", "relative")
+                .set("display", "flex")
+                .set("justify-content", "center")
+                .set("align-items", "center")
+                .set("position", "relative")
                 .set("height", "340px")
+                .set("overflow", "hidden")
                 .set("background-image", "linear-gradient(0deg, rgba(0,0,0,.35), rgba(0,0,0,.35)), url('" + img + "')")
                 .set("background-size", "cover")
                 .set("background-position", "center");
 
         VerticalLayout text = new VerticalLayout();
-        text.setSizeFull();
         text.setSpacing(false);
         text.setPadding(false);
         text.setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
         text.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        text.getStyle().set("position", "absolute").set("inset", "0").set("color", "white");
+        text.getStyle()
+                .set("position", "absolute")
+                .set("inset", "0")
+                .set("color", "white");
 
         H1 title = new H1("Bienvenue à l’Hello World Hotel");
-        title.getStyle().set("margin", "0 0 .25rem 0");
+        title.getStyle()
+                .set("margin", "0 0 .25rem 0");
 
         Paragraph sub = new Paragraph("HÔTEL 3 ÉTOILES À MARSEILLE");
-        sub.getStyle().set("margin", "0 0 1rem 0").set("letter-spacing", ".12em");
+        sub.getStyle()
+                .set("margin", "0 0 1rem 0")
+                .set("letter-spacing", ".12em");
 
         Button cta = new Button("Découvrir les chambres");
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+cta.addClassNames(LumoUtility.AlignSelf.CENTER);
 
         text.add(title, sub, cta);
         hero.add(text);
@@ -259,7 +276,7 @@ li("Check-in 15h / check-out 11h"),
                 li("Late check-out (supplément)"),
                 li("Bar & snack à la réception"),
                 li("TV, Netflix, bouilloire, frigo…"),
-                li("Lit bébé à la demande"),
+                li("Litbébéà la demande"),
                 li("Navette aéroport à la demande"),
                 li("Réservation des restaurants"),
                 li("Activités touristiques")
@@ -284,12 +301,12 @@ li("Check-in 15h / check-out 11h"),
     }
 
     private ListItem li(String txt) {
-Icon dot = new Icon(VaadinIcon.CIRCLE);
-        dot.getStyle().set("width", "12px").set("height", "12px");
+Icon dot = new Icon(VaadinIcon.CHECK_CIRCLE);
+dot.getStyle().set("width", "12px").set("height", "12px").set("fill", "var(--lumo-primary-color)");
 Span s = new Span(" " + txt);
         ListItem li = new ListItem(new Span(dot, s));
         li.getStyle().set("list-style", "none");
-        return li;
+return li;
     }
 
     /* ─────────────────────  SECTION “CHAMBRES”  ───────────────────── */
@@ -298,14 +315,16 @@ Span s = new Span(" " + txt);
         VerticalLayout wrap = new VerticalLayout();
         wrap.setWidthFull();
         wrap.setAlignItems(FlexComponent.Alignment.CENTER);
-        wrap.setSpacing(false);
 
         H3 title = new H3("Chambres");
-        title.getStyle().set("margin-bottom", "4px");
+        title.getStyle()
+                .set("margin-bottom", "4px");
         Paragraph intro = new Paragraph(
                 "Tous les logements sont équipés d’une TV, sèche-cheveux, bouilloire et plateau d’accueil. " +
                         "Le buffet petit-déjeuner est servi tous les jours sur place.");
-        intro.getStyle().set("text-align", "center");
+        intro.getStyle()
+                .set("margin-bottom", "24px")
+                .set("text-align", "center");
 
         FlexLayout grid = new FlexLayout(
                 roomCard("DOUBLE", imgRoom(1)),
@@ -314,12 +333,16 @@ Span s = new Span(" " + txt);
                 roomCard("STUDIO", imgRoom(4))
         );
         grid.setFlexWrap(FlexLayout.FlexWrap.WRAP);
-        grid.getStyle().set("gap", "16px");
+        grid.getStyle()
+                .set("margin-bottom", "24px")
+                .set("gap", "16px");
 
         Button cta = new Button("Découvrir les chambres");
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         wrap.add(title, intro, grid, cta);
+wrap.setSpacing(false);
+wrap.addClassNames(LumoUtility.Padding.NONE);
         return sectionWrap(wrap, "");
     }
 
@@ -485,7 +508,7 @@ private Button buildBestPriceBadge() {
         b.addClickListener(e -> UI.getCurrent().navigate("home#bestprice"));
         b.getStyle()
 .set("position", "fixed")
-                .set("right", "-70px")
+                .set("right", "-120px")
                 .set("top", "45%")
                 .set("transform", "rotate(-90deg)")
                 .set("background", "#5c7b7e")
