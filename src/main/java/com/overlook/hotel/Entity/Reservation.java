@@ -1,0 +1,49 @@
+package com.overlook.hotel.Entity;
+
+
+import jakarta.persistence.*; // JPA annotations
+import lombok.*;              // Lombok annotations
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "reservation") // Table name in the database
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Reservation {
+
+    @Id // Primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Use Long for large number of records
+
+    @Column(name = "reservation_date_start", nullable = false)
+    // Start date of the reservation (cannot be null)
+    private LocalDate reservationDateStart;
+
+    @Column(name = "reservation_date_end", nullable = false)
+    // End date of the reservation (cannot be null)
+    private LocalDate reservationDateEnd;
+
+    @Column(name = "adult_number", nullable = false)
+    // Number of adults for the reservation
+    private Integer adultNumber;
+
+    @Column(name = "children_number", nullable = false)
+    // Number of children for the reservation
+    private Integer childrenNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    // Many reservations can belong to one user
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id", nullable = false)
+    // Many reservations can be for one room
+    private Room room;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    // Optional: reservation may be linked to an event
+    private Event event;
+}
