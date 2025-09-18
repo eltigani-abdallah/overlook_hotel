@@ -349,10 +349,10 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
 
     private String imgRoom(int id) {
         return switch (id) {
-            case 1 -> "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop";
-            case 2 -> "https://images.unsplash.com/photo-1554995207-1f8fbeacd2d4?q=80&w=1200&auto=format&fit=crop";
-            case 3 -> "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop";
-            default -> "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=1200&auto=format&fit=crop";
+            case 1 -> "/images/double3.jpeg";
+            case 2 -> "/images/familiale4.jpeg";
+            case 3 -> "/images/twin4.jpeg";
+            default -> "/images/studio3.jpeg";
         };
     }
 
