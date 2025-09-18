@@ -35,7 +35,6 @@ build/
 
 ### application.properties ###
 
-application.properties
-
+src/main/resources/application.properties
 ### application.yml   ###
-application.yml
+src/main/resources/application.yml
