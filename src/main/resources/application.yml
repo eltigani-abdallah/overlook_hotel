@@ -12,7 +12,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/overlook_hotel
     # JDBC URL to connect to PostgreSQL database (host: localhost, port: 5432, database: overlook_hotel)
     username: postgres  # PostgreSQL username
-    password: YOUR_PASSWORD  # PostgreSQL password (replace with your actual password)
+    password: YOUR PASSWORD # PostgreSQL password (replace with your actual password)
     driver-class-name: org.postgresql.Driver  # JDBC driver class for PostgreSQL
 
   # -------------------------------
