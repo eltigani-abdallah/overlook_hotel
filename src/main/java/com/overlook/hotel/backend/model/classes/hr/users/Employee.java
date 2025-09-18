@@ -2,9 +2,12 @@ package com.overlook.hotel.backend.model.classes.hr.users;
 
 import com.overlook.hotel.backend.model.classes.logistic.Reservation;
 import com.overlook.hotel.backend.model.classes.logistic.Room;
+import com.overlook.hotel.backend.model.classes.hr.LeaveRequest;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import java.util.Date;
 
 @Getter @Setter @SuperBuilder
 public class Employee extends User {
@@ -28,7 +31,14 @@ public class Employee extends User {
         }
     }
 
-    public void requestLeave(){}
+    public LeaveRequest requestLeave(int id, Date startDate, Date endDate, String reason){
+        return LeaveRequest.builder()
+            .id(id)
+            .startDate(startDate)
+            .endDate(endDate)
+            .reason(reason)
+            .build();
+    }
 
 
 

@@ -1,6 +1,7 @@
 package com.overlook.hotel.backend.model.classes.hr.users;
 
 
+import com.overlook.hotel.backend.model.classes.hr.LeaveRequest;
 import com.overlook.hotel.backend.model.classes.logistic.Room;
 import lombok.experimental.SuperBuilder;
 
@@ -14,9 +15,13 @@ public class Admin extends User {
 
     public void viewEmployeeStats(){}
 
-    public void approveEmployeeLeave(){}
+    public void approveEmployeeLeave(LeaveRequest request){
+        request.setApproved(true);
+    }
 
-    public void rejectEmployeeLeave(){}
+    public void rejectEmployeeLeave(LeaveRequest request){
+        request.setApproved(false);
+    }
 
 
     public void viewRoomStats(){}
