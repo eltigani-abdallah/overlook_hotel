@@ -15,6 +15,10 @@ public class AdminDto extends UserDto {
 
     public void viewEmployeeStats(){}
 
+    public void changeEmployeeTitle(EmployeeDto employee, String title){
+        employee.setTitle(title);
+    }
+
     public void approveEmployeeLeave(LeaveRequestDto request){
         request.setApproved(true);
     }
@@ -40,4 +44,6 @@ public class AdminDto extends UserDto {
 
         }
     }
+
+
 }

@@ -29,6 +29,12 @@ public class UserDto {
     @NonNull
     private String phoneNumber;
 
+    public enum userType{
+        CLIENT,
+        EMPLOYEE,
+        ADMIN
+    }
+
 
     /**
      * Create a reservation for multiple rooms

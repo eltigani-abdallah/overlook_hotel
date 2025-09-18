@@ -5,6 +5,7 @@ import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
 import com.overlook.hotel.backend.model.classes.hr.LeaveRequestDto;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import java.util.Date;
