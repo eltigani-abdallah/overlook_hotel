@@ -1,8 +1,8 @@
 package com.overlook.hotel.backend.model.classes.hr.users;
 
 
-import com.overlook.hotel.backend.model.classes.logistic.Reservation;
-import com.overlook.hotel.backend.model.classes.logistic.Room;
+import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
+import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ import java.util.Date;
  * @brief clients of the hotel
  */
 @Getter @Setter @SuperBuilder
-public class Client extends User {
+public class ClientDto extends UserDto {
 
     /**
      * points awarded to loyal customers.<br>
@@ -28,37 +28,37 @@ public class Client extends User {
      * reservation history
      */
     @Builder.Default
-    private ArrayList<Reservation> reservationHistory = new ArrayList<Reservation>();
+    private ArrayList<ReservationDto> reservationDtoHistory = new ArrayList<ReservationDto>();
 
     @Override
-    public Reservation reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
-        ArrayList<Room> validReservations= new ArrayList<Room>();
+    public ReservationDto reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<RoomDto> roomDtoList){
+        ArrayList<RoomDto> validReservations= new ArrayList<RoomDto>();
         if (startDate.after(endDate)){
             System.err.println("Start date must be before the end date");
             return null;
             /// do something here for reservation failure
         }
-        for (Room room: roomList){
-            if (guestAmount>room.getCapacity()){
-                System.out.println(room.getName()+" cannot be reserved; guests exceed capacity");
+        for (RoomDto roomDto : roomDtoList){
+            if (guestAmount> roomDto.getCapacity()){
+                System.out.println(roomDto.getName()+" cannot be reserved; guests exceed capacity");
                 continue;
             }
-            validReservations.add(room);
+            validReservations.add(roomDto);
         }
-        Reservation newReservation= Reservation.builder()
+        ReservationDto newReservationDto = ReservationDto.builder()
                 .id(id)
                 .customer(this)
                 .guestAmount(guestAmount)
                 .startDate(startDate)
                 .endDate(endDate)
-                .roomList(validReservations)
+                .roomDtoList(validReservations)
                 .build();
-        this.reservationHistory.add(newReservation);
-        return newReservation;
+        this.reservationDtoHistory.add(newReservationDto);
+        return newReservationDto;
     }
 
     @Override
-    public void modifyReservation(Reservation reservation){
+    public void modifyReservation(ReservationDto reservationDto){
 
     }
 

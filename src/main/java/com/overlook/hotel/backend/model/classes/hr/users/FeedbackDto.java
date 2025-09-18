@@ -9,14 +9,14 @@ import java.util.Date;
  * Feedback given by the client, employee or admin
  */
 @Getter @Setter @Builder
-public class Feedback {
+public class FeedbackDto {
 
 
     private final int id;
-    @NonNull private User commenter;
+    @NonNull private UserDto commenter;
     @NonNull private String message;
     @NonNull private Date commentDate;
     @NonNull private int reservationId;
     private int stars;
-    public ArrayList<Feedback> replies;
+    public ArrayList<FeedbackDto> replies;
 }

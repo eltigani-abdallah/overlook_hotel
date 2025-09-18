@@ -1,8 +1,8 @@
 package com.overlook.hotel.backend.model.classes.hr.users;
 
 
-import com.overlook.hotel.backend.model.classes.logistic.Reservation;
-import com.overlook.hotel.backend.model.classes.logistic.Room;
+import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
+import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Setter @Getter @SuperBuilder
-public class User {
+public class UserDto {
     private final int id;
     @NonNull
     private Date birthDate;
@@ -36,47 +36,47 @@ public class User {
      * @param guestAmount
      * @param startDate
      * @param endDate
-     * @param roomList
+     * @param roomDtoList
      * @return
      */
-    public Reservation reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<Room> roomList){
+    public ReservationDto reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<RoomDto> roomDtoList){
         System.err.println("Wrong function motherf*****");
         return null;
     }
 
-    public Reservation reserveEvent(int id, Client client, int guestAmount, Date startDate, Date endDate, String eventName, Employee employeeResponsible, ArrayList<Room> roomList){
+    public ReservationDto reserveEvent(int id, ClientDto client, int guestAmount, Date startDate, Date endDate, String eventName, EmployeeDto employeeResponsible, ArrayList<RoomDto> roomDtoList){
         System.err.println("Wrong  event function motherf*****");
         return null;
     }
-    public void cancelReservation(Reservation reservation){
+    public void cancelReservation(ReservationDto reservationDto){
     }
 
-    public void modifyReservation(Reservation reservation){}
+    public void modifyReservation(ReservationDto reservationDto){}
 
-    public ArrayList<Reservation> viewHistory(){
+    public ArrayList<ReservationDto> viewHistory(){
         return null;
     }
-    public ArrayList<Room> viewRooms(){
+    public ArrayList<RoomDto> viewRooms(){
         return null;
     }
 
     /**
      * create a feedback object and add it to the feedback list of the room specified
-     * @param roomToRate
+     * @param roomDtoToRate
      * @param id
      * @param stars
      * @param message
      * @param commentDate
      */
-    public void giveFeedback(Room roomToRate, int id, String message, Date commentDate, int stars){
-        Feedback feedback = Feedback.builder()
+    public void giveFeedback(RoomDto roomDtoToRate, int id, String message, Date commentDate, int stars){
+        FeedbackDto feedback = FeedbackDto.builder()
                 .id(id)
                 .commenter(this)
                 .message(message)
                 .commentDate(commentDate)
                 .stars(stars)
                 .build();
-        roomToRate.addFeedback(feedback);
+        roomDtoToRate.addFeedback(feedback);
     }
 
 
