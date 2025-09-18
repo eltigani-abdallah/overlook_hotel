@@ -1,41 +1,52 @@
-
 package com.overlook.hotel.Entity;
 
-import jakarta.persistence.*; // JPA annotations
-import lombok.*;              // Lombok annotations
-import java.time.LocalDateTime; // DateTime type
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDate;
 
 /**
- * This class represents the "employee_leave" table in the PostgreSQL database.
- * Each field corresponds to a column in the table.
- * Relationship:
- * - Many leave records can belong to one employee.
+ * EmployeeLeave entity mapped to the "employee_leave" table.
+ * Represents leave requests for either an Employee or an Admin.
  */
 @Entity
-@Table(name = "employee_leave") // Explicit table name
+@Table(name = "employee_leave")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeLeave {
 
-    @Id // Primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Use Long for large number of records
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incremented ID
+    private Long id;
 
-    @Column(name = "start_time", nullable = false)
-    // Start date and time of the leave
-    private LocalDateTime startTime;
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate; // Leave start date
 
-    @Column(name = "end_time", nullable = false)
-    // End date and time of the leave
-    private LocalDateTime endTime;
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate; // Leave end date
 
-    @Column(name = "status", nullable = false, length = 50)
-    // Status of the leave (e.g., "Pending", "Approved", "Rejected")
-    private String status;
+    @Column(nullable = false, length = 50)
+    private String status; // Leave status (e.g., Approved, Pending, Rejected)
 
+    // Leave may belong to an employee
     @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    // Many leave records can belong to one employee
+    @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    // Or leave may belong to an admin
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+
+    /**
+     * Validation before persisting/updating:
+     * Ensure that exactly one owner is defined (either employee or admin).
+     */
+    @PrePersist
+    @PreUpdate
+    private void validateOwner() {
+        if ((employee == null && admin == null) || (employee != null && admin != null)) {
+            throw new IllegalStateException("EmployeeLeave must belong to exactly one owner: either employee or admin");
+        }
+    }
 }

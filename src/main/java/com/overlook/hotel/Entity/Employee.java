@@ -1,48 +1,50 @@
 package com.overlook.hotel.Entity;
 
-import jakarta.persistence.*; // JPA annotations
-import lombok.*;              // Lombok annotations
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.List;
 
 /**
- * This class represents the "employee" table in the PostgreSQL database.
- * Each field corresponds to a column in the table.
+ * Employee entity mapped to the "employee" table.
+ * Represents hotel staff employees.
  */
 @Entity
-@Table(name = "employee") // Explicit table name
+@Table(name = "employee")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
 
-    @Id // Primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Use Long for large number of records
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incremented ID
+    private Long id;
 
-    @Column(name = "first_name", nullable = false, length = 100)
-    // Employee's first name
+    @Column(nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 100)
-    // Employee's last name
+    @Column(nullable = false, length = 100)
     private String lastName;
 
     @Column(nullable = false, unique = true, length = 150)
-    // Employee's email, must be unique
     private String email;
 
     @Column(nullable = false, length = 255)
-    // Employee's password
     private String password;
 
     @Column(length = 255)
-    // Employee's address (optional)
     private String address;
 
-    @Column(name = "phone_number", length = 20)
-    // Employee's phone number (optional)
+    @Column(length = 20)
     private String phoneNumber;
 
     @Column(nullable = false, length = 50)
-    // Employee's role (e.g., "Admin", "Receptionist")
     private String role;
+
+    // One employee can have many schedules
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmployeeSchedule> schedules;
+
+    // One employee can have many leaves
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmployeeLeave> leaves;
 }
