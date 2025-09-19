@@ -50,6 +50,10 @@ public class Reservation extends Div{
         add(buildBody());              // menu gauche + contenu
         add(buildBestPriceBadge());    // bouton vertical à droite
         add(buildFooter());            // pied de page
+
+        HorizontalLayout body = (HorizontalLayout) buildBody();
+        body.setSizeFull();
+        body.getStyle().set("flex", "1 1 auto");
     }
 
     /* ─────────────────────────  TOP BAR  ───────────────────────── */
@@ -116,6 +120,7 @@ public class Reservation extends Div{
 
     private Component buildBody() {
         HorizontalLayout body = new HorizontalLayout();
+
         body.setWidthFull();
         body.setPadding(false);
         body.setSpacing(false);
@@ -129,9 +134,13 @@ public class Reservation extends Div{
         content.setPadding(false);
         content.setSpacing(false);
         content.setWidthFull();
+        content.setSizeFull(); // ou setHeightFull()
+        content.setAlignItems(FlexComponent.Alignment.CENTER);                // centre horizontal
+        content.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER); // centre vertical
+
 
         content.add(buildReservationForm());
-content.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        content.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
 
 
         body.add(menu, content);
