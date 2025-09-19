@@ -105,7 +105,7 @@ public class HomePage extends Div {
 
         HorizontalLayout right = new HorizontalLayout(phone, book);
         right.setAlignItems(FlexComponent.Alignment.CENTER);
-right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END, LumoUtility.Padding.Horizontal.NONE);
+right.addClassNames(LumoUtility.Padding.Horizontal.NONE, LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END);
 
         top.setFlexGrow(1, left, logoWrap, right);
         top.add(left, logoWrap, right);

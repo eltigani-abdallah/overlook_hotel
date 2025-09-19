@@ -99,11 +99,13 @@ public class Reservation extends Div{
 
         Button book = new Button("Réserver", e -> UI.getCurrent().getPage().open("#reservation", "_blank"));
         book.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        book.setEnabled(false);
         book.addClickShortcut(Key.ENTER);
 
         HorizontalLayout right = new HorizontalLayout(phone, book);
         right.setAlignItems(FlexComponent.Alignment.CENTER);
-        right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END, LumoUtility.Padding.Horizontal.NONE);
+        right.setJustifyContentMode(FlexComponent.JustifyContentMode.END);
+        right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Padding.Horizontal.NONE);
 
         top.setFlexGrow(1, left, logoWrap, right);
         top.add(left, logoWrap, right);
@@ -175,7 +177,9 @@ content.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.
         // Conteneur vertical
         VerticalLayout formLayout = new VerticalLayout();
         formLayout.setWidth("400px");
+        formLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         formLayout.setAlignItems(FlexComponent.Alignment.STRETCH); // champs en full-width
+        formLayout.setSpacing(true);
         formLayout.setPadding(true);
 
         // Date Picker
@@ -198,7 +202,7 @@ content.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.
         envoyer.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 // Ajouter au layout
         formLayout.add(datePicker, prenom, nom, telephone, email, password, envoyer);
-formLayout.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER, LumoUtility.Gap.SMALL);
+formLayout.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
 
         // Ajouter au layout
 
