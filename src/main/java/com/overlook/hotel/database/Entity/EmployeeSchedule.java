@@ -1,41 +1,56 @@
+package com.overlook.hotel.Entity;
 
-package com.overlook.hotel.database.Entity;
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-import jakarta.persistence.*; // JPA annotations
-import lombok.*;              // Lombok annotations
-import java.time.LocalDate;   // Date type
-import java.time.LocalTime;   // Time type
-
-
+/**
+ * EmployeeSchedule entity mapped to the "employee_schedule" table.
+ * Represents a work schedule for either an Employee or an Admin.
+ */
 @Entity
-@Table(name = "employee_schedule") // Explicit table name
+@Table(name = "employee_schedule")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeSchedule {
 
-    @Id // Primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Use Long for large number of records
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incremented ID
+    private Long id;
 
     @Column(name = "work_schedule", nullable = false)
-    // Date of the work schedule
-    private LocalDate workSchedule;
+    private LocalDate workSchedule; // Date of the schedule
 
     @Column(name = "start_time", nullable = false)
-    // Start time of the shift
-    private LocalTime startTime;
+    private LocalTime startTime; // Shift start time
 
     @Column(name = "end_time", nullable = false)
-    // End time of the shift
-    private LocalTime endTime;
+    private LocalTime endTime; // Shift end time
 
-    @Column(name = "status", nullable = false, length = 50)
-    // Status of the schedule (e.g., "Scheduled", "Completed")
-    private String status;
+    @Column(nullable = false, length = 50)
+    private String status; // Schedule status (e.g., Scheduled, Completed)
 
+    // A schedule may belong to an employee
     @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    // Many schedules can belong to one employee
+    @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    // Or a schedule may belong to an admin
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+
+    /**
+     * Validation before persisting/updating:
+     * Ensure that exactly one owner is defined (either employee or admin).
+     */
+    @PrePersist
+    @PreUpdate
+    private void validateOwner() {
+        if ((employee == null && admin == null) || (employee != null && admin != null)) {
+            throw new IllegalStateException("EmployeeSchedule must belong to exactly one owner: either employee or admin");
+        }
+    }
 }

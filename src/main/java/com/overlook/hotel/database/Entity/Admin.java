@@ -1,19 +1,19 @@
-package com.overlook.hotel.database.Entity;
+package com.overlook.hotel.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
 /**
- * Employee entity mapped to the "employee" table.
- * Represents hotel staff employees.
+ * Admin entity mapped to the "admin" table.
+ * Represents administrators who can also have schedules and leaves.
  */
 @Entity
-@Table(name = "employee")
+@Table(name = "admin")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incremented ID
@@ -40,11 +40,11 @@ public class Employee {
     @Column(nullable = false, length = 50)
     private String role;
 
-    // One employee can have many schedules
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    // One admin can have many schedules
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmployeeSchedule> schedules;
 
-    // One employee can have many leaves
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    // One admin can have many leaves
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmployeeLeave> leaves;
 }
