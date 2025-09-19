@@ -144,3 +144,11 @@ vaadin-combo-box::part(label) {
   transform: none;         /* au cas où un “floating label” custom traîne */
   transition: none;
 }
+
+.form-card vaadin-text-field::part(value),
+.form-card vaadin-email-field::part(value),
+.form-card vaadin-password-field::part(value),
+.form-card vaadin-date-picker::part(value) {
+  color: var(--lumo-body-text-color) !important;
+  font-weight: 400 !important;
+}
