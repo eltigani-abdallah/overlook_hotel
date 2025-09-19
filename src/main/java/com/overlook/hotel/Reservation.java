@@ -6,24 +6,33 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.html.*;
-
-
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.shared.InputField;
+import com.vaadin.flow.component.textfield.EmailField;
+import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import jakarta.annotation.security.PermitAll;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Span;
 
 
-@PageTitle("Hello World Hotel – Accueil")
+import com.vaadin.flow.component.html.*;
+
+
+@PageTitle("Hello World Hotel – Reservation")
 @PermitAll
 @Route("reservation")
 @CssImport(themeFor = "vaadin-button", value = "./themes/hotel-theme/styles.css")
@@ -88,7 +97,7 @@ public class Reservation extends Div{
         phone.setWidth("170px");
         phone.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.JustifyContent.CENTER);
 
-        Button book = new Button("Réserver", e -> UI.getCurrent().getPage().open("#reservation"));
+        Button book = new Button("Réserver", e -> UI.getCurrent().getPage().open("#reservation", "_blank"));
         book.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         book.addClickShortcut(Key.ENTER);
 
@@ -119,11 +128,9 @@ public class Reservation extends Div{
         content.setSpacing(false);
         content.setWidthFull();
 
-//        content.add(buildHero());           // hero avec image + overlay
-//        content.add(buildBienvenue());      // section 1
-//        content.add(buildServices());       // section 2
-//        content.add(buildRooms());          // section 3
-//        content.add(buildLocalisation());   // section 4
+        content.add(buildReservationForm());
+content.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+
 
         body.add(menu, content);
         body.setFlexGrow(1, content);
@@ -163,6 +170,41 @@ public class Reservation extends Div{
         wrap.addClickListener(e -> h.getElement().callJsFunction("scrollIntoView", true));
         return wrap;
     }
+
+    private Component buildReservationForm() {
+        // Conteneur vertical
+        VerticalLayout formLayout = new VerticalLayout();
+        formLayout.setWidth("400px");
+        formLayout.setAlignItems(FlexComponent.Alignment.STRETCH); // champs en full-width
+        formLayout.setPadding(true);
+
+        // Date Picker
+        DatePicker datePicker = new DatePicker("Date de réservation");
+        datePicker.setId("datePicker");
+
+        // Champs texte
+        TextField nom = new TextField("Nom");
+        TextField prenom = new TextField("Prénom");
+        TextField telephone = new TextField("Téléphone");
+        EmailField email = new EmailField("Email");
+        email.setErrorMessage("Entrez un email valide");
+        PasswordField password = new PasswordField("Password");
+        password.setErrorMessage("Entrez un mot de passe valide");
+
+        // Bouton
+        Button envoyer = new Button("Envoyer", event -> {
+            Notification.show("Réservation envoyée pour ");
+        });
+        envoyer.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+// Ajouter au layout
+        formLayout.add(datePicker, prenom, nom, telephone, email, password, envoyer);
+formLayout.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER, LumoUtility.Gap.SMALL);
+
+        // Ajouter au layout
+
+        return formLayout;
+    }
+
 
     /* ─────────────────────  FOOTER  ───────────────────── */
 
@@ -206,7 +248,7 @@ public class Reservation extends Div{
 
     private Button buildBestPriceBadge() {
         Button b = new Button("RÉSERVER AU MEILLEUR PRIX");
-        b.addClickListener(e -> UI.getCurrent().getPage().open("#reservation"));
+        b.addClickListener(e -> UI.getCurrent().getPage().open("#reservation", "_blank"));
         b.getStyle()
                 .set("position", "fixed")
                 .set("right", "-120px")
