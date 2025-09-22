@@ -3,6 +3,7 @@ package com.overlook.hotel.backend.controller;
 
 import com.overlook.hotel.backend.model.classes.hr.user.AdminDto;
 import com.overlook.hotel.backend.model.classes.hr.user.ClientDto;
+import com.overlook.hotel.backend.model.classes.hr.user.EmployeeDto;
 import com.overlook.hotel.database.Entity.Admin;
 import com.overlook.hotel.database.Entity.Employee;
 import com.overlook.hotel.database.Entity.User;
@@ -19,11 +20,20 @@ public class DtoToDatabase {
         );
     }
 
+    /**
+     * create Admin from a AdminDto object
+     */
     public Admin createAdminFromDto(AdminDto adminDto){
         return UserCrud.createAdmin(adminDto.getFirstName(), adminDto.getLastName(), adminDto.getEmail(), adminDto.getPassword(),
                 adminDto.getAddress(), adminDto.getPhoneNumber(), adminDto.getRole());
     }
 
-    public Employee createEmployeeFromDto(){}
+    /**
+     * create employee from EmployeeDto object
+     */
+    public Employee createEmployeeFromDto(EmployeeDto employeeDto){
+        return UserCrud.createEmployee(employeeDto.getFirstName(), employeeDto.getLastName(), employeeDto.getEmail(), employeeDto.getPassword(),
+                employeeDto.getAddress(), employeeDto.getPhoneNumber(), employeeDto.getRole());
+    }
 
 }

@@ -14,8 +14,8 @@ public class UserCrud {
      * create a userDto
      * @param userType CLIENT, EMPLOYEE, ADMIN
      */
-    public static UserDto createUserDto(UserDto.userType userType, Long id, Integer age, String gender, String firstName,
-                                 String lastName, String passwordHash, String email, String address, String phoneNumber){
+    public static UserDto createUserDto(UserDto.UserType userType, Long id, Integer age, String gender, String firstName,
+                                        String lastName, String passwordHash, String email, String address, String phoneNumber){
         return switch (userType) {
             case CLIENT -> ClientDto.builder()
                     .id(id)
@@ -81,6 +81,7 @@ public class UserCrud {
                 .build();
 
     }
+
     public static Admin createAdmin(String firstName, String lastName, String email,
                                   String password, String address, String phoneNumber, String role){
         return Admin.builder()
@@ -126,7 +127,7 @@ public class UserCrud {
             case GENDER ->
                 user.setGender(value);
 
-            case BIRTHDATE ->
+            case AGE ->
                 user.setAge(Integer.parseInt(value));
 
         }

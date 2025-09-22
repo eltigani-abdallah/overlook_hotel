@@ -3,20 +3,23 @@ package com.overlook.hotel.backend.model.classes.hr.user;
 
 import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
 import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
-import lombok.*;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-@Setter @Getter @SuperBuilder
+@Setter
+@Getter
+@SuperBuilder
 public class UserDto {
     private final Long id;
     @NonNull
     private Integer age;
-    @NonNull
-    private LocalDate birthDate;
     @NonNull
     private String gender;
     @NonNull
@@ -39,7 +42,7 @@ public class UserDto {
      * EMPLOYEE <br>
      * ADMIN <br>
      */
-    public enum userType{
+    public enum UserType {
         CLIENT,
         EMPLOYEE,
         ADMIN

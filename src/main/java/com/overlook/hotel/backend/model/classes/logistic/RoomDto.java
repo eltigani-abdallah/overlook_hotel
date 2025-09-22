@@ -4,7 +4,6 @@ package com.overlook.hotel.backend.model.classes.logistic;
 import com.overlook.hotel.backend.model.classes.hr.user.FeedbackDto;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 

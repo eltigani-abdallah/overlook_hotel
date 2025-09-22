@@ -18,6 +18,7 @@ public class EmployeeDto extends UserDto {
 
     private String presence;
     private String title;
+    private String role;
 
 
 

@@ -10,7 +10,7 @@ package com.overlook.hotel.backend.model.classes.hr.user;
  *     ADDRESS <br>
  *     PHONENUMBER <br>
  *     GENDER <br>
- *     BIRTHDATE <br>
+ *     AGE <br>
  *     TITLE <br>
  *
  */
@@ -22,6 +22,6 @@ public enum FieldToModify {
     ADDRESS,
     PHONENUMBER,
     GENDER,
-    BIRTHDATE,
+    AGE,
     TITLE
 }

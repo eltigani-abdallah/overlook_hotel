@@ -2,7 +2,7 @@
 package com.overlook.hotel.database.Entity;
 
 
-import com.vaadin.flow.component.grid.Grid;
+
 import jakarta.persistence.*; // JPA annotations
 import lombok.*;              // Lombok annotations
 
@@ -13,8 +13,6 @@ import java.time.LocalDate;
 @Data // Lombok: generates getters, setters, toString(), equals(), and hashCode()
 @NoArgsConstructor // Lombok: generates a no-args constructor
 @AllArgsConstructor // Lombok: generates a constructor with all fields
-@Setter
-@Getter
 @Builder
 public class User {
 

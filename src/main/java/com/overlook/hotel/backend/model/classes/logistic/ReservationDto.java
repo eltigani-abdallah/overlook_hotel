@@ -3,17 +3,22 @@ package com.overlook.hotel.backend.model.classes.logistic;
 
 import com.overlook.hotel.backend.model.classes.hr.user.ClientDto;
 import com.overlook.hotel.backend.model.classes.hr.user.EmployeeDto;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-@Getter @Setter @Builder
+@Getter @Setter
+@Builder
 public class ReservationDto {
 
 
     private final int id;
-    @NonNull private ClientDto customer;
+    @NonNull
+    private ClientDto customer;
     @NonNull private int guestAmount;
     @NonNull private Date startDate;
     @NonNull private Date endDate;
