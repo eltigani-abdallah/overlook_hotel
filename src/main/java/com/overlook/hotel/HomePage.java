@@ -14,7 +14,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouteAlias;
 import jakarta.annotation.security.PermitAll;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -31,8 +30,7 @@ import com.vaadin.flow.component.orderedlayout.*;
 
 @PageTitle("Hello World Hotel – Accueil")
 @PermitAll
-@Route("home")
-@RouteAlias("")
+@Route("")
 @CssImport(themeFor = "vaadin-button", value = "./themes/hotel-theme/styles.css")
 public class HomePage extends Div {
 
@@ -101,13 +99,13 @@ public class HomePage extends Div {
 //                .set("border", "1px solid #c7d5d8");
         phone.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.JustifyContent.CENTER);
 
-        Button book = new Button("Réserver", e -> UI.getCurrent().getPage().open("#reservation"));
+        Button book = new Button("Réserver", e -> UI.getCurrent().navigate("reservation"));
         book.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         book.addClickShortcut(Key.ENTER);
 
         HorizontalLayout right = new HorizontalLayout(phone, book);
         right.setAlignItems(FlexComponent.Alignment.CENTER);
-right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END, LumoUtility.Padding.Horizontal.NONE);
+right.addClassNames(LumoUtility.Padding.Horizontal.NONE, LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END);
 
         top.setFlexGrow(1, left, logoWrap, right);
         top.add(left, logoWrap, right);
@@ -482,7 +480,7 @@ brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUt
         img.setWidth("100%");
         img.setHeight("360px");
         img.getStyle()
-                .set("max-width", "360px")
+.set("max-width", "360px")
                 .set("object-fit", "cover")
                 .set("border-radius", "12px");
         return img;
