@@ -22,6 +22,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incremented ID
     private Long id;
 
+    @Column(nullable = false) 
+    // Column "age" cannot be NULL
+    private Integer age;
+
+    @Column(nullable = false, length = 10) 
+    // "gender" cannot be NULL, maximum 10 characters
+    private String gender;
+
     @Column(nullable = false, length = 100)
     private String firstName;
 
