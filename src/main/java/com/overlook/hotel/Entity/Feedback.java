@@ -1,7 +1,10 @@
 package com.overlook.hotel.Entity;
 
 import jakarta.persistence.*; // JPA annotations
-import lombok.*;              // Lombok annotations
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+// Lombok annotations
 import java.time.LocalDate;   // Date type
 
 
