@@ -6,14 +6,17 @@ import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 @Setter @Getter @SuperBuilder
 public class UserDto {
-    private final int id;
+    private final Long id;
     @NonNull
-    private Date birthDate;
+    private Integer age;
+    @NonNull
+    private LocalDate birthDate;
     @NonNull
     private String gender;
     @NonNull
@@ -21,7 +24,7 @@ public class UserDto {
     @NonNull
     private String lastName;
     @NonNull
-    private String passwordHash;
+    private String password;
     @NonNull
     private String email;
     @NonNull

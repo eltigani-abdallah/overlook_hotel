@@ -1,9 +1,9 @@
 package com.overlook.hotel.backend.model.classes.hr.user;
 
 
-import java.util.Date;
-
-import static com.overlook.hotel.backend.model.classes.tools.Util.stringToDate;
+import com.overlook.hotel.database.Entity.Admin;
+import com.overlook.hotel.database.Entity.Employee;
+import com.overlook.hotel.database.Entity.User;
 
 /**
  * Account CRUD
@@ -14,38 +14,38 @@ public class UserCrud {
      * create a userDto
      * @param userType CLIENT, EMPLOYEE, ADMIN
      */
-    public static UserDto createUserDto(UserDto.userType userType, int id, Date birthDate, String gender, String firstName,
+    public static UserDto createUserDto(UserDto.userType userType, Long id, Integer age, String gender, String firstName,
                                  String lastName, String passwordHash, String email, String address, String phoneNumber){
         return switch (userType) {
             case CLIENT -> ClientDto.builder()
                     .id(id)
-                    .birthDate(birthDate)
+                    .age(age)
                     .gender(gender)
                     .firstName(firstName)
                     .lastName(lastName)
-                    .passwordHash(passwordHash)
+                    .password(passwordHash)
                     .email(email)
                     .address(address)
                     .phoneNumber(phoneNumber)
                     .build();
             case EMPLOYEE -> EmployeeDto.builder()
                     .id(id)
-                    .birthDate(birthDate)
+                    .age(age)
                     .gender(gender)
                     .firstName(firstName)
                     .lastName(lastName)
-                    .passwordHash(passwordHash)
+                    .password(passwordHash)
                     .email(email)
                     .address(address)
                     .phoneNumber(phoneNumber)
                     .build();
             case ADMIN -> AdminDto.builder()
                     .id(id)
-                    .birthDate(birthDate)
+                    .age(age)
                     .gender(gender)
                     .firstName(firstName)
                     .lastName(lastName)
-                    .passwordHash(passwordHash)
+                    .password(passwordHash)
                     .email(email)
                     .address(address)
                     .phoneNumber(phoneNumber)
@@ -53,6 +53,48 @@ public class UserCrud {
 
         };
     }
+
+    public static User createUser(Integer age, String gender, String firstName, String lastName, String email,
+                                  String password, String address, String phoneNumber, String note){
+        return User.builder()
+                .age(age)
+                .gender(gender)
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .password(password)
+                .phoneNumber(phoneNumber)
+                .note(note)
+                .address(address)
+                .build();
+    }
+    public static Employee createEmployee(String firstName, String lastName, String email,
+                                      String password, String address, String phoneNumber, String role){
+        return Employee.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .password(password)
+                .phoneNumber(phoneNumber)
+                .role(role)
+                .address(address)
+                .build();
+
+    }
+    public static Admin createAdmin(String firstName, String lastName, String email,
+                                  String password, String address, String phoneNumber, String role){
+        return Admin.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .password(password)
+                .phoneNumber(phoneNumber)
+                .role(role)
+                .address(address)
+                .build();
+
+    }
+
 
 
     /**
@@ -73,7 +115,7 @@ public class UserCrud {
                 user.setEmail(value);
 
             case PASSWORD ->
-                user.setPasswordHash(value);
+                user.setPassword(value);
 
             case ADDRESS ->
                 user.setAddress(value);
@@ -85,7 +127,7 @@ public class UserCrud {
                 user.setGender(value);
 
             case BIRTHDATE ->
-                user.setBirthDate(stringToDate(value));
+                user.setAge(Integer.parseInt(value));
 
         }
     }
@@ -97,7 +139,7 @@ public class UserCrud {
         System.out.println("ID: "+user.getId());
         System.out.println("First name : "+user.getFirstName());
         System.out.println("Last name : "+user.getLastName());
-        System.out.println("Birth date : "+user.getBirthDate());
+        System.out.println("Age : "+user.getAge());
         System.out.println("E-mail : "+user.getEmail());
         System.out.println("Address : "+user.getAddress());
         System.out.println("Phone number : "+user.getPhoneNumber());

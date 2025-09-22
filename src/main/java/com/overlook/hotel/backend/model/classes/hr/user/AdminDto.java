@@ -4,13 +4,17 @@ package com.overlook.hotel.backend.model.classes.hr.user;
 import com.overlook.hotel.backend.model.classes.hr.employee.LeaveRequestDto;
 import com.overlook.hotel.backend.model.classes.logistic.EventRoomDto;
 import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 
 import java.util.Date;
 
-@SuperBuilder
+@SuperBuilder @Setter @Getter
 public class AdminDto extends UserDto {
+
+    private String role;
 
     public void viewAllStats(){}
 

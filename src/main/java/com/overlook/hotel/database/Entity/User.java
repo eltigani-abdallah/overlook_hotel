@@ -2,8 +2,11 @@
 package com.overlook.hotel.database.Entity;
 
 
+import com.vaadin.flow.component.grid.Grid;
 import jakarta.persistence.*; // JPA annotations
-import lombok.*;              // Lombok annotations            
+import lombok.*;              // Lombok annotations
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users") // Define the table name in the database
@@ -12,6 +15,7 @@ import lombok.*;              // Lombok annotations
 @AllArgsConstructor // Lombok: generates a constructor with all fields
 @Setter
 @Getter
+@Builder
 public class User {
 
     @Id // Marks this field as the primary key
@@ -23,7 +27,12 @@ public class User {
     // Column "age" cannot be NULL
     private Integer age;
 
-    @Column(nullable = false, length = 10) 
+    @Column(name = "Birthdate" ,nullable = false)
+    // Column "Birthdate" cannot be NULL
+    private LocalDate birthdate;
+
+
+    @Column(nullable = false, length = 10)
     // "gender" cannot be NULL, maximum 10 characters
     private String gender;
 
@@ -34,7 +43,7 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 100) 
     private String lastName;
 
-    @Column(name  = "email_id", unique = true, length = 150) 
+    @Column(name  = "email", unique = true, length = 150)
     // "email" must be unique and cannot be NULL
     private String email;
 

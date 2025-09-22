@@ -24,6 +24,8 @@ public class ClientDto extends UserDto {
      */
     private int loyaltyPoints;
 
+    private String note;
+
     /**
      * reservation history
      */
