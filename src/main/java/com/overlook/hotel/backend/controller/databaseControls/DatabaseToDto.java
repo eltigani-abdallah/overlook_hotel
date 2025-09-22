@@ -1,12 +1,15 @@
-package com.overlook.hotel.backend.controller;
+package com.overlook.hotel.backend.controller.databaseControls;
 
 
 
+import com.overlook.hotel.backend.model.classes.hr.user.ClientDto;
 import com.overlook.hotel.backend.model.classes.hr.user.UserCrud;
 import com.overlook.hotel.backend.model.classes.hr.user.UserDto;
-import com.overlook.hotel.database.Entity.Admin;
-import com.overlook.hotel.database.Entity.Employee;
-import com.overlook.hotel.database.Entity.User;
+import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
+import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
+import com.overlook.hotel.database.Entity.*;
+
+import java.util.ArrayList;
 
 /**
  * convert database items into UserDto objects
@@ -14,7 +17,7 @@ import com.overlook.hotel.database.Entity.User;
 public class DatabaseToDto {
 
     /**
-     * create a user from the database and return them as a UserDto
+     * take a User from the database and return them as a UserDto (Client)
      * @param user User from the database
      */
     public UserDto createClientDtoFromDatabase(User user){
@@ -34,7 +37,7 @@ public class DatabaseToDto {
     }
 
     /**
-     * create an employee from the database and return them as an EmployeeDto
+     * take an Employee from the database and return them as a UserDto (EmployeeDto)
      */
     public UserDto createEmployeeDtoFromDatabase(Employee employee){
         return UserCrud.createUserDto(
@@ -53,7 +56,7 @@ public class DatabaseToDto {
     }
 
     /**
-     * create an Admin from the database and return them as an AdminDto
+     * take an Admin from the database and return them as a UserDto (AdminDto)
      */
     public UserDto createAdminDtoFromDatabase(Admin admin){
         return UserCrud.createUserDto(
@@ -69,5 +72,17 @@ public class DatabaseToDto {
                 admin.getPhoneNumber()
         );
 
+    }
+
+    public ReservationDto createReservationFromDatabase(Reservation reservation){
+        return ReservationDto.builder()
+                .id(reservation.getId())
+                .customer((ClientDto) createClientDtoFromDatabase(reservation.getUser()))
+                .adultAmount(reservation.getAdultNumber())
+                .childAmount(reservation.getChildrenNumber())
+                .startDate(reservation.getReservationDateStart())
+                .endDate(reservation.getReservationDateEnd())
+                .eventName(reservation.getEvent().getEventName())
+                .
     }
 }

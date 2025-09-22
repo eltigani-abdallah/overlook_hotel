@@ -8,7 +8,9 @@ import static com.overlook.hotel.backend.model.classes.tools.Util.stringToDate;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 
 
 
@@ -25,8 +27,10 @@ public class EmployeeDto extends UserDto {
     @Override
     public void modifyReservation(ReservationDto reservationDto, ReservationDto.FieldToModify field, String value){
         switch (field) {
-            case GUESTAMOUNT ->
-                reservationDto.setGuestAmount(Integer.parseInt(value));
+            case ADULTAMOUNT ->
+                reservationDto.setAdultAmount(Integer.parseInt(value));
+            case CHILDAMOUNT ->
+                reservationDto.setChildAmount(Integer.parseInt(value));
             case STARTDATE ->
                 reservationDto.setStartDate(stringToDate(value));
             case ENDDATE ->
@@ -44,7 +48,7 @@ public class EmployeeDto extends UserDto {
         }
     }
 
-    public LeaveRequestDto requestLeave(int id, Date startDate, Date endDate, String reason){
+    public LeaveRequestDto requestLeave(int id, LocalDate startDate, LocalDate endDate, String reason){
         return LeaveRequestDto.builder()
             .id(id)
             .requestMaker(this)

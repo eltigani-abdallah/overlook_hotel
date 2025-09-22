@@ -8,8 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * @brief clients of the hotel
@@ -32,29 +32,24 @@ public class ClientDto extends UserDto {
     @Builder.Default
     private ArrayList<ReservationDto> reservationHistoryDto = new ArrayList<ReservationDto>();
 
-    @Override
-    public ReservationDto reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<RoomDto> roomDtoList){
-        ArrayList<RoomDto> validReservations= new ArrayList<RoomDto>();
-        if (startDate.after(endDate)){
+
+    public ReservationDto reserveRoom(Long id, int adultAmount, int childAmount, LocalDate startDate, LocalDate endDate, RoomDto roomToReserve){
+
+        if (startDate.isAfter(endDate)){
             System.err.println("Start date must be before the end date");
             return null;
             /// do something here for reservation failure
         }
-        for (RoomDto roomDto : roomDtoList){
-            if (guestAmount> roomDto.getCapacity()){
-                System.out.println(roomDto.getName()+" cannot be reserved; guests exceed capacity");
-                continue;
-            }
-            validReservations.add(roomDto);
-        }
+
         ReservationDto newReservationDto = ReservationDto.builder()
                 .id(id)
                 .customer(this)
-                .guestAmount(guestAmount)
+                .adultAmount(adultAmount)
+                .childAmount(childAmount)
                 .startDate(startDate)
                 .endDate(endDate)
                 .isApproved(true)
-                .roomDtoList(validReservations)
+                .roomToReserve(roomToReserve)
                 .build();
         this.reservationHistoryDto.add(newReservationDto);
         return newReservationDto;

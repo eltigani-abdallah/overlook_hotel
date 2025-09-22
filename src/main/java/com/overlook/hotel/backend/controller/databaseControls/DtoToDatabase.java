@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.controller;
+package com.overlook.hotel.backend.controller.databaseControls;
 
 
 import com.overlook.hotel.backend.model.classes.hr.user.AdminDto;

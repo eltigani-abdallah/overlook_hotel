@@ -8,27 +8,30 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 @Getter @Setter
 @Builder
 public class ReservationDto {
 
 
-    private final int id;
+    private final Long id;
     @NonNull
     private ClientDto customer;
-    @NonNull private int guestAmount;
-    @NonNull private Date startDate;
-    @NonNull private Date endDate;
-    @NonNull private String eventName;
+    @NonNull private int adultAmount;
+    @NonNull private int childAmount;
+    @NonNull private LocalDate startDate;
+    @NonNull private LocalDate endDate;
+    private String eventName;
     private boolean isApproved;
     private EmployeeDto employeeResponsible;
-    private ArrayList<RoomDto> roomDtoList;
+    private RoomDto roomToReserve;
 
     public enum FieldToModify{
-        GUESTAMOUNT,
+        ADULTAMOUNT,
+        CHILDAMOUNT,
         STARTDATE,
         ENDDATE,
         EVENTNAME,

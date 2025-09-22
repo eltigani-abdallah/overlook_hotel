@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 
 @Setter @Getter @Builder
 public class LeaveRequestDto {
@@ -15,9 +17,9 @@ public class LeaveRequestDto {
     @NonNull
     private EmployeeDto requestMaker;
     @NonNull
-    private Date startDate;
+    private LocalDate startDate;
     @NonNull
-    private Date endDate;
+    private LocalDate endDate;
     @NonNull
     private String reason;
 

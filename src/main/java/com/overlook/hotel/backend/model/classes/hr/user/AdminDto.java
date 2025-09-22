@@ -9,7 +9,8 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @SuperBuilder @Setter @Getter
 public class AdminDto extends UserDto {
@@ -39,11 +40,10 @@ public class AdminDto extends UserDto {
     public void viewRoomStats(){}
 
     public void replyToFeedback(RoomDto roomDto, FeedbackDto feedbackToReplyTo, int id, String message){
-        Date now= new Date();
         FeedbackDto reply = FeedbackDto.builder()
                 .id(id)
                 .message(message)
-                .commentDate(now)
+                .commentDate(LocalDate.now())
                 .build();
         for (FeedbackDto feedback: roomDto.getFeedbackList()){
             if (feedback == feedbackToReplyTo){

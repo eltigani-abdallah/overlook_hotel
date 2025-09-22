@@ -10,8 +10,9 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 @Setter
 @Getter
@@ -49,28 +50,6 @@ public class UserDto {
     }
 
 
-    /**
-     * Create a reservation for multiple rooms
-
-     */
-    public ReservationDto reserveRoom(int id, int guestAmount, Date startDate, Date endDate,
-                                      ArrayList<RoomDto> roomDtoList){
-        System.err.println("Wrong function motherf*****");
-        return null;
-    }
-
-    public ReservationDto reserveEvent(int id, ClientDto client, int guestAmount,
-                                       Date startDate, Date endDate,
-                                       String eventName, EmployeeDto employeeResponsible, ArrayList<RoomDto> roomDtoList){
-        System.err.println("Wrong  event function motherf*****");
-        return null;
-    }
-    public void cancelReservation(ReservationDto reservationDto){
-    }
-
-
-    public void modifyReservation(ReservationDto reservationDto,  ReservationDto.FieldToModify field, String value){}
-
     public ArrayList<ReservationDto> viewHistory(){
         return null;
     }
@@ -81,13 +60,12 @@ public class UserDto {
     /**
      * create a feedback object and add it to the feedback list of the room specified
      */
-    public void giveFeedback(RoomDto roomDtoToRate, int id, String message,
-                             Date commentDate, int stars){
+    public void giveFeedback(RoomDto roomDtoToRate, int id, String message, int stars){
         FeedbackDto feedback = FeedbackDto.builder()
                 .id(id)
                 .commenter(this)
                 .message(message)
-                .commentDate(commentDate)
+                .commentDate(LocalDate.now())
                 .stars(stars)
                 .build();
         roomDtoToRate.addFeedback(feedback);

@@ -1,8 +1,7 @@
 package com.overlook.hotel.backend.model.classes.tools;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+
 
 public class Util {
 
@@ -11,11 +10,10 @@ public class Util {
      * @param dateToConvert date as a string
      * @return Date object
      */
-    public static Date stringToDate(String dateToConvert){
+    public static LocalDate stringToDate(String dateToConvert){
 
         LocalDate localDate = LocalDate.parse(dateToConvert);
-        Date convertedDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        return convertedDate;
+        return localDate;
     }
 }
