@@ -1,10 +1,10 @@
-package com.overlook.hotel.backend.model.classes;
+package com.overlook.hotel.backend.model.classes.tools;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class Tools {
+public class Util {
 
     /**
      * converts dates from string YYYY-MM-DD to Date objects

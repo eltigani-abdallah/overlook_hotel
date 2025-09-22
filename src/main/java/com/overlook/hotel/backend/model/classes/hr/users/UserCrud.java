@@ -1,27 +1,19 @@
-package com.overlook.hotel.backend.controller;
-
-import com.overlook.hotel.backend.model.classes.hr.users.AdminDto;
-import com.overlook.hotel.backend.model.classes.hr.users.ClientDto;
-import com.overlook.hotel.backend.model.classes.hr.users.EmployeeDto;
-import com.overlook.hotel.backend.model.classes.hr.users.UserDto;
+package com.overlook.hotel.backend.model.classes.hr.users;
 
 
 import java.util.Date;
 
-import static com.overlook.hotel.backend.model.classes.Tools.stringToDate;
+import static com.overlook.hotel.backend.model.classes.tools.Util.stringToDate;
 
 /**
- * Account controls, CRUD on accounts in general
+ * Account CRUD
  */
-public class Account {
+public class UserCrud {
 
-
-
-
-
-
-
-
+    /**
+     * create a userDto
+     * @param userType CLIENT, EMPLOYEE, ADMIN
+     */
     public static UserDto createUserDto(UserDto.userType userType, int id, Date birthDate, String gender, String firstName,
                                  String lastName, String passwordHash, String email, String address, String phoneNumber){
         return switch (userType) {
@@ -62,19 +54,6 @@ public class Account {
         };
     }
 
-    public enum fieldToModify{
-        FIRSTNAME,
-        LASTNAME,
-        EMAIL,
-        PASSWORD,
-        ADDRESS,
-        PHONENUMBER,
-        GENDER,
-        BIRTHDATE,
-        TITLE
-    }
-
-
 
     /**
      * change a field in a client or employee. to change employee titles, use AdminDto.changeEmployeeTitle()
@@ -82,7 +61,7 @@ public class Account {
      * @param field field to change. no need to use quotation marks, just capital letters
      * @param value String to change the value into. for birth dates it has to be YYYY-MM-DD
      */
-    public void modifyUser(UserDto user, fieldToModify field, String value){
+    public void modifyUser(UserDto user, FieldToModify field, String value){
         switch (field){
             case FIRSTNAME->
                 user.setFirstName(value);
@@ -131,6 +110,9 @@ public class Account {
             System.out.println("Presence: "+employee.getPresence());
         }
 
+    }
+
+    public void deleteUser(UserDto user){
 
     }
 }

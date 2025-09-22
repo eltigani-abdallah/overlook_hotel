@@ -2,7 +2,6 @@ package com.overlook.hotel.backend.model.classes.hr.users;
 
 import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
 import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
-import com.overlook.hotel.backend.model.classes.hr.LeaveRequestDto;
 
 import lombok.Getter;
 import lombok.Setter;

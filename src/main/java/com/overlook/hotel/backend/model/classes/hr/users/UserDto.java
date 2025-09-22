@@ -29,6 +29,13 @@ public class UserDto {
     @NonNull
     private String phoneNumber;
 
+    /**
+     * enum of possible user types
+     * @items:
+     * CLIENT <br>
+     * EMPLOYEE <br>
+     * ADMIN <br>
+     */
     public enum userType{
         CLIENT,
         EMPLOYEE,

@@ -10,6 +10,8 @@ import lombok.*;              // Lombok annotations
 @Data // Lombok: generates getters, setters, toString(), equals(), and hashCode()
 @NoArgsConstructor // Lombok: generates a no-args constructor
 @AllArgsConstructor // Lombok: generates a constructor with all fields
+@Setter
+@Getter
 public class User {
 
     @Id // Marks this field as the primary key

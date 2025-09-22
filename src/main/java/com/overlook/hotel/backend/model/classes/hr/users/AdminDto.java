@@ -1,7 +1,6 @@
 package com.overlook.hotel.backend.model.classes.hr.users;
 
 
-import com.overlook.hotel.backend.model.classes.hr.LeaveRequestDto;
 import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
 import lombok.experimental.SuperBuilder;
 

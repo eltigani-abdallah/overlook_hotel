@@ -1,6 +1,4 @@
-package com.overlook.hotel.backend.model.classes.hr;
-
-import com.overlook.hotel.backend.model.classes.hr.users.EmployeeDto;
+package com.overlook.hotel.backend.model.classes.hr.users;
 
 import lombok.Builder;
 import lombok.Getter;

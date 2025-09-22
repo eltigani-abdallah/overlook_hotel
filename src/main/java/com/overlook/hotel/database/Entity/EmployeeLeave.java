@@ -1,5 +1,6 @@
-package com.overlook.hotel.Entity;
+package com.overlook.hotel.database.Entity;
 
+import com.overlook.hotel.database.Entity.Employee;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
