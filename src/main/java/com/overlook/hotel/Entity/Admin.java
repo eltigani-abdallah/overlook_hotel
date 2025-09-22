@@ -34,7 +34,8 @@ public class Admin {
     @Column(length = 255)
     private String address;
 
-    @Column(length = 20)
+
+    @Column(nullable = false, unique = true,length = 20)
     private String phoneNumber;
 
     @Column(nullable = false, length = 50)
