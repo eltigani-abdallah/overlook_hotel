@@ -121,3 +121,34 @@ vaadin-text-field.phone::part(input-field) {
   background: white;
   color: var(--lumo-secondary-color);
 }
+
+.form-card {
+  width: min(560px, 92vw);
+  margin: 24px auto;               /* centre horizontal */
+  padding: var(--lumo-space-l);
+  background: var(--lumo-base-color);
+  border-radius: var(--lumo-border-radius-l);
+  box-shadow: var(--lumo-box-shadow-m);
+}
+
+/* Toujours afficher les labels des champs Vaadin */
+vaadin-text-field::part(label),
+vaadin-email-field::part(label),
+vaadin-date-picker::part(label),
+vaadin-text-area::part(label),
+vaadin-number-field::part(label),
+vaadin-password-field::part(label),
+vaadin-combo-box::part(label) {
+  color: var(--lumo-secondary-color);
+  opacity: 1 !important;
+  transform: none;         /* au cas où un “floating label” custom traîne */
+  transition: none;
+}
+
+.form-card vaadin-text-field::part(value),
+.form-card vaadin-email-field::part(value),
+.form-card vaadin-password-field::part(value),
+.form-card vaadin-date-picker::part(value) {
+  color: var(--lumo-body-text-color) !important;
+  font-weight: 400 !important;
+}
