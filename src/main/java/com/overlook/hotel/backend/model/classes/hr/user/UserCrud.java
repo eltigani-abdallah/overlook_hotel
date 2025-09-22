@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.hr.users;
+package com.overlook.hotel.backend.model.classes.hr.user;
 
 
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.hr.users;
+package com.overlook.hotel.backend.model.classes.hr.user;
 
 /**
  * fields to modify for the UserCrud class

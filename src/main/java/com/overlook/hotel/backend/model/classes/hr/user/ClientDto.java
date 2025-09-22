@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.hr.users;
+package com.overlook.hotel.backend.model.classes.hr.user;
 
 
 import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
@@ -28,7 +28,7 @@ public class ClientDto extends UserDto {
      * reservation history
      */
     @Builder.Default
-    private ArrayList<ReservationDto> reservationDtoHistory = new ArrayList<ReservationDto>();
+    private ArrayList<ReservationDto> reservationHistoryDto = new ArrayList<ReservationDto>();
 
     @Override
     public ReservationDto reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<RoomDto> roomDtoList){
@@ -51,18 +51,10 @@ public class ClientDto extends UserDto {
                 .guestAmount(guestAmount)
                 .startDate(startDate)
                 .endDate(endDate)
+                .isApproved(true)
                 .roomDtoList(validReservations)
                 .build();
-        this.reservationDtoHistory.add(newReservationDto);
+        this.reservationHistoryDto.add(newReservationDto);
         return newReservationDto;
     }
-
-    @Override
-    public void modifyReservation(ReservationDto reservationDto){
-
-    }
-
-
-
-
 }

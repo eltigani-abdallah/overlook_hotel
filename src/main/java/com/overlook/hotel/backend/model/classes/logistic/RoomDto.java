@@ -1,15 +1,16 @@
 package com.overlook.hotel.backend.model.classes.logistic;
 
 
-import com.overlook.hotel.backend.model.classes.hr.users.FeedbackDto;
+import com.overlook.hotel.backend.model.classes.hr.user.FeedbackDto;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 
-@Getter @Setter @RequiredArgsConstructor
+@Getter @Setter @SuperBuilder
 public class RoomDto {
 
     private final int id;

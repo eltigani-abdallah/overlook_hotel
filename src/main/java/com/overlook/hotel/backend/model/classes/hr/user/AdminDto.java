@@ -1,6 +1,8 @@
-package com.overlook.hotel.backend.model.classes.hr.users;
+package com.overlook.hotel.backend.model.classes.hr.user;
 
 
+import com.overlook.hotel.backend.model.classes.hr.employee.LeaveRequestDto;
+import com.overlook.hotel.backend.model.classes.logistic.EventRoomDto;
 import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
 import lombok.experimental.SuperBuilder;
 
@@ -26,6 +28,9 @@ public class AdminDto extends UserDto {
         request.setApproved(false);
     }
 
+    public void setEmployeeResponsible(EventRoomDto room, EmployeeDto employee){
+        room.setEmployeeResponsible(employee);
+    }
 
     public void viewRoomStats(){}
 

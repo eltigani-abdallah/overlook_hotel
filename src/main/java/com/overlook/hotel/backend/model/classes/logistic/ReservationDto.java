@@ -1,8 +1,8 @@
 package com.overlook.hotel.backend.model.classes.logistic;
 
 
-import com.overlook.hotel.backend.model.classes.hr.users.ClientDto;
-import com.overlook.hotel.backend.model.classes.hr.users.EmployeeDto;
+import com.overlook.hotel.backend.model.classes.hr.user.ClientDto;
+import com.overlook.hotel.backend.model.classes.hr.user.EmployeeDto;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -13,13 +13,22 @@ public class ReservationDto {
 
 
     private final int id;
-    private ClientDto customer;
-    private int guestAmount;
-    private Date startDate;
-    private Date endDate;
-    private String eventName;
+    @NonNull private ClientDto customer;
+    @NonNull private int guestAmount;
+    @NonNull private Date startDate;
+    @NonNull private Date endDate;
+    @NonNull private String eventName;
+    private boolean isApproved;
     private EmployeeDto employeeResponsible;
     private ArrayList<RoomDto> roomDtoList;
+
+    public enum FieldToModify{
+        GUESTAMOUNT,
+        STARTDATE,
+        ENDDATE,
+        EVENTNAME,
+
+    }
 
 
 

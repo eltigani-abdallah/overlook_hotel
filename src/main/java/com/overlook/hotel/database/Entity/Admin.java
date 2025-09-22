@@ -42,9 +42,9 @@ public class Admin {
 
     // One admin can have many schedules
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<com.overlook.hotel.Entity.EmployeeSchedule> schedules;
+    private List<com.overlook.hotel.database.Entity.EmployeeSchedule> schedules;
 
     // One admin can have many leaves
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<com.overlook.hotel.Entity.EmployeeLeave> leaves;
+    private List<com.overlook.hotel.database.Entity.EmployeeLeave> leaves;
 }

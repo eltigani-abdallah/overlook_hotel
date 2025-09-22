@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.hr.users;
+package com.overlook.hotel.backend.model.classes.hr.user;
 
 
 import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
@@ -45,26 +45,25 @@ public class UserDto {
 
     /**
      * Create a reservation for multiple rooms
-     * @param id
-     * @param guestAmount
-     * @param startDate
-     * @param endDate
-     * @param roomDtoList
-     * @return
+
      */
-    public ReservationDto reserveRoom(int id, int guestAmount, Date startDate, Date endDate, ArrayList<RoomDto> roomDtoList){
+    public ReservationDto reserveRoom(int id, int guestAmount, Date startDate, Date endDate,
+                                      ArrayList<RoomDto> roomDtoList){
         System.err.println("Wrong function motherf*****");
         return null;
     }
 
-    public ReservationDto reserveEvent(int id, ClientDto client, int guestAmount, Date startDate, Date endDate, String eventName, EmployeeDto employeeResponsible, ArrayList<RoomDto> roomDtoList){
+    public ReservationDto reserveEvent(int id, ClientDto client, int guestAmount,
+                                       Date startDate, Date endDate,
+                                       String eventName, EmployeeDto employeeResponsible, ArrayList<RoomDto> roomDtoList){
         System.err.println("Wrong  event function motherf*****");
         return null;
     }
     public void cancelReservation(ReservationDto reservationDto){
     }
 
-    public void modifyReservation(ReservationDto reservationDto){}
+
+    public void modifyReservation(ReservationDto reservationDto,  ReservationDto.FieldToModify field, String value){}
 
     public ArrayList<ReservationDto> viewHistory(){
         return null;
@@ -75,13 +74,9 @@ public class UserDto {
 
     /**
      * create a feedback object and add it to the feedback list of the room specified
-     * @param roomDtoToRate
-     * @param id
-     * @param stars
-     * @param message
-     * @param commentDate
      */
-    public void giveFeedback(RoomDto roomDtoToRate, int id, String message, Date commentDate, int stars){
+    public void giveFeedback(RoomDto roomDtoToRate, int id, String message,
+                             Date commentDate, int stars){
         FeedbackDto feedback = FeedbackDto.builder()
                 .id(id)
                 .commenter(this)
