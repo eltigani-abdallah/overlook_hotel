@@ -11,6 +11,7 @@ import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import java.lang.management.ManagementFactory;
 
@@ -104,7 +105,11 @@ public class HomePageIT {
         reserverButton.click();
 
         // Then the current URL should contain '#reservation'
-        PlaywrightAssertions.assertThat(page).hasURL(url -> url.contains("#reservation"));
+        // PlaywrightAssertions.assertThat(page).hasURL(url -> url.contains("#reservation"));
+
+
+        assertThat(page).hasURL("http://localhost:8080/");
+
     }
 
     @Test

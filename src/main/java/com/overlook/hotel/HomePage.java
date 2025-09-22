@@ -23,10 +23,12 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextFieldVariant;
 
 
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.*;
+
 @PageTitle("Hello World Hotel – Accueil")
 @PermitAll
 @Route("home")
@@ -47,6 +49,9 @@ public class HomePage extends Div {
         add(buildFooter());            // pied de page
     }
 
+    private static final String CONTENT_MAX = "1120px";
+
+
     /* ─────────────────────────  TOP BAR  ───────────────────────── */
 
     private Component buildTopbar() {
@@ -64,7 +69,8 @@ public class HomePage extends Div {
 
         // Burger + langue
         Button burger = new Button(new Icon(VaadinIcon.MENU), e -> toggleLeftMenu());
-        burger.getStyle().set("border-radius", "999px");
+        burger.getStyle()
+                .set("border-radius", "999px");
 
         ComboBox<String> lang = new ComboBox<>();
         lang.setItems("FR", "EN", "ES");
@@ -75,21 +81,25 @@ public class HomePage extends Div {
         left.setAlignItems(FlexComponent.Alignment.CENTER);
 
         // Logo
-        Span logo = new Span("Hello World");
-        logo.getStyle()
-                .set("font-weight", "800")
-                .set("font-size", "26px")
-                .set("letter-spacing", ".5px")
-                .set("color", "#d2a736");
+        Image logo = new Image("/images/logo.svg", "Hello World");
+        logo.setWidth("250px");
         Div logoWrap = new Div(logo);
-        logoWrap.getStyle().set("text-align", "center").set("flex", "1");
+        logoWrap.getStyle()
+                .set("text-align", "center")
+                .set("flex", "1");
 
         // Phone + CTA
         TextField phone = new TextField();
+//        phone.getStyle()
+//                .set("text-align", "center");
+        phone.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
         phone.setValue("06 99 99 99 99");
         phone.setReadOnly(true);
+        phone.addClassNames("phone");
         phone.setWidth("170px");
-        phone.getStyle().set("border", "1px solid #c7d5d8");
+//        phone.getStyle()
+//                .set("border", "1px solid #c7d5d8");
+        phone.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.JustifyContent.CENTER);
 
         Button book = new Button("Réserver", e -> UI.getCurrent().getPage().open("#reservation"));
         book.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -97,6 +107,7 @@ public class HomePage extends Div {
 
         HorizontalLayout right = new HorizontalLayout(phone, book);
         right.setAlignItems(FlexComponent.Alignment.CENTER);
+right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END, LumoUtility.Padding.Horizontal.NONE);
 
         top.setFlexGrow(1, left, logoWrap, right);
         top.add(left, logoWrap, right);
@@ -137,7 +148,6 @@ public class HomePage extends Div {
         left.setWidth("420px");
         left.getStyle().set("display", "none");
         left.setSpacing(false);
-        left.setPadding(true);
 left.getElement().getThemeList().add("padding-l");
         left.getStyle().set("background", "white")
                 .set("border-right", "1px solid rgba(0,0,0,.06)");
@@ -154,6 +164,7 @@ left.getElement().getThemeList().add("padding-l");
                 new Hr(),
                 menuItem("CONTACT")
         );
+left.addClassNames(LumoUtility.Padding.Horizontal.XLARGE);
         return left;
     }
 
@@ -170,33 +181,43 @@ left.getElement().getThemeList().add("padding-l");
 
     private Component buildHero() {
         // image libre : remplace par la tienne si besoin
-        String img = "https://images.unsplash.com/photo-1551776235-dde6d4829808?q=80&w=1600&auto=format&fit=crop";
+        String img = "/images/familiale4.jpeg";
 
         Div hero = new Div();
-        hero.getStyle().set("display", "flex").set("justify-content", "center").set("align-items", "center");
+        hero.setWidthFull();
         hero.getStyle()
+                .set("display", "flex")
+                .set("justify-content", "center")
+                .set("align-items", "center")
                 .set("position", "relative")
                 .set("height", "340px")
+                .set("overflow", "hidden")
                 .set("background-image", "linear-gradient(0deg, rgba(0,0,0,.35), rgba(0,0,0,.35)), url('" + img + "')")
                 .set("background-size", "cover")
                 .set("background-position", "center");
 
         VerticalLayout text = new VerticalLayout();
-        text.setSizeFull();
         text.setSpacing(false);
         text.setPadding(false);
         text.setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
         text.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        text.getStyle().set("position", "absolute").set("inset", "0").set("color", "white");
+        text.getStyle()
+                .set("position", "absolute")
+                .set("inset", "0")
+                .set("color", "white");
 
         H1 title = new H1("Bienvenue à l’Hello World Hotel");
-        title.getStyle().set("margin", "0 0 .25rem 0");
+        title.getStyle()
+                .set("margin", "0 0 .25rem 0");
 
         Paragraph sub = new Paragraph("HÔTEL 3 ÉTOILES À MARSEILLE");
-        sub.getStyle().set("margin", "0 0 1rem 0").set("letter-spacing", ".12em");
+        sub.getStyle()
+                .set("margin", "0 0 1rem 0")
+                .set("letter-spacing", ".12em");
 
         Button cta = new Button("Découvrir les chambres");
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+cta.addClassNames(LumoUtility.AlignSelf.CENTER);
 
         text.add(title, sub, cta);
         hero.add(text);
@@ -210,8 +231,7 @@ left.getElement().getThemeList().add("padding-l");
                 bienvenueText(),
                 picture("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop")
         );
-        row.getStyle().set("background", "#dcebea"); // léger bleu/vert comme la maquette
-        return sectionWrap(row);
+        return sectionWrap(row, "#dcebea");
     }
 
     private Component bienvenueText() {
@@ -220,6 +240,9 @@ left.getElement().getThemeList().add("padding-l");
         box.addClassName("home-page-vertical-layout-1");
         box.setSpacing(false);
         box.setPadding(false);
+        box.getStyle()
+                .set("max-width", "560px")
+                .set("width", "100%");
 
         H3 h = new H3("Bienvenue");
         h.getStyle().set("margin-bottom", "8px");
@@ -236,7 +259,8 @@ left.getElement().getThemeList().add("padding-l");
         cta.getStyle().set("margin-top", "12px");
 
         box.add(h, p, cta);
-box.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        box.setAlignItems(FlexComponent.Alignment.CENTER);
+        box.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         return box;
     }
 
@@ -253,16 +277,18 @@ li("Check-in 15h / check-out 11h"),
                 li("Late check-out (supplément)"),
                 li("Bar & snack à la réception"),
                 li("TV, Netflix, bouilloire, frigo…"),
-                li("Lit bébé à la demande"),
-                li("Navette aéroport à la demande"),
-                li("Réservation des restaurants"),
-                li("Activités touristiques")
+                li("Litbébéà lademande"),
+                li("Navette aéroportà la demande"),
+                li("Réservationdes restaurants"),
+                li("Activitéstouristiques")
         );
 
         VerticalLayout right = new VerticalLayout(new H3("Services"), bullets);
         right.setPadding(false);
         right.setSpacing(false);
-        right.getStyle().set("max-width", "560px");
+        right.getStyle()
+                .set("max-width", "560px")
+                .set("width", "100%");
 
         Button cta = new Button("Découvrir les services");
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -272,16 +298,16 @@ li("Check-in 15h / check-out 11h"),
                 picture("https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop"),
                 right
         );
-        return sectionWrap(row);
+        return sectionWrap(row, "transparent");
     }
 
     private ListItem li(String txt) {
-Icon dot = new Icon(VaadinIcon.CIRCLE);
-        dot.getStyle().set("width", "12px").set("height", "12px");
+Icon dot = new Icon(VaadinIcon.CHECK_CIRCLE);
+dot.getStyle().set("width", "12px").set("height", "12px").set("fill", "var(--lumo-primary-color)");
 Span s = new Span(" " + txt);
         ListItem li = new ListItem(new Span(dot, s));
         li.getStyle().set("list-style", "none");
-        return li;
+return li;
     }
 
     /* ─────────────────────  SECTION “CHAMBRES”  ───────────────────── */
@@ -290,14 +316,16 @@ Span s = new Span(" " + txt);
         VerticalLayout wrap = new VerticalLayout();
         wrap.setWidthFull();
         wrap.setAlignItems(FlexComponent.Alignment.CENTER);
-        wrap.setSpacing(false);
 
         H3 title = new H3("Chambres");
-        title.getStyle().set("margin-bottom", "4px");
+        title.getStyle()
+                .set("margin-bottom", "4px");
         Paragraph intro = new Paragraph(
                 "Tous les logements sont équipés d’une TV, sèche-cheveux, bouilloire et plateau d’accueil. " +
                         "Le buffet petit-déjeuner est servi tous les jours sur place.");
-        intro.getStyle().set("text-align", "center");
+        intro.getStyle()
+                .set("margin-bottom", "24px")
+                .set("text-align", "center");
 
         FlexLayout grid = new FlexLayout(
                 roomCard("DOUBLE", imgRoom(1)),
@@ -306,21 +334,25 @@ Span s = new Span(" " + txt);
                 roomCard("STUDIO", imgRoom(4))
         );
         grid.setFlexWrap(FlexLayout.FlexWrap.WRAP);
-        grid.getStyle().set("gap", "16px");
+        grid.getStyle()
+                .set("margin-bottom", "24px")
+                .set("gap", "16px");
 
         Button cta = new Button("Découvrir les chambres");
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         wrap.add(title, intro, grid, cta);
-        return sectionWrap(wrap);
+wrap.setSpacing(false);
+wrap.addClassNames(LumoUtility.Padding.NONE);
+        return sectionWrap(wrap, "");
     }
 
     private String imgRoom(int id) {
         return switch (id) {
-            case 1 -> "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop";
-            case 2 -> "https://images.unsplash.com/photo-1554995207-1f8fbeacd2d4?q=80&w=1200&auto=format&fit=crop";
-            case 3 -> "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop";
-            default -> "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=1200&auto=format&fit=crop";
+            case 1 -> "/images/double3.jpeg";
+            case 2 -> "/images/familiale4.jpeg";
+            case 3 -> "/images/twin4.jpeg";
+            default -> "/images/studio3.jpeg";
         };
     }
 
@@ -356,6 +388,7 @@ Span s = new Span(" " + txt);
         box.getStyle().set("background", "#f6edd8"); // beige clair
 
         H3 title = new H3("Parfaite localisation");
+        title.addClassName("yellow-header");
         Paragraph sub = new Paragraph(
                 "Quartier préféré des voyageurs visitant Marseille. À proximité : Vieux-Port, métro Castellane, Basilique " +
                         "Notre-Dame de la Garde. Aéroport à 23 km.");
@@ -373,7 +406,7 @@ Span s = new Span(" " + txt);
         cta.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         box.add(title, sub, icons, cta);
-        return sectionWrap(box);
+        return sectionWrap(box, "#f6edd8");
     }
 
     private Component locationItem(VaadinIcon icon, String label) {
@@ -391,9 +424,12 @@ Span s = new Span(" " + txt);
         cols.setWidthFull();
         cols.setSpacing(true);
         cols.setPadding(true);
-        cols.getStyle().set("background", "#2e6d71").set("color", "white");
+        cols.getStyle()
+                .set("background", "#2e6d71")
+                .set("color", "white");
 
-        Div brand = new Div(new H4("Hello World HOTEL"));
+        Div brand = new Div(new Image("/images/logo.svg", "Hello World HOTEL"));
+brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Padding.Horizontal.XLARGE, LumoUtility.Padding.Vertical.LARGE);
         Div col1 = footerCol("Menu", "Chambres", "Services", "Salle de séminaire", "Galerie", "Contact");
         Div col2 = footerCol("Liens utiles", "Mentions légales", "Cookies");
         Div col3 = footerCol("Contact",
@@ -402,7 +438,7 @@ Span s = new Span(" " + txt);
                 "6115-117 rue Paradis, 13006 Marseille");
 
         cols.add(brand, col1, col2, col3);
-        cols.setFlexGrow(1, brand);
+        cols.setFlexGrow(0.4, brand);
         return cols;
     }
 
@@ -419,20 +455,23 @@ Span s = new Span(" " + txt);
         return box;
     }
 
-    /* ─────────────────────  UTILITIES  ───────────────────── */
+    /* ────────────────────��  UTILITIES  ───���───────────────── */
 
     private HorizontalLayout twoCols(Component left, Component right) {
         HorizontalLayout row = new HorizontalLayout(left, right);
         //<theme-editor-local-classname>
         row.addClassName("home-page-horizontal-layout-1");
         row.setWidthFull();
-        row.setPadding(true);
+        row.setPadding(false);
+        row.setSpacing(true);
         row.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         row.setFlexGrow(1, left, right);
         row.addClassNames(LumoUtility.Gap.MEDIUM, LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
         row.getStyle().set("padding-left", "24px").set("padding-right", "24px");
         right.getElement().getThemeList().add("spacing-l");
-right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        left.getElement().getStyle().set("max-width", "560px").set("width", "100%");
+        right.getElement().getStyle().set("max-width", "560px").set("width", "100%");
+        right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
         return row;
     }
 
@@ -440,20 +479,33 @@ right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CE
         Image img = new Image(url, "photo");
         //<theme-editor-local-classname>
         img.addClassName("home-page-img-1");
-        img.setWidth("560px");
+        img.setWidth("100%");
         img.setHeight("360px");
-        img.getStyle().set("object-fit", "cover").set("border-radius", "12px");
+        img.getStyle()
+                .set("max-width", "360px")
+                .set("object-fit", "cover")
+                .set("border-radius", "12px");
         return img;
     }
 
-    private Component sectionWrap(Component content) {
-        Div wrap = new Div(content);
-        //<theme-editor-local-classname>
-        wrap.addClassName("home-page-div-1");
-        wrap.setWidthFull();
-        wrap.getStyle().set("padding", "28px 0").set("display", "flex").set("justify-content", "center");
-wrap.addClassNames(LumoUtility.Gap.MEDIUM);
-        return wrap;
+    private Component sectionWrap(Component innerContent, String backgroundColor) {
+        // inner container limited to max width
+        Div fullWidth = new Div();
+        fullWidth.setWidthFull();
+        fullWidth.getStyle()
+                .set("padding", "28px 0")
+                .set("width", "100vw")
+                .set("display", "flex")
+                .set("justify-content", "center"); // centre le container interne
+
+        Div container = new Div(innerContent); // pour limiter le contenu
+        container.getStyle()
+                .set("max-width", "1120px")  // largeur max commune à toutes les sections
+                .set("width", "100%");
+
+        fullWidth.getStyle().set("background", backgroundColor);
+        fullWidth.add(container);
+        return fullWidth;
     }
 
 private Button buildBestPriceBadge() {
@@ -461,7 +513,7 @@ private Button buildBestPriceBadge() {
         b.addClickListener(e -> UI.getCurrent().navigate("home#bestprice"));
         b.getStyle()
 .set("position", "fixed")
-                .set("right", "-70px")
+                .set("right", "-120px")
                 .set("top", "45%")
                 .set("transform", "rotate(-90deg)")
                 .set("background", "#5c7b7e")
