@@ -192,8 +192,11 @@ public class Reservation extends Div{
         formLayout.setPadding(true);
 
         // Date Picker
-        DatePicker datePicker = new DatePicker("Date de réservation");
-        datePicker.setId("datePicker");
+        DatePicker datePickerStart = new DatePicker("Date de début");
+        datePickerStart.setId("datePicker");
+
+        DatePicker datePickerEnd = new DatePicker("Date de fin");
+        datePickerEnd.setId("datePicker");
 
         // Champs texte
         TextField nom = new TextField("Nom");
@@ -201,16 +204,16 @@ public class Reservation extends Div{
         TextField telephone = new TextField("Téléphone");
         EmailField email = new EmailField("Email");
         email.setErrorMessage("Entrez un email valide");
-        PasswordField password = new PasswordField("Password");
-        password.setErrorMessage("Entrez un mot de passe valide");
 
         // Bouton
         Button envoyer = new Button("Envoyer", event -> {
             Notification.show("Réservation envoyée pour ");
         });
         envoyer.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        envoyer.getStyle()
+                .set("margin-top", "32px");
 // Ajouter au layout
-        formLayout.add(datePicker, prenom, nom, telephone, email, password, envoyer);
+        formLayout.add(datePickerStart, datePickerEnd, prenom, nom, telephone, email, envoyer);
 formLayout.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
 
         // Ajouter au layout
