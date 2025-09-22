@@ -2,7 +2,10 @@ package com.overlook.hotel.database.Entity;
 
 import com.overlook.hotel.database.Entity.Employee;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 

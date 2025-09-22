@@ -4,9 +4,11 @@ package com.overlook.hotel.database.Entity;
 
 
 import jakarta.persistence.*; // JPA annotations
-import lombok.*;              // Lombok annotations
-
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
+// Lombok annotations
 
 @Entity
 @Table(name = "users") // Define the table name in the database
@@ -25,12 +27,7 @@ public class User {
     // Column "age" cannot be NULL
     private Integer age;
 
-    @Column(name = "Birthdate" ,nullable = false)
-    // Column "Birthdate" cannot be NULL
-    private LocalDate birthdate;
-
-
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 10) 
     // "gender" cannot be NULL, maximum 10 characters
     private String gender;
 
