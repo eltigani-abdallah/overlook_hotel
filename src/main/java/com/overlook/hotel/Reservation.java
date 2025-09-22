@@ -210,6 +210,8 @@ public class Reservation extends Div{
             Notification.show("Réservation envoyée pour ");
         });
         envoyer.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        envoyer.getStyle()
+                .set("margin-top", "32px");
 // Ajouter au layout
         formLayout.add(datePickerStart, datePickerEnd, prenom, nom, telephone, email, envoyer);
 formLayout.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
