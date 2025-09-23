@@ -1,39 +1,127 @@
 package com.overlook.hotel.backend.controller.databaseControls;
 
 
-import com.overlook.hotel.backend.model.classes.hr.user.AdminDto;
-import com.overlook.hotel.backend.model.classes.hr.user.ClientDto;
-import com.overlook.hotel.backend.model.classes.hr.user.EmployeeDto;
-import com.overlook.hotel.database.Entity.Admin;
-import com.overlook.hotel.database.Entity.Employee;
-import com.overlook.hotel.database.Entity.User;
-import com.overlook.hotel.backend.model.classes.hr.user.UserDtoCrud;
+import com.overlook.hotel.backend.model.classes.hr.employee.LeaveRequestDto;
+import com.overlook.hotel.backend.model.classes.hr.user.*;
+import com.overlook.hotel.backend.model.classes.logistic.EventDto;
+import com.overlook.hotel.backend.model.classes.logistic.ReservationDto;
+import com.overlook.hotel.backend.model.classes.logistic.RoomDto;
+import com.overlook.hotel.database.Entity.*;
 
 public class DtoToDatabase {
 
     /**
-     * create a User object for the database from a clientDto
+     * create a User database object from a clientDto
      */
     public User createUserFromDto(ClientDto clientDto){
-        return UserDtoCrud.createUser(clientDto.getAge(),clientDto.getGender(),clientDto.getFirstName(),clientDto.getLastName(),
-                clientDto.getEmail(),clientDto.getPassword(), clientDto.getAddress(), clientDto.getPhoneNumber(), clientDto.getNote()
-        );
+        return User.builder()
+                .age(clientDto.getAge())
+                .gender(clientDto.getGender())
+                .firstName(clientDto.getFirstName())
+                .lastName(clientDto.getLastName())
+                .email(clientDto.getEmail())
+                .password(clientDto.getPassword())
+                .phoneNumber(clientDto.getPhoneNumber())
+                .note(clientDto.getNote())
+                .address(clientDto.getAddress())
+                .build();
     }
 
     /**
-     * create Admin from a AdminDto object
+     * create Admin database object from a AdminDto object
      */
     public Admin createAdminFromDto(AdminDto adminDto){
-        return UserDtoCrud.createAdmin(adminDto.getFirstName(), adminDto.getLastName(), adminDto.getEmail(), adminDto.getPassword(),
-                adminDto.getAddress(), adminDto.getPhoneNumber(), adminDto.getRole());
+        return Admin.builder()
+                .firstName(adminDto.getFirstName())
+                .lastName(adminDto.getLastName())
+                .email(adminDto.getEmail())
+                .password(adminDto.getPassword())
+                .phoneNumber(adminDto.getPhoneNumber())
+                .role(adminDto.getRole())
+                .address(adminDto.getAddress())
+                .build();
     }
 
     /**
-     * create employee from EmployeeDto object
+     * create employee database object from EmployeeDto object
      */
     public Employee createEmployeeFromDto(EmployeeDto employeeDto){
-        return UserDtoCrud.createEmployee(employeeDto.getFirstName(), employeeDto.getLastName(), employeeDto.getEmail(), employeeDto.getPassword(),
-                employeeDto.getAddress(), employeeDto.getPhoneNumber(), employeeDto.getRole());
+        return Employee.builder()
+                .firstName(employeeDto.getFirstName())
+                .lastName(employeeDto.getLastName())
+                .email(employeeDto.getEmail())
+                .password(employeeDto.getPassword())
+                .phoneNumber(employeeDto.getPhoneNumber())
+                .role(employeeDto.getRole())
+                .address(employeeDto.getAddress())
+                .build();
+    }
+
+    /**
+     * create room database object from roomDto
+     */
+    public Room createRoomFromDto(RoomDto room){
+        return Room.builder()
+            .id(room.getId())
+            .type(room.getType())
+            .roomNumber(room.getRoomNumber())
+            .price(room.getPrice())
+            .bedType(room.getBedType())
+            .isAvailable(room.isAvailable())
+            .build();
+
+    }
+
+    public Event createEventFromDto(EventDto event){
+        return Event.builder()
+                .id(event.getId())
+                .eventName(event.getEventName())
+                .eventDescription(event.getEventDescription())
+                .eventDate(event.getEventDate())
+                .build();
+    }
+
+    public Reservation createReservationFromDto(ReservationDto reservation){
+        return Reservation.builder()
+                .id(reservation.getId())
+                .reservationDateStart(reservation.getStartDate())
+                .reservationDateEnd(reservation.getEndDate())
+                .adultNumber(reservation.getAdultAmount())
+                .childrenNumber(reservation.getChildAmount())
+                .user(createUserFromDto(reservation.getCustomer()))
+                .room(createRoomFromDto(reservation.getRoomToReserve()))
+                .event(createEventFromDto(reservation.getEvent()))
+                .build();
+    }
+
+    public Feedback createFeedbackFromDto(FeedbackDto feedback){
+        return Feedback.builder()
+                .id(feedback.getId())
+                .message(feedback.getMessage())
+                .stars(feedback.getStars())
+                .feedbackDate(feedback.getCommentDate())
+                .user(createUserFromDto((ClientDto)feedback.getCommenter()))
+                .build();
+    }
+
+    public Loyalty createLoyaltyFromDto(LoyaltyDto loyalty){
+        return Loyalty.builder()
+                .id(loyalty.getId())
+                .visitedNumber(loyalty.getVisitedNumber())
+                .status(loyalty.getStatus())
+                .user(createUserFromDto((ClientDto)loyalty.getClient()))
+                .build();
+    }
+
+    public EmployeeLeave createEmployeeLeaveFromDto(LeaveRequestDto leave){
+        return EmployeeLeave.builder()
+                .id(leave.getId())
+                .startDate(leave.getStartDate())
+                .endDate(leave.getEndDate())
+                .status(leave.getStatus())
+                .employee(createEmployeeFromDto(leave.getRequestMaker()))
+                .admin(createAdminFromDto(leave.getAdmin()))
+                .build();
     }
 
 }

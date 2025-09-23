@@ -2,6 +2,7 @@ package com.overlook.hotel.database.Entity;
 
 import jakarta.persistence.*; // JPA annotations
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.time.LocalDate;   // Date type
 @Entity
 @Table(name = "event") // Explicit table name
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Event {

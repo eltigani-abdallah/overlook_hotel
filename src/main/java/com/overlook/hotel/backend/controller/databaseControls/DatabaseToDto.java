@@ -47,7 +47,7 @@ public class DatabaseToDto {
      * take a User from the database and return them as a UserDto (Client)
      */
     public UserDto createClientDtoFromDatabase(User user) {
-        return UserDtoCrud.createUserDto(
+        return UserCrud.createUserDto(
                 UserDto.UserType.CLIENT,
                 user.getId(),
                 user.getAge(),
@@ -66,7 +66,7 @@ public class DatabaseToDto {
      * take an Employee from the database and return them as a UserDto (EmployeeDto)
      */
     public UserDto createEmployeeDtoFromDatabase(Employee employee) {
-        return UserDtoCrud.createUserDto(
+        return UserCrud.createUserDto(
                 UserDto.UserType.EMPLOYEE,
                 employee.getId(),
                 employee.getAge(),
@@ -85,7 +85,7 @@ public class DatabaseToDto {
      * take an Admin from the database and return them as a UserDto (AdminDto)
      */
     public UserDto createAdminDtoFromDatabase(Admin admin) {
-        return UserDtoCrud.createUserDto(
+        return UserCrud.createUserDto(
                 UserDto.UserType.ADMIN,
                 admin.getId(),
                 admin.getAge(),

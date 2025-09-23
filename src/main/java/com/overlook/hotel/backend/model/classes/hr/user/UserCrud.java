@@ -8,7 +8,7 @@ import com.overlook.hotel.database.Entity.User;
 /**
  * Account CRUD
  */
-public class UserDtoCrud {
+public class UserCrud {
 
     /**
      * create a userDto
@@ -53,50 +53,6 @@ public class UserDtoCrud {
 
         };
     }
-
-    public static User createUser(Integer age, String gender, String firstName, String lastName, String email,
-                                  String password, String address, String phoneNumber, String note){
-        return User.builder()
-                .age(age)
-                .gender(gender)
-                .firstName(firstName)
-                .lastName(lastName)
-                .email(email)
-                .password(password)
-                .phoneNumber(phoneNumber)
-                .note(note)
-                .address(address)
-                .build();
-    }
-    public static Employee createEmployee(String firstName, String lastName, String email,
-                                      String password, String address, String phoneNumber, String role){
-        return Employee.builder()
-                .firstName(firstName)
-                .lastName(lastName)
-                .email(email)
-                .password(password)
-                .phoneNumber(phoneNumber)
-                .role(role)
-                .address(address)
-                .build();
-
-    }
-
-    public static Admin createAdmin(String firstName, String lastName, String email,
-                                  String password, String address, String phoneNumber, String role){
-        return Admin.builder()
-                .firstName(firstName)
-                .lastName(lastName)
-                .email(email)
-                .password(password)
-                .phoneNumber(phoneNumber)
-                .role(role)
-                .address(address)
-                .build();
-
-    }
-
-
 
     /**
      * change a field in a client or employee. to change employee titles, use AdminDto.changeEmployeeTitle()

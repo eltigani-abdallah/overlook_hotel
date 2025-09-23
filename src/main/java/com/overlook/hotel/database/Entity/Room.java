@@ -3,13 +3,15 @@ package com.overlook.hotel.database.Entity;
 
 import jakarta.persistence.*; // JPA annotations
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 // Lombok annotations
 
 @Entity
 @Table(name = "rooms") // Define table name explicitly
-@Data // Lombok: generates getters, setters, toString(), equals(), and hashCode()
+@Data
+@Builder// Lombok: generates getters, setters, toString(), equals(), and hashCode()
 @NoArgsConstructor // Lombok: generates a no-args constructor
 @AllArgsConstructor // Lombok: generates a constructor with all fields
 public class Room {

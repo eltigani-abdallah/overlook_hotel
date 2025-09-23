@@ -2,6 +2,7 @@ package com.overlook.hotel.database.Entity;
 
 import jakarta.persistence.*; // JPA annotations
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 // Lombok annotations
@@ -13,6 +14,7 @@ import java.time.LocalDate;   // Date type
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Feedback {
 
     @Id // Primary key

@@ -2,6 +2,7 @@ package com.overlook.hotel.database.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data                   // Lombok: generates getters, setters, equals, hashCode, toString
 @NoArgsConstructor      // Lombok: generates no-args constructor
 @AllArgsConstructor     // Lombok: generates all-args constructor
+@Builder
 public class Loyalty {
 
     @Id
