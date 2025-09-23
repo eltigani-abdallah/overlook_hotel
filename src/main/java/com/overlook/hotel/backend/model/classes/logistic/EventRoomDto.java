@@ -13,6 +13,7 @@ public class EventRoomDto extends RoomDto {
 
     @NonNull
     private EmployeeDto employeeResponsible;
+    private EventDto event;
 
 
 }

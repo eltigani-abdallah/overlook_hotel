@@ -26,11 +26,11 @@ public class AdminDto extends UserDto {
     }
 
     public void approveEmployeeLeave(LeaveRequestDto request){
-        request.setApproved(true);
+        request.setStatus("Approved");
     }
 
     public void rejectEmployeeLeave(LeaveRequestDto request){
-        request.setApproved(false);
+        request.setStatus("Rejected");
     }
 
     public void setEmployeeResponsible(EventRoomDto room, EmployeeDto employee){
@@ -39,7 +39,7 @@ public class AdminDto extends UserDto {
 
     public void viewRoomStats(){}
 
-    public void replyToFeedback(RoomDto roomDto, FeedbackDto feedbackToReplyTo, int id, String message){
+    public void replyToFeedback(RoomDto roomDto, FeedbackDto feedbackToReplyTo, Long id, String message){
         FeedbackDto reply = FeedbackDto.builder()
                 .id(id)
                 .message(message)

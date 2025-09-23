@@ -8,7 +8,7 @@ import com.overlook.hotel.database.Entity.User;
 /**
  * Account CRUD
  */
-public class UserCrud {
+public class UserDtoCrud {
 
     /**
      * create a userDto

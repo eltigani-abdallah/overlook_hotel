@@ -1,7 +1,7 @@
 package com.overlook.hotel.backend.model.classes.hr.user;
 
 /**
- * fields to modify for the UserCrud class
+ * fields to modify for the UserDtoCrud class
  * @items:
  *     FIRSTNAME <br>
  *     LASTNAME <br>

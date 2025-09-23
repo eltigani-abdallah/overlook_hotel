@@ -12,17 +12,20 @@ import java.util.ArrayList;
 @Getter @Setter @SuperBuilder
 public class RoomDto {
 
-    private final int id;
+    private final Long id;
     @NonNull private String type;
     @NonNull private String name;
+    private String roomNumber;
+    private final Double price;
+    @NonNull private String bedType;
     private final int capacity;
-    private boolean isReserved;
+    private boolean isAvailable;
     public ArrayList<FeedbackDto> feedbackList = new ArrayList<FeedbackDto>();
 
 
     public void vacate(){
-        if (isReserved){
-            isReserved=false;
+        if (isAvailable){
+            isAvailable =false;
         }
     }
 

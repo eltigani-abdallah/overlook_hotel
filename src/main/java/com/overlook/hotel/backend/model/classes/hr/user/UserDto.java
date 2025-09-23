@@ -60,7 +60,7 @@ public class UserDto {
     /**
      * create a feedback object and add it to the feedback list of the room specified
      */
-    public void giveFeedback(RoomDto roomDtoToRate, int id, String message, int stars){
+    public void giveFeedback(RoomDto roomDtoToRate, Long id, String message, int stars){
         FeedbackDto feedback = FeedbackDto.builder()
                 .id(id)
                 .commenter(this)

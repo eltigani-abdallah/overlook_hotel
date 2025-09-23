@@ -24,7 +24,7 @@ public class EmployeeDto extends UserDto {
 
 
 
-    @Override
+
     public void modifyReservation(ReservationDto reservationDto, ReservationDto.FieldToModify field, String value){
         switch (field) {
             case ADULTAMOUNT ->
@@ -40,21 +40,18 @@ public class EmployeeDto extends UserDto {
         }
     }
 
-    @Override
+
     public void cancelReservation(ReservationDto reservationDto){
-        for(RoomDto roomDto : reservationDto.getRoomDtoList())
-            if(roomDto.isReserved()){
-                roomDto.setReserved(false);
-        }
+        reservationDto.setApproved(false);
     }
 
-    public LeaveRequestDto requestLeave(int id, LocalDate startDate, LocalDate endDate, String reason){
+    public LeaveRequestDto requestLeave(Long id, LocalDate startDate, LocalDate endDate){
         return LeaveRequestDto.builder()
             .id(id)
             .requestMaker(this)
             .startDate(startDate)
             .endDate(endDate)
-            .reason(reason)
+            .status("Pending")
             .build();
     }
 

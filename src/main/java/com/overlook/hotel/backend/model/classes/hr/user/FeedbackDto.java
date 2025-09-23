@@ -17,11 +17,10 @@ import java.util.ArrayList;
 public class FeedbackDto {
 
 
-    private final int id;
-    private final int reservationId;
+    private final Long id;
     @NonNull private UserDto commenter;
     @NonNull private String message;
     @NonNull private LocalDate commentDate;
-    private int stars;
+    private Integer stars;
     public ArrayList<FeedbackDto> replies;
 }

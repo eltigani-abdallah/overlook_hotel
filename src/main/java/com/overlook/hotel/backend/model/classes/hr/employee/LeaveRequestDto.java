@@ -1,5 +1,6 @@
 package com.overlook.hotel.backend.model.classes.hr.employee;
 
+import com.overlook.hotel.backend.model.classes.hr.user.AdminDto;
 import com.overlook.hotel.backend.model.classes.hr.user.EmployeeDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 public class LeaveRequestDto {
 
     @NonNull
-    private int id;
+    private Long id;
     @NonNull
     private EmployeeDto requestMaker;
     @NonNull
@@ -21,7 +22,7 @@ public class LeaveRequestDto {
     @NonNull
     private LocalDate endDate;
     @NonNull
-    private String reason;
-
-    private boolean isApproved=false;
+    private String status;
+    @NonNull
+    private AdminDto admin;
 }
