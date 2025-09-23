@@ -47,8 +47,6 @@ public class HomePage extends Div {
         add(buildFooter());            // pied de page
     }
 
-    private static final String CONTENT_MAX = "1120px";
-
 
     /* ─────────────────────────  TOP BAR  ───────────────────────── */
 
@@ -91,7 +89,7 @@ public class HomePage extends Div {
         TextField phone = new TextField();
 //        phone.getStyle()
 //                .set("text-align", "center");
-        phone.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
+phone.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
         phone.setValue("06 99 99 99 99");
         phone.setReadOnly(true);
         phone.addClassNames("phone");
@@ -429,6 +427,9 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
                 .set("color", "white");
 
         Div brand = new Div(new Image("/images/logo.svg", "Hello World HOTEL"));
+        brand.getStyle().set("display", "flex")
+                .set("justify-content", "center")
+                .set("align-items", "center");
 brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Padding.Horizontal.XLARGE, LumoUtility.Padding.Vertical.LARGE);
         Div col1 = footerCol("Menu", "Chambres", "Services", "Salle de séminaire", "Galerie", "Contact");
         Div col2 = footerCol("Liens utiles", "Mentions légales", "Cookies");
@@ -455,7 +456,7 @@ brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUt
         return box;
     }
 
-    /* ────────────────────��  UTILITIES  ───���───────────────── */
+    /* ────────────────────��  UTILITIES  ───���──���────────────── */
 
     private HorizontalLayout twoCols(Component left, Component right) {
         HorizontalLayout row = new HorizontalLayout(left, right);

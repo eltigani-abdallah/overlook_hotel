@@ -142,6 +142,7 @@ Image logo = new Image("/images/logo.svg", "Hello World");
         content.setSizeFull();
         content.setAlignItems(FlexComponent.Alignment.CENTER);
         content.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        content.setAlignItems(FlexComponent.Alignment.CENTER);
 
         content.add(buildReservationForm());
         content.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
@@ -201,7 +202,8 @@ Image logo = new Image("/images/logo.svg", "Hello World");
         envoyer.getStyle().set("margin-top", "32px").set("margin-bottom", "32px");
 
         formLayout.add(datePickerStart, datePickerEnd, prenom, nom, telephone, email, envoyer);
-        formLayout.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        formLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+        formLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         return formLayout;
     }
@@ -213,7 +215,9 @@ Image logo = new Image("/images/logo.svg", "Hello World");
         cols.setWidthFull();
         cols.setSpacing(true);
         cols.setPadding(true);
-        cols.getStyle().set("background", "#2e6d71").set("color", "white");
+        cols.getStyle()
+                .set("background", "#2e6d71")
+                .set("color", "white");
 
         Div brand = new Div(new Image("/images/logo.svg", "Hello World HOTEL"));
         brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL,
@@ -224,6 +228,8 @@ Image logo = new Image("/images/logo.svg", "Hello World");
         Div col3 = footerCol("Contact", "09 73 89 07 41", "hotel@example.com", "6115-117 rue Paradis, 13006 Marseille");
 
         cols.add(brand, col1, col2, col3);
+        cols.setAlignItems(FlexComponent.Alignment.CENTER);
+        cols.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         cols.setFlexGrow(0.4, brand);
         return cols;
     }
