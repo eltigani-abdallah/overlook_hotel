@@ -302,7 +302,7 @@ private Dialog buildLoginDialog() {
                 .set("color", "var(--lumo-secondary-color)")
                 .set("padding-bottom", "16px");
 
-        Button create = new Button("Create account", e -> UI.getCurrent().navigate("signup"));
+        Button create = new Button("Create account", e -> new com.overlook.hotel.CreateDialog().open());
         create.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
         create.getStyle()
                 .set("color", "var(--lumo-secondary-color)");

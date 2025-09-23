@@ -1,5 +1,5 @@
 // com.overlook.hotel.ui.LoginDialog
-package com.overlook.hotel.ui;
+package com.overlook.hotel;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -31,8 +31,9 @@ public class LoginDialog extends Dialog {
         forgot.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
         forgot.addClickListener(e -> UI.getCurrent().navigate("forgot-password"));
 
-        Button create = new Button("Create account", e -> UI.getCurrent().navigate("signup"));
+        Button create = new Button("Create account");
         create.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        create.addClickListener(e -> new com.overlook.hotel.CreateDialog().open());
 
         VerticalLayout actions = new VerticalLayout(forgot, create);
         actions.setWidthFull();
