@@ -13,7 +13,6 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 
-
 public class AuthDialog extends Dialog {
     private final VerticalLayout root = new VerticalLayout();
 
@@ -21,6 +20,14 @@ public class AuthDialog extends Dialog {
         setModal(true);
         setCloseOnEsc(true);
         setCloseOnOutsideClick(false);
+
+        // Configuration par défaut du layout racine
+        root.setWidth("420px");
+        root.setPadding(true);
+        root.setSpacing(true);
+        root.setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
+        root.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+
         add(root);
         showLogin();
     }
@@ -41,19 +48,13 @@ public class AuthDialog extends Dialog {
                 .set("color", "var(--lumo-secondary-color)")
                 .set("padding-bottom", "16px");
 
-
         Button toSignup = new Button("Create account", e -> showSignup());
         toSignup.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
         toSignup.getStyle()
                 .set("color", "var(--lumo-secondary-color)")
                 .set("padding-bottom", "16px");
 
-
         root.add(title, desc, form, toForgotPassword, toSignup);
-        root.setAlignItems(FlexComponent.Alignment.CENTER);
-        root.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        root.setWidth("420px");
-        root.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
     }
 
     private void showSignup() {
@@ -72,16 +73,22 @@ public class AuthDialog extends Dialog {
             close();
         });
         create.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        create.setWidth("190px");
+        create.getStyle().set("margin", "24px");
 
         Button back = new Button("Back to login", e -> showLogin());
         back.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        back.getStyle()
+                .set("color", "var(--lumo-secondary-color)")
+                .set("padding-bottom", "16px");
 
-        root.add(title, desc,
-                new VerticalLayout(username, email, password, confirm, create, back));
-        root.setAlignItems(FlexComponent.Alignment.CENTER);
-        root.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        root.setWidth("420px");
-        root.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        VerticalLayout form = new VerticalLayout(username, email, password, confirm, create, back);
+        form.setPadding(false);
+        form.setSpacing(true);
+        form.setWidthFull();
+        form.setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
+
+        root.add(title, desc, form);
     }
 
     private void showForgotPassword() {
@@ -97,15 +104,24 @@ public class AuthDialog extends Dialog {
             close();
         });
         send.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        send.setWidth("190px");
+        send.getStyle()
+                .set("padding-right", "4px")
+                .set("padding-left", "4px")
+                .set("margin", "24px");
 
         Button back = new Button("Back to login", e -> showLogin());
         back.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        back.getStyle()
+                .set("color", "var(--lumo-secondary-color)")
+                .set("padding-bottom", "16px");
 
-        root.add(title, desc,
-                new VerticalLayout(email, send, back));
-        root.setAlignItems(FlexComponent.Alignment.CENTER);
-        root.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        root.setWidth("420px");
-        root.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.CENTER);
+        VerticalLayout form = new VerticalLayout(email, send, back);
+        form.setPadding(false);
+        form.setSpacing(true);
+        form.setWidthFull();
+        form.setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
+
+        root.add(title, desc, form);
     }
 }
