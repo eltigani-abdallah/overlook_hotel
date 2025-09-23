@@ -1,5 +1,7 @@
 package com.overlook.hotel;
 
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -54,7 +56,17 @@ public class AuthDialog extends Dialog {
                 .set("color", "var(--lumo-secondary-color)")
                 .set("padding-bottom", "16px");
 
-        root.add(title, desc, form, toForgotPassword, toSignup);
+        Button closeButton = new Button(new Icon(VaadinIcon.CLOSE), e -> close());
+        closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        closeButton.getStyle()
+                .set("position", "absolute")
+                .set("top", "32px")
+                .set("right", "32px")
+                .set("color", "var(--lumo-secondary-color)");
+//        add(closeButton, content);
+
+
+        root.add(title, desc, form, toForgotPassword, toSignup, closeButton);
     }
 
     private void showSignup() {
