@@ -10,7 +10,6 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.login.LoginForm;
@@ -25,7 +24,14 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Span;
 
+
+import com.vaadin.flow.component.html.*;
 @PageTitle("Hello World Hotel – Reservation")
 @AnonymousAllowed
 @Route("reservation")
@@ -80,7 +86,7 @@ public class Reservation extends Div {
         HorizontalLayout left = new HorizontalLayout(burger, lang);
         left.setAlignItems(FlexComponent.Alignment.CENTER);
 
-        Image logo = new Image("/images/logo.svg", "Hello World");
+Image logo = new Image("/images/logo.svg", "Hello World");
         logo.setWidth("250px");
         Div logoWrap = new Div(logo);
         logoWrap.getStyle().set("text-align", "right").set("flex-grow", "1").set("padding-right", "20px");
@@ -259,7 +265,7 @@ public class Reservation extends Div {
 
     /* ────────────── Login Dialog ────────────── */
 
-    private Dialog buildLoginDialog() {
+private Dialog buildLoginDialog() {
         Dialog dialog = new Dialog();
         dialog.setModal(true);
         dialog.setCloseOnEsc(true);
@@ -294,7 +300,14 @@ public class Reservation extends Div {
         content.setAlignItems(FlexComponent.Alignment.CENTER);
         content.setWidth("420px");
 
-        dialog.add(content);
+        Button closeButton = new Button(new Icon(VaadinIcon.CLOSE), e -> dialog.close());
+        closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        closeButton.getStyle()
+                .set("position", "absolute")
+                .set("top", "32px")
+                .set("right", "32px")
+                .set("color", "var(--lumo-secondary-color)");
+        dialog.add(closeButton, content);
 
         // après login succès, Spring Security recharge la page /reservation (SavedRequest)
         // si l’utilisateur ferme le popup, on reste sur la page
