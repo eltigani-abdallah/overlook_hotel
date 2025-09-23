@@ -83,8 +83,9 @@ public class HomePage extends Div {
         logo.setWidth("250px");
         Div logoWrap = new Div(logo);
         logoWrap.getStyle()
-                .set("text-align", "center")
-                .set("flex", "1");
+                .set("text-align", "right")
+                .set("flex-grow", "1")
+                .set("padding-right", "20px");
 
         // Phone + CTA
         TextField phone = new TextField();
@@ -105,7 +106,8 @@ public class HomePage extends Div {
 
         HorizontalLayout right = new HorizontalLayout(phone, book);
         right.setAlignItems(FlexComponent.Alignment.CENTER);
-right.addClassNames(LumoUtility.Padding.Horizontal.NONE, LumoUtility.AlignItems.CENTER, LumoUtility.JustifyContent.END);
+        right.setJustifyContentMode(FlexComponent.JustifyContentMode.END);
+        right.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Padding.Horizontal.NONE);
 
         top.setFlexGrow(1, left, logoWrap, right);
         top.add(left, logoWrap, right);
@@ -249,7 +251,7 @@ cta.addClassNames(LumoUtility.AlignSelf.CENTER);
                 "Proposant un hébergement 3 étoiles, l'Hôtel Le M est situé à Marseille, à 2,7 km de la plage des Catalans " +
                         "et à 600 mètres de la station de métro Castellane et 800 mètres du vieux port. " +
                         "Doté d’un salon commun, l’hôtel 3 étoiles propose des chambres climatisées avec Wi-Fi gratuite, chacune " +
-                        "dotée d’une salle de bains privative.");
+                        "dotée d’une salle de bainsprivative.");
         p.getStyle().set("margin", "0");
 
         Button cta = new Button("Découvrir les chambres");
