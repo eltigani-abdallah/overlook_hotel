@@ -1,5 +1,6 @@
 package com.overlook.hotel;
 
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
@@ -14,7 +15,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import jakarta.annotation.security.PermitAll;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
@@ -29,7 +29,7 @@ import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.*;
 
 @PageTitle("Hello World Hotel – Accueil")
-@PermitAll
+@AnonymousAllowed
 @Route("")
 @CssImport(themeFor = "vaadin-button", value = "./themes/hotel-theme/styles.css")
 public class HomePage extends Div {
