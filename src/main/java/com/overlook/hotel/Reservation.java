@@ -38,7 +38,7 @@ import com.vaadin.flow.component.html.*;
 @CssImport(themeFor = "vaadin-button", value = "./themes/hotel-theme/styles.css")
 public class Reservation extends Div {
 
-    private Dialog loginDialog; // <-- notre popup
+    private final AuthDialog authDialog = new AuthDialog();
 
     public Reservation() {
         setSizeFull();
@@ -47,17 +47,11 @@ public class Reservation extends Div {
                 .set("flex-direction", "column")
                 .set("background", "var(--lumo-base-color)");
 
-        // construit une seule fois le dialog
-        loginDialog = buildLoginDialog();
-
         add(buildTopbar());            // bandeau supérieur (logo, tel, réserver)
         add(buildBody());              // menu gauche + contenu
         add(buildBestPriceBadge());    // bouton vertical à droite
         add(buildFooter());            // pied de page
 
-        HorizontalLayout body = (HorizontalLayout) buildBody();
-        body.setSizeFull();
-        body.getStyle().set("flex", "1 1 auto");
     }
 
     /* ─────────────────────────  TOP BAR  ───────────────────────── */
@@ -86,7 +80,7 @@ public class Reservation extends Div {
         HorizontalLayout left = new HorizontalLayout(burger, lang);
         left.setAlignItems(FlexComponent.Alignment.CENTER);
 
-Image logo = new Image("/images/logo.svg", "Hello World");
+        Image logo = new Image("/images/logo.svg", "Hello World");
         logo.setWidth("250px");
         Div logoWrap = new Div(logo);
         logoWrap.getStyle().set("text-align", "right").set("flex-grow", "1").set("padding-right", "20px");
@@ -120,7 +114,7 @@ Image logo = new Image("/images/logo.svg", "Hello World");
             // ex: UI.getCurrent().navigate("reservation/checkout");
         } else {
             // pas connecté -> ouvrir le popup de login au-dessus de la page actuelle
-            loginDialog.open();
+            authDialog.open();
         }
     }
 
@@ -189,7 +183,7 @@ Image logo = new Image("/images/logo.svg", "Hello World");
 
         DatePicker datePickerStart = new DatePicker("Date de début");
         datePickerStart.setWidth("256px");
-        DatePicker datePickerEnd   = new DatePicker("Date de fin");
+        DatePicker datePickerEnd = new DatePicker("Date de fin");
         datePickerEnd.setWidth("256px");
 
         TextField nom = new TextField("Nom");
@@ -211,7 +205,7 @@ Image logo = new Image("/images/logo.svg", "Hello World");
 
         formLayout.add(datePickerStart, datePickerEnd, prenom, nom, telephone, email, envoyer);
         formLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-formLayout.addClassNames(LumoUtility.Gap.MEDIUM);
+        formLayout.addClassNames(LumoUtility.Gap.MEDIUM);
         formLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         return formLayout;
@@ -272,60 +266,10 @@ formLayout.addClassNames(LumoUtility.Gap.MEDIUM);
 
     private void toggleLeftMenu() {
         getElement().executeJs("""
-            const m = this.querySelector('#leftMenu');
-            if (!m) return;
-m.style.display = getComputedStyle(m).display === 'none' ? 'block' : 'none';
-        """);
+                            const m = this.querySelector('#leftMenu');
+                            if (!m) return;
+                m.style.display = getComputedStyle(m).display === 'none' ? 'block' : 'none';
+                """);
     }
 
-    /* ────────────── Login Dialog ────────────── */
-
-private Dialog buildLoginDialog() {
-        Dialog dialog = new Dialog();
-        dialog.setModal(true);
-        dialog.setCloseOnEsc(true);
-        dialog.setCloseOnOutsideClick(false);
-        dialog.setDraggable(true);
-
-        H2 title = new H2("Overlook Hotel");
-        Paragraph desc = new Paragraph("Please sign in");
-
-        LoginForm form = new LoginForm();
-        form.setAction("login");                 // POST géré par Spring Security
-        form.setForgotPasswordButtonVisible(false);
-        //form.setWidth("100%");
-
-        Button forgot = new Button("Forgot password");
-        forgot.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
-        forgot.addClickListener(e -> UI.getCurrent().navigate("forgot-password"));
-        forgot.getStyle()
-                .set("color", "var(--lumo-secondary-color)")
-                .set("padding-bottom", "16px");
-
-        Button create = new Button("Create account", e -> new com.overlook.hotel.CreateDialog().open());
-        create.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
-        create.getStyle()
-                .set("color", "var(--lumo-secondary-color)");
-
-        VerticalLayout actions = new VerticalLayout(forgot, create);
-        actions.setAlignItems(FlexComponent.Alignment.STRETCH);
-        actions.setWidthFull();
-
-        VerticalLayout content = new VerticalLayout(title, desc, form, actions);
-        content.setAlignItems(FlexComponent.Alignment.CENTER);
-        content.setWidth("420px");
-
-        Button closeButton = new Button(new Icon(VaadinIcon.CLOSE), e -> dialog.close());
-        closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
-        closeButton.getStyle()
-                .set("position", "absolute")
-                .set("top", "32px")
-                .set("right", "32px")
-                .set("color", "var(--lumo-secondary-color)");
-        dialog.add(closeButton, content);
-
-        // après login succès, Spring Security recharge la page /reservation (SavedRequest)
-        // si l’utilisateur ferme le popup, on reste sur la page
-        return dialog;
-    }
 }
