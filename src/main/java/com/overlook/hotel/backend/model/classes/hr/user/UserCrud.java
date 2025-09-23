@@ -1,10 +1,6 @@
 package com.overlook.hotel.backend.model.classes.hr.user;
 
 
-import com.overlook.hotel.database.Entity.Admin;
-import com.overlook.hotel.database.Entity.Employee;
-import com.overlook.hotel.database.Entity.User;
-
 /**
  * Account CRUD
  */
@@ -15,7 +11,7 @@ public class UserCrud {
      * @param userType CLIENT, EMPLOYEE, ADMIN
      */
     public static UserDto createUserDto(UserDto.UserType userType, Long id, Integer age, String gender, String firstName,
-                                        String lastName, String passwordHash, String email, String address, String phoneNumber){
+                                        String lastName, String password, String email, String address, String phoneNumber){
         return switch (userType) {
             case CLIENT -> ClientDto.builder()
                     .id(id)
@@ -23,7 +19,7 @@ public class UserCrud {
                     .gender(gender)
                     .firstName(firstName)
                     .lastName(lastName)
-                    .password(passwordHash)
+                    .password(password)
                     .email(email)
                     .address(address)
                     .phoneNumber(phoneNumber)
@@ -34,7 +30,7 @@ public class UserCrud {
                     .gender(gender)
                     .firstName(firstName)
                     .lastName(lastName)
-                    .password(passwordHash)
+                    .password(password)
                     .email(email)
                     .address(address)
                     .phoneNumber(phoneNumber)
@@ -45,7 +41,7 @@ public class UserCrud {
                     .gender(gender)
                     .firstName(firstName)
                     .lastName(lastName)
-                    .password(passwordHash)
+                    .password(password)
                     .email(email)
                     .address(address)
                     .phoneNumber(phoneNumber)
@@ -60,7 +56,7 @@ public class UserCrud {
      * @param field field to change. no need to use quotation marks, just capital letters
      * @param value String to change the value into. for birth dates it has to be YYYY-MM-DD
      */
-    public void modifyUser(UserDto user, FieldToModify field, String value){
+    public void updateUser(UserDto user, FieldToModify field, String value){
         switch (field){
             case FIRSTNAME->
                 user.setFirstName(value);
@@ -89,7 +85,7 @@ public class UserCrud {
         }
     }
 
-    public void showUserInfo(UserDto user){
+    public void readUserInfo(UserDto user){
         if (user instanceof AdminDto){
             System.err.println("ADMIN: ");
         }
