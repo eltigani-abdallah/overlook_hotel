@@ -185,24 +185,33 @@ Image logo = new Image("/images/logo.svg", "Hello World");
         formLayout.setWidth("400px");
         formLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         formLayout.setAlignItems(FlexComponent.Alignment.STRETCH);
-        formLayout.setSpacing(true);
         formLayout.setPadding(true);
 
         DatePicker datePickerStart = new DatePicker("Date de début");
+        datePickerStart.setWidth("256px");
         DatePicker datePickerEnd   = new DatePicker("Date de fin");
+        datePickerEnd.setWidth("256px");
 
         TextField nom = new TextField("Nom");
+        nom.setWidth("256px");
         TextField prenom = new TextField("Prénom");
+        prenom.setWidth("256px");
         TextField telephone = new TextField("Téléphone");
+        telephone.setWidth("256px");
         EmailField email = new EmailField("Email");
+        email.setWidth("256px");
         email.setErrorMessage("Entrez un email valide");
 
         Button envoyer = new Button("Envoyer", event -> onReserveClick());
         envoyer.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        envoyer.getStyle().set("margin-top", "32px").set("margin-bottom", "32px");
+        envoyer.getStyle()
+                .set("margin-top", "32px")
+                .set("margin-bottom", "32px");
+        envoyer.setWidth("256px");
 
         formLayout.add(datePickerStart, datePickerEnd, prenom, nom, telephone, email, envoyer);
         formLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+formLayout.addClassNames(LumoUtility.Gap.MEDIUM);
         formLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         return formLayout;
@@ -265,7 +274,7 @@ Image logo = new Image("/images/logo.svg", "Hello World");
         getElement().executeJs("""
             const m = this.querySelector('#leftMenu');
             if (!m) return;
-            m.style.display = getComputedStyle(m).display === 'none' ? 'block' : 'none';
+m.style.display = getComputedStyle(m).display === 'none' ? 'block' : 'none';
         """);
     }
 
