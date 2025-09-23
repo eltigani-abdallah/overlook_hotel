@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.hr.user;
+package com.overlook.hotel.backend.model.classes.dto.hr.user;
 
 import com.overlook.hotel.database.Entity.LoyaltyStatus;
 import lombok.Builder;

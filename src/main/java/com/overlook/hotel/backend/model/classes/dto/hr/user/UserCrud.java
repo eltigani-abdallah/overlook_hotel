@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.hr.user;
+package com.overlook.hotel.backend.model.classes.dto.hr.user;
 
 
 /**
