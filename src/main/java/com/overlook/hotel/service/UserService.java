@@ -1,10 +1,12 @@
-package com.overlook.hotel.backend.model.classes.dto.hr.user;
+package com.overlook.hotel.service;
 
+
+import com.overlook.hotel.dto.userDto.*;
 
 /**
  * Account CRUD
  */
-public class UserCrud {
+public class UserService {
 
     /**
      * create a userDto

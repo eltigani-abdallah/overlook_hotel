@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.controller.frontControls;
+package com.overlook.hotel.service.frontService;
 
 
 /**

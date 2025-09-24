@@ -1,14 +1,13 @@
-package com.overlook.hotel.backend.controller.databaseControls;
+package com.overlook.hotel.service.databseDtoService;
 
 
-import com.overlook.hotel.backend.model.classes.dto.hr.employee.LeaveRequestDto;
-import com.overlook.hotel.backend.model.classes.dto.hr.user.*;
-import com.overlook.hotel.backend.model.classes.dto.logistic.EventDto;
-import com.overlook.hotel.backend.model.classes.dto.logistic.ReservationDto;
-import com.overlook.hotel.backend.model.classes.dto.logistic.RoomDto;
+import com.overlook.hotel.dto.userDto.*;
+import com.overlook.hotel.dto.logisticDto.EventDto;
+import com.overlook.hotel.dto.logisticDto.ReservationDto;
+import com.overlook.hotel.dto.logisticDto.RoomDto;
 import com.overlook.hotel.database.Entity.*;
 
-public class DtoToDatabase {
+public class DtoToDatabaseService {
 
     /**
      * create a User database object from a clientDto

@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.tools;
+package com.overlook.hotel.helper;
 
 import java.time.LocalDate;
 

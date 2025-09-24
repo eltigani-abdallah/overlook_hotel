@@ -1,4 +1,4 @@
-package com.overlook.hotel.backend.model.classes.dto.logistic;
+package com.overlook.hotel.dto.logisticDto;
 
 import lombok.Builder;
 import lombok.Data;

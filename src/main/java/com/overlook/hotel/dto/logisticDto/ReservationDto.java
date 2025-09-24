@@ -1,8 +1,8 @@
-package com.overlook.hotel.backend.model.classes.dto.logistic;
+package com.overlook.hotel.dto.logisticDto;
 
 
-import com.overlook.hotel.backend.model.classes.dto.hr.user.ClientDto;
-import com.overlook.hotel.backend.model.classes.dto.hr.user.EmployeeDto;
+import com.overlook.hotel.dto.userDto.ClientDto;
+import com.overlook.hotel.dto.userDto.EmployeeDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;

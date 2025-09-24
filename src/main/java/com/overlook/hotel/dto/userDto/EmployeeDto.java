@@ -1,9 +1,8 @@
-package com.overlook.hotel.backend.model.classes.dto.hr.user;
+package com.overlook.hotel.dto.userDto;
 
-import com.overlook.hotel.backend.model.classes.dto.hr.employee.LeaveRequestDto;
-import com.overlook.hotel.backend.model.classes.dto.logistic.ReservationDto;
+import com.overlook.hotel.dto.logisticDto.ReservationDto;
 
-import static com.overlook.hotel.backend.model.classes.tools.Util.stringToDate;
+import static com.overlook.hotel.helper.Util.stringToDate;
 
 import lombok.Getter;
 import lombok.Setter;
