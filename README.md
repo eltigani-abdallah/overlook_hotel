@@ -1,2 +1,12 @@
 # overlook_hotel
-un projet de simlation de hotel créé au sein de LaPlateforme_
+Projet de simulation d'hôtel créé au sein de LaPlateforme_
+
+Développeurs:
+
+    Olivier Portal
+
+    Yuliia Sherstiuk
+
+    Eltigani Abdallah
+
+

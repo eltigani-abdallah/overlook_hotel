@@ -32,3 +32,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### application.properties ###
+
+src/main/resources/application.properties
+### application.yml   ###
+src/main/resources/application.yml
+
+### user story ###
+ignoreMe/
