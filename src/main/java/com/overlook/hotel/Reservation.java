@@ -3,16 +3,13 @@ package com.overlook.hotel;
 import com.overlook.hotel.security.SecurityUtils;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -25,7 +22,6 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
@@ -47,10 +43,10 @@ public class Reservation extends Div {
                 .set("flex-direction", "column")
                 .set("background", "var(--lumo-base-color)");
 
-        add(buildTopbar());            // bandeau supérieur (logo, tel, réserver)
-        add(buildBody());              // menu gauche + contenu
-        add(buildBestPriceBadge());    // bouton vertical à droite
-        add(buildFooter());            // pied de page
+        add(buildTopbar());
+        add(buildBody());
+        add(buildBestPriceBadge());
+        add(buildFooter());
 
     }
 
@@ -109,11 +105,11 @@ public class Reservation extends Div {
 
     private void onReserveClick() {
         if (SecurityUtils.isUserLoggedIn()) {
-            // déjà connecté -> poursuivre le flux de réservation
+            // already connected -> continue
             Notification.show("Vous êtes connecté, on continue la réservation…");
             // ex: UI.getCurrent().navigate("reservation/checkout");
         } else {
-            // pas connecté -> ouvrir le popup de login au-dessus de la page actuelle
+            // not connected -> open login's popup
             authDialog.open();
         }
     }

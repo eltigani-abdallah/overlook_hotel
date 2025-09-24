@@ -23,7 +23,7 @@ public class AuthDialog extends Dialog {
         setCloseOnEsc(true);
         setCloseOnOutsideClick(false);
 
-        // Configuration par défaut du layout racine
+        // Config CSS rules
         root.setWidth("420px");
         root.setPadding(true);
         root.setSpacing(true);
@@ -63,8 +63,6 @@ public class AuthDialog extends Dialog {
                 .set("top", "32px")
                 .set("right", "32px")
                 .set("color", "var(--lumo-secondary-color)");
-//        add(closeButton, content);
-
 
         root.add(title, desc, form, toForgotPassword, toSignup, closeButton);
     }
@@ -94,7 +92,15 @@ public class AuthDialog extends Dialog {
                 .set("color", "var(--lumo-secondary-color)")
                 .set("padding-bottom", "16px");
 
-        VerticalLayout form = new VerticalLayout(username, email, password, confirm, create, back);
+        Button closeButton = new Button(new Icon(VaadinIcon.CLOSE), e -> close());
+        closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        closeButton.getStyle()
+                .set("position", "absolute")
+                .set("top", "32px")
+                .set("right", "32px")
+                .set("color", "var(--lumo-secondary-color)");
+
+        VerticalLayout form = new VerticalLayout(username, email, password, confirm, create, back, closeButton);
         form.setPadding(false);
         form.setSpacing(true);
         form.setWidthFull();
@@ -128,7 +134,15 @@ public class AuthDialog extends Dialog {
                 .set("color", "var(--lumo-secondary-color)")
                 .set("padding-bottom", "16px");
 
-        VerticalLayout form = new VerticalLayout(email, send, back);
+        Button closeButton = new Button(new Icon(VaadinIcon.CLOSE), e -> close());
+        closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        closeButton.getStyle()
+                .set("position", "absolute")
+                .set("top", "32px")
+                .set("right", "32px")
+                .set("color", "var(--lumo-secondary-color)");
+
+        VerticalLayout form = new VerticalLayout(email, send, back, closeButton);
         form.setPadding(false);
         form.setSpacing(true);
         form.setWidthFull();

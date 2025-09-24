@@ -41,10 +41,10 @@ public class HomePage extends Div {
                 .set("flex-direction", "column")
                 .set("background", "var(--lumo-base-color)");
 
-        add(buildTopbar());            // bandeau supérieur (logo, tel, réserver)
-        add(buildBody());              // menu gauche + contenu
-        add(buildBestPriceBadge());    // bouton vertical à droite
-        add(buildFooter());            // pied de page
+        add(buildTopbar());
+        add(buildBody());
+        add(buildBestPriceBadge());
+        add(buildFooter());
     }
 
 
@@ -120,21 +120,21 @@ phone.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
         body.setPadding(false);
         body.setSpacing(false);
 
-        // menu latéral
+        // lateral menu
         VerticalLayout menu = buildLeftMenu();
         menu.setId("leftMenu");
 
-        // contenu
+        // content
         VerticalLayout content = new VerticalLayout();
         content.setPadding(false);
         content.setSpacing(false);
         content.setWidthFull();
 
-        content.add(buildHero());           // hero avec image + overlay
-        content.add(buildBienvenue());      // section 1
-        content.add(buildServices());       // section 2
-        content.add(buildRooms());          // section 3
-        content.add(buildLocalisation());   // section 4
+        content.add(buildHero());
+        content.add(buildBienvenue());
+        content.add(buildServices());
+        content.add(buildRooms());
+        content.add(buildLocalisation());
 
         body.add(menu, content);
         body.setFlexGrow(1, content);
@@ -178,7 +178,6 @@ left.addClassNames(LumoUtility.Padding.Horizontal.XLARGE);
     /* ─────────────────────────  HERO  ───────────────────────── */
 
     private Component buildHero() {
-        // image libre : remplace par la tienne si besoin
         String img = "/images/familiale4.jpeg";
 
         Div hero = new Div();
@@ -430,7 +429,9 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
         brand.getStyle().set("display", "flex")
                 .set("justify-content", "center")
                 .set("align-items", "center");
-brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Padding.Horizontal.XLARGE, LumoUtility.Padding.Vertical.LARGE);
+        brand.addClassNames(LumoUtility.AlignSelf.CENTER,
+                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Padding.Horizontal.XLARGE,
+                LumoUtility.Padding.Vertical.LARGE);
         Div col1 = footerCol("Menu", "Chambres", "Services", "Salle de séminaire", "Galerie", "Contact");
         Div col2 = footerCol("Liens utiles", "Mentions légales", "Cookies");
         Div col3 = footerCol("Contact",
