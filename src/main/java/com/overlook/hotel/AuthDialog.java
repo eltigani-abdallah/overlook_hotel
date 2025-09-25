@@ -100,25 +100,24 @@ public class AuthDialog extends Dialog {
         binder.bind(phoneNumber, UserDto::getPhoneNumber, UserDto::setPhoneNumber);
 
         EmailField email = new EmailField("Email");
-        //binder.bind(email, UserDto::getEmail, UserDto::setEmail);
+        binder.bind(email, UserDto::getEmail, UserDto::setEmail);
 
         PasswordField password = new PasswordField("Password");
-        //binder.bind(password, UserDto::getPassword, UserDto::setPassword);
+        binder.bind(password, UserDto::getPassword, UserDto::setPassword);
 
 
         PasswordField confirm  = new PasswordField("Confirm Password");
-        /**
+
         //confirm that the two passwords match ↓
         binder.forField(confirm)
                 .asRequired("Confirm Password")
                 .withValidator(p ->p.equals(password.getValue()), "passwords do not match")
                 .bind(dto->null, (dto,value) ->{});
         // confirm that the two passwords match ↑
-         */
+
 
         Button create = new Button("Create account", e -> {
             // TODO: créer l’utilisateur puis close();
-
             if(binder.writeBeanIfValid(clientDto)){
                 dtoToDatabaseService.createUserFromDto(clientDto);
             }

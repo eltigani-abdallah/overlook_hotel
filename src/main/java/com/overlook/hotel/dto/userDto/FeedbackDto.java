@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class FeedbackDto {
 
 
-    private final Long id;
+    private Long id;
     @NonNull private UserDto commenter;
     @NonNull private String message;
     @NonNull private LocalDate commentDate;

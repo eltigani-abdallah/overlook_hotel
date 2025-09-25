@@ -63,7 +63,6 @@ public class DtoToDatabaseService {
      */
     public Room createRoomFromDto(RoomDto room){
         return Room.builder()
-            .id(room.getId())
             .type(room.getType())
             .roomNumber(room.getRoomNumber())
             .price(room.getPrice())
@@ -75,7 +74,6 @@ public class DtoToDatabaseService {
 
     public Event createEventFromDto(EventDto event){
         return Event.builder()
-                .id(event.getId())
                 .eventName(event.getEventName())
                 .eventDescription(event.getEventDescription())
                 .eventDate(event.getEventDate())
@@ -84,7 +82,6 @@ public class DtoToDatabaseService {
 
     public Reservation createReservationFromDto(ReservationDto reservation){
         return Reservation.builder()
-                .id(reservation.getId())
                 .reservationDateStart(reservation.getStartDate())
                 .reservationDateEnd(reservation.getEndDate())
                 .adultNumber(reservation.getAdultAmount())
@@ -97,7 +94,6 @@ public class DtoToDatabaseService {
 
     public Feedback createFeedbackFromDto(FeedbackDto feedback){
         return Feedback.builder()
-                .id(feedback.getId())
                 .message(feedback.getMessage())
                 .stars(feedback.getStars())
                 .feedbackDate(feedback.getCommentDate())
@@ -107,16 +103,14 @@ public class DtoToDatabaseService {
 
     public Loyalty createLoyaltyFromDto(LoyaltyDto loyalty){
         return Loyalty.builder()
-                .id(loyalty.getId())
                 .visitedNumber(loyalty.getVisitedNumber())
                 .status(loyalty.getStatus())
-                .user(createUserFromDto((ClientDto)loyalty.getClient()))
+                .user(createUserFromDto(loyalty.getClient()))
                 .build();
     }
 
     public EmployeeLeave createEmployeeLeaveFromDto(LeaveRequestDto leave){
         return EmployeeLeave.builder()
-                .id(leave.getId())
                 .startDate(leave.getStartDate())
                 .endDate(leave.getEndDate())
                 .status(leave.getStatus())

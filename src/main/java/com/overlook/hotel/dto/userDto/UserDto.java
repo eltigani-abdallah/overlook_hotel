@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @Getter
 @SuperBuilder
 public class UserDto {
-    private final Long id;
+    private Long id;
     @NonNull
     private Integer age;
     @NonNull

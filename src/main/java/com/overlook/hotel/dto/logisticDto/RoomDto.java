@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @SuperBuilder
 public class RoomDto {
 
-    private final Long id;
+    private Long id;
     @NonNull private String type;
     private String roomNumber;
     private final Double price;
