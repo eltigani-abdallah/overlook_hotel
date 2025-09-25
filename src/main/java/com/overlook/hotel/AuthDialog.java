@@ -3,6 +3,7 @@ package com.overlook.hotel;
 import com.overlook.hotel.dto.userDto.UserDto;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.component.button.Button;
@@ -82,8 +83,8 @@ public class AuthDialog extends Dialog {
         TextField lastName = new TextField("Last name");
         binder.bind(lastName, UserDto::getLastName, UserDto::setLastName);
 
-        TextField age = new TextField("Age");
-        //binder.bind(age, UserDto::getAge, UserDto::setAge);
+        IntegerField age = new IntegerField("Age");
+        binder.bind(age, UserDto::getAge, UserDto::setAge);
 
         TextField gender = new TextField("Gender");
         binder.bind(gender, UserDto::getGender, UserDto::setGender);
