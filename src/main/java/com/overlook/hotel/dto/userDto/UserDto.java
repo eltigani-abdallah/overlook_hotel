@@ -5,6 +5,7 @@ import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 @Setter
 @Getter
 @SuperBuilder
+@NoArgsConstructor
 public class UserDto {
     private Long id;
     @NonNull

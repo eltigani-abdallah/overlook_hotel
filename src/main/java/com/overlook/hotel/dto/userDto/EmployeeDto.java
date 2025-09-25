@@ -5,6 +5,7 @@ import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import static com.overlook.hotel.helper.Util.stringToDate;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 
 
 
-@Getter @Setter @SuperBuilder
+@Getter @Setter @SuperBuilder @NoArgsConstructor
 public class EmployeeDto extends UserDto {
 
 
