@@ -1,4 +1,4 @@
-package com.overlook.hotel.service.frontService;
+package com.overlook.hotel.service.frontDtoService;
 
 
 /**
