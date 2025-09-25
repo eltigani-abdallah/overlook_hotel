@@ -26,10 +26,12 @@ public class LoyaltyService {
         return loyaltyRepository.save(loyalty);
     }
 
+   // CRUD: UPDATE existing loyalty record
     public Loyalty updateLoyalty(Long id, Loyalty details) {
         Loyalty loyalty = getLoyaltyById(id);
-        loyalty.setClient(details.getClient());
-        loyalty.setPoints(details.getPoints());
+        loyalty.setClient(details.getClient());               
+        loyalty.setVisitedNumber(details.getVisitedNumber()); 
+        loyalty.setStatus(details.getStatus());              
         return loyaltyRepository.save(loyalty);
     }
 

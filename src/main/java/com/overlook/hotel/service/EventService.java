@@ -27,13 +27,13 @@ public class EventService {
     }
 
     public Event updateEvent(Long id, Event details) {
-        Event event = getEventById(id);
-        event.setTitle(details.getTitle());
-        event.setDescription(details.getDescription());
-        event.setDate(details.getDate());
-        event.setLocation(details.getLocation());
-        return eventRepository.save(event);
-    }
+    Event event = getEventById(id);
+    event.setEventName(details.getEventName());
+    event.setEventDescription(details.getEventDescription());
+    event.setEventDate(details.getEventDate());
+    return eventRepository.save(event);
+}
+
 
     public void deleteEvent(Long id) {
         eventRepository.deleteById(id);

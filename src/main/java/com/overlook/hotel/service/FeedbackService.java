@@ -4,11 +4,13 @@ import com.overlook.hotel.database.Entity.Feedback;
 import com.overlook.hotel.repository.FeedbackRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class FeedbackService {
+
     private final FeedbackRepository feedbackRepository;
 
     // CRUD: READ (Retrieve all feedbacks from the database)
@@ -30,9 +32,10 @@ public class FeedbackService {
     // CRUD: UPDATE (Update an existing feedback in the database)
     public Feedback updateFeedback(Long id, Feedback details) {
         Feedback feedback = getFeedbackById(id);
-        feedback.setComment(details.getComment());
-        feedback.setRating(details.getRating());
-        feedback.setClient(details.getClient());
+        feedback.setMessage(details.getMessage());      
+        feedback.setStars(details.getStars());           
+        feedback.setFeedbackDate(details.getFeedbackDate()); 
+        feedback.setClient(details.getClient());         
         return feedbackRepository.save(feedback);
     }
 

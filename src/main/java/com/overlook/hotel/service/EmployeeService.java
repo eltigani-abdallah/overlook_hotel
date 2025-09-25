@@ -42,7 +42,7 @@ public class EmployeeService {
         employee.setPhoneNumber(employeeDetails.getPhoneNumber());
         employee.setAddress(employeeDetails.getAddress());
         employee.setRole(employeeDetails.getRole());
-        employee.setTitle(employeeDetails.getTitle());
+        
 
         // Save updated employee
         return employeeRepository.save(employee);
