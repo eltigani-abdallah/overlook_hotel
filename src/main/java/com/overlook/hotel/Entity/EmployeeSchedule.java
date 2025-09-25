@@ -1,6 +1,5 @@
-package com.overlook.hotel.database.Entity;
+package com.overlook.hotel.Entity;
 
-import com.overlook.hotel.database.Entity.Employee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,11 +1,11 @@
 package com.overlook.hotel.service.databseDtoService;
 
 
+import com.overlook.hotel.Entity.*;
 import com.overlook.hotel.dto.userDto.*;
 import com.overlook.hotel.dto.logisticDto.EventDto;
 import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
-import com.overlook.hotel.database.Entity.*;
 
 public class DtoToDatabaseService {
 

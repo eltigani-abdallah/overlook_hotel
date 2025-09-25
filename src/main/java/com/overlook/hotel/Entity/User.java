@@ -1,5 +1,5 @@
 
-package com.overlook.hotel.database.Entity;
+package com.overlook.hotel.Entity;
 
 
 

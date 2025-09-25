@@ -1,4 +1,4 @@
-package com.overlook.hotel.database.Entity;
+package com.overlook.hotel.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -57,9 +57,9 @@ public class Admin {
 
     // One admin can have many schedules
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<com.overlook.hotel.database.Entity.EmployeeSchedule> schedules;
+    private List<EmployeeSchedule> schedules;
 
     // One admin can have many leaves
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<com.overlook.hotel.database.Entity.EmployeeLeave> leaves;
+    private List<EmployeeLeave> leaves;
 }

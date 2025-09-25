@@ -1,4 +1,4 @@
-package com.overlook.hotel.database.Entity;
+package com.overlook.hotel.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

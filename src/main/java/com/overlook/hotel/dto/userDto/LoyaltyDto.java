@@ -1,6 +1,6 @@
 package com.overlook.hotel.dto.userDto;
 
-import com.overlook.hotel.database.Entity.LoyaltyStatus;
+import com.overlook.hotel.Entity.LoyaltyStatus;
 import lombok.Builder;
 import lombok.Data;
 
