@@ -1,5 +1,6 @@
 package com.overlook.hotel;
 
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
@@ -14,7 +15,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import jakarta.annotation.security.PermitAll;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
@@ -29,7 +29,7 @@ import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.*;
 
 @PageTitle("Hello World Hotel – Accueil")
-@PermitAll
+@AnonymousAllowed
 @Route("")
 @CssImport(themeFor = "vaadin-button", value = "./themes/hotel-theme/styles.css")
 public class HomePage extends Div {
@@ -41,13 +41,11 @@ public class HomePage extends Div {
                 .set("flex-direction", "column")
                 .set("background", "var(--lumo-base-color)");
 
-        add(buildTopbar());            // bandeau supérieur (logo, tel, réserver)
-        add(buildBody());              // menu gauche + contenu
-        add(buildBestPriceBadge());    // bouton vertical à droite
-        add(buildFooter());            // pied de page
+        add(buildTopbar());
+        add(buildBody());
+        add(buildBestPriceBadge());
+        add(buildFooter());
     }
-
-    private static final String CONTENT_MAX = "1120px";
 
 
     /* ─────────────────────────  TOP BAR  ───────────────────────── */
@@ -91,7 +89,7 @@ public class HomePage extends Div {
         TextField phone = new TextField();
 //        phone.getStyle()
 //                .set("text-align", "center");
-        phone.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
+phone.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
         phone.setValue("06 99 99 99 99");
         phone.setReadOnly(true);
         phone.addClassNames("phone");
@@ -122,21 +120,21 @@ public class HomePage extends Div {
         body.setPadding(false);
         body.setSpacing(false);
 
-        // menu latéral
+        // lateral menu
         VerticalLayout menu = buildLeftMenu();
         menu.setId("leftMenu");
 
-        // contenu
+        // content
         VerticalLayout content = new VerticalLayout();
         content.setPadding(false);
         content.setSpacing(false);
         content.setWidthFull();
 
-        content.add(buildHero());           // hero avec image + overlay
-        content.add(buildBienvenue());      // section 1
-        content.add(buildServices());       // section 2
-        content.add(buildRooms());          // section 3
-        content.add(buildLocalisation());   // section 4
+        content.add(buildHero());
+        content.add(buildBienvenue());
+        content.add(buildServices());
+        content.add(buildRooms());
+        content.add(buildLocalisation());
 
         body.add(menu, content);
         body.setFlexGrow(1, content);
@@ -180,7 +178,6 @@ left.addClassNames(LumoUtility.Padding.Horizontal.XLARGE);
     /* ─────────────────────────  HERO  ───────────────────────── */
 
     private Component buildHero() {
-        // image libre : remplace par la tienne si besoin
         String img = "/images/familiale4.jpeg";
 
         Div hero = new Div();
@@ -429,7 +426,12 @@ wrap.addClassNames(LumoUtility.Padding.NONE);
                 .set("color", "white");
 
         Div brand = new Div(new Image("/images/logo.svg", "Hello World HOTEL"));
-brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Padding.Horizontal.XLARGE, LumoUtility.Padding.Vertical.LARGE);
+        brand.getStyle().set("display", "flex")
+                .set("justify-content", "center")
+                .set("align-items", "center");
+        brand.addClassNames(LumoUtility.AlignSelf.CENTER,
+                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Padding.Horizontal.XLARGE,
+                LumoUtility.Padding.Vertical.LARGE);
         Div col1 = footerCol("Menu", "Chambres", "Services", "Salle de séminaire", "Galerie", "Contact");
         Div col2 = footerCol("Liens utiles", "Mentions légales", "Cookies");
         Div col3 = footerCol("Contact",
@@ -455,7 +457,7 @@ brand.addClassNames(LumoUtility.AlignSelf.CENTER, LumoUtility.Gap.MEDIUM, LumoUt
         return box;
     }
 
-    /* ────────────────────��  UTILITIES  ───���───────────────── */
+    /* ────────────────────��  UTILITIES  ───���──���────────────── */
 
     private HorizontalLayout twoCols(Component left, Component right) {
         HorizontalLayout row = new HorizontalLayout(left, right);
