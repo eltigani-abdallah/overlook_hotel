@@ -6,7 +6,9 @@ import com.overlook.hotel.dto.userDto.*;
 import com.overlook.hotel.dto.logisticDto.EventDto;
 import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DtoToDatabaseService {
 
     /**

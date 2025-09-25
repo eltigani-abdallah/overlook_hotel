@@ -1,6 +1,8 @@
 package com.overlook.hotel;
 
+import com.overlook.hotel.dto.userDto.ClientDto;
 import com.overlook.hotel.dto.userDto.UserDto;
+import com.overlook.hotel.service.databseDtoService.DtoToDatabaseService;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.data.binder.Binder;
@@ -19,7 +21,9 @@ import com.vaadin.flow.component.textfield.TextField;
 
 public class AuthDialog extends Dialog {
     private final VerticalLayout root = new VerticalLayout();
-    //private Binder<UserDto> binder = new Binder<>(UserDto.class);
+    private Binder<UserDto> binder = new Binder<>(UserDto.class);
+    private DtoToDatabaseService dtoToDatabaseService;
+    private ClientDto clientDto;
 
     public AuthDialog() {
         setModal(true);
@@ -77,13 +81,13 @@ public class AuthDialog extends Dialog {
         Paragraph desc = new Paragraph("Please create an account");
 
         TextField firstName = new TextField("First name");
-        //binder.bind(firstName, UserDto::getFirstName, UserDto::setFirstName);
+        binder.bind(firstName, UserDto::getFirstName, UserDto::setFirstName);
 
         EmailField email = new EmailField("Email");
-        //binder.bind(email, UserDto::getEmail, UserDto::setEmail);
+        binder.bind(email, UserDto::getEmail, UserDto::setEmail);
 
         PasswordField password = new PasswordField("Password");
-        //binder.bind(password, UserDto::getPassword, UserDto::setPassword);
+        binder.bind(password, UserDto::getPassword, UserDto::setPassword);
 
 
         PasswordField confirm  = new PasswordField("Confirm Password");
@@ -98,6 +102,10 @@ public class AuthDialog extends Dialog {
 
         Button create = new Button("Create account", e -> {
             // TODO: créer l’utilisateur puis close();
+
+            if(binder.writeBeanIfValid(clientDto)){
+                dtoToDatabaseService.createUserFromDto(clientDto);
+            }
             close();
         });
         create.addThemeVariants(ButtonVariant.LUMO_PRIMARY);

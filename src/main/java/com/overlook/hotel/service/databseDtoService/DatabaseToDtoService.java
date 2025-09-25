@@ -6,11 +6,13 @@ import com.overlook.hotel.dto.logisticDto.EventDto;
 import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
 import com.overlook.hotel.service.UserService;
+import org.springframework.stereotype.Service;
 
 
 /**
  * convert database items into UserDto objects
  */
+@Service
 public class DatabaseToDtoService {
 
     /**
