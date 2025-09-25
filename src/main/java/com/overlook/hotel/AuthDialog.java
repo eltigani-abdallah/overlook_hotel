@@ -1,5 +1,6 @@
 package com.overlook.hotel;
 
+import com.overlook.hotel.dto.userDto.ClientDto;
 import com.overlook.hotel.dto.userDto.UserDto;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -74,33 +75,56 @@ public class AuthDialog extends Dialog {
     private void showSignup() {
         root.removeAll();
 
+        ClientDto clientDto = ClientDto.builder()
+                .id(null)
+                .age(18)
+                .gender("")
+                .firstName("")
+                .lastName("")
+                .password("")
+                .email("")
+                .address("")
+                .phoneNumber("")
+                .loyaltyPoints(0)
+                .build();
+
         H2 title = new H2("Overlook Hotel");
         Paragraph desc = new Paragraph("Please create an account");
 
         TextField firstName = new TextField("First name");
-        binder.bind(firstName, UserDto::getFirstName, UserDto::setFirstName);
+        binder.forField(firstName).asRequired("Required")
+                .bind(UserDto::getFirstName, UserDto::setFirstName);
 
         TextField lastName = new TextField("Last name");
-        binder.bind(lastName, UserDto::getLastName, UserDto::setLastName);
+        binder.forField(lastName).asRequired("Required")
+                .bind(UserDto::getLastName, UserDto::setLastName);
 
         IntegerField age = new IntegerField("Age");
-        binder.bind(age, UserDto::getAge, UserDto::setAge);
+        age.setMin(0);
+        binder.forField(age).asRequired("Required")
+                .withValidator(a -> a != null && a >= 18, "Must be at least 18")
+                .bind(UserDto::getAge, UserDto::setAge);
 
         TextField gender = new TextField("Gender");
-        binder.bind(gender, UserDto::getGender, UserDto::setGender);
+        binder.forField(gender).asRequired("Required")
+                .bind(UserDto::getGender, UserDto::setGender);
 
         TextField address = new TextField("Address");
-        binder.bind(address, UserDto::getAddress, UserDto::setAddress);
+        binder.forField(address).asRequired("Required")
+                .bind(UserDto::getAddress, UserDto::setAddress);
 
         TextField phoneNumber = new TextField("Phone number");
-        binder.bind(phoneNumber, UserDto::getPhoneNumber, UserDto::setPhoneNumber);
+        binder.forField(phoneNumber).asRequired("Required")
+                .bind(UserDto::getPhoneNumber, UserDto::setPhoneNumber);
 
         EmailField email = new EmailField("Email");
-        binder.bind(email, UserDto::getEmail, UserDto::setEmail);
+        binder.forField(email).asRequired("Required")
+                .withValidator(new com.vaadin.flow.data.validator.EmailValidator("Invalid email"))
+                .bind(UserDto::getEmail, UserDto::setEmail);
 
         PasswordField password = new PasswordField("Password");
-        binder.bind(password, UserDto::getPassword, UserDto::setPassword);
-
+        binder.forField(password).asRequired("Required")
+                .bind(UserDto::getPassword, UserDto::setPassword);
 
         PasswordField confirm  = new PasswordField("Confirm Password");
         //confirm that the two passwords match ↓
@@ -108,6 +132,7 @@ public class AuthDialog extends Dialog {
                 .asRequired("Confirm Password")
                 .withValidator(p ->p.equals(password.getValue()), "passwords do not match")
                 .bind(dto->null, (dto,value) ->{});
+        password.addValueChangeListener(e -> binder.validate());
         // confirm that the two passwords match ↑
 
         Button create = new Button("Create account", e -> {
