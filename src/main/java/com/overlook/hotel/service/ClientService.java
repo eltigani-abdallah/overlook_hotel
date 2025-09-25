@@ -1,6 +1,6 @@
 package com.overlook.hotel.service;
 
-import com.overlook.hotel.database.Entity.Client; // Import User entity
+import com.overlook.hotel.database.Entity.Client;
 import com.overlook.hotel.repository.ClientRepository; // Import Client repository
 import lombok.RequiredArgsConstructor; // Lombok annotation for constructor injection
 import org.springframework.stereotype.Service; // Marks the class as a Spring service

@@ -1,7 +1,6 @@
 // Package declaration for the service layer of the application
 package com.overlook.hotel.service;
 
-// Import Room entity class for database operations
 import com.overlook.hotel.database.Entity.Room;
 // Import RoomRepository interface for database access
 import com.overlook.hotel.repository.RoomRepository;

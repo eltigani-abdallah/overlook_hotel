@@ -1,6 +1,5 @@
 package com.overlook.hotel.database.Entity;
 
-import com.overlook.hotel.database.Entity.Employee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+
+import com.overlook.hotel.database.Entity.Employee;
 
 /**
  * EmployeeLeave entity mapped to the "employee_leave" table.

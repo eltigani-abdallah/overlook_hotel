@@ -1,7 +1,6 @@
 // Package declaration for the controller layer of the application
 package com.overlook.hotel.controller;
 
-// Import Admin entity class for request/response handling
 import com.overlook.hotel.database.Entity.Admin;
 // Import AdminService to delegate business logic
 import com.overlook.hotel.service.AdminService;

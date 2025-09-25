@@ -1,7 +1,6 @@
 // Package declaration for the service layer of the application
 package com.overlook.hotel.service;
 
-// Import the Admin entity class from the database package
 import com.overlook.hotel.database.Entity.Admin;
 // Import the AdminRepository interface for database operations
 import com.overlook.hotel.repository.AdminRepository;
