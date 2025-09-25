@@ -34,7 +34,7 @@ public class Feedback {
     private LocalDate feedbackDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false) 
-    // Many feedbacks can belong to one user
-    private User user;
+    @JoinColumn(name = "Client_id", nullable = false) 
+    // Many feedbacks can belong to one client
+    private Client client;
 }

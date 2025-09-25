@@ -11,12 +11,12 @@ import lombok.Builder;
 // Lombok annotations
 
 @Entity
-@Table(name = "users") // Define the table name in the database
+@Table(name = "Client") // Define the table name in the database
 @Data // Lombok: generates getters, setters, toString(), equals(), and hashCode()
 @NoArgsConstructor // Lombok: generates a no-args constructor
 @AllArgsConstructor // Lombok: generates a constructor with all fields
 @Builder
-public class User {
+public class Client {
 
     @Id // Marks this field as the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) 

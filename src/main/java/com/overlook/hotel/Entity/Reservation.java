@@ -38,9 +38,9 @@ public class Reservation {
     private Integer childrenNumber;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    // Many reservations can belong to one user
-    private User user;
+    @JoinColumn(name = "Client_id", nullable = false)
+    // Many reservations can belong to one client
+    private Client client;
 
     @ManyToOne
     @JoinColumn(name = "room_id", nullable = false)

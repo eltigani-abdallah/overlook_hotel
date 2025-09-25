@@ -30,7 +30,7 @@ public class Loyalty {
     private LoyaltyStatus status;
 
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false, unique = true) 
-    // One-to-one relationship with User entity, foreign key column = user_id
-    private User user;
+    @JoinColumn(name = "Client_id", nullable = false, unique = true) 
+    // One-to-one relationship with Client entity, foreign key column = client_id
+    private Client client;
 }
