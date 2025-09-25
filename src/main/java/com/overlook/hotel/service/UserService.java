@@ -2,10 +2,12 @@ package com.overlook.hotel.service;
 
 
 import com.overlook.hotel.dto.userDto.*;
+import org.springframework.stereotype.Service;
 
 /**
  * Account CRUD
  */
+@Service
 public class UserService {
 
     /**

@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Setter @Getter @Builder
 public class LeaveRequestDto {
 
-    @NonNull
     private Long id;
     @NonNull
     private EmployeeDto requestMaker;

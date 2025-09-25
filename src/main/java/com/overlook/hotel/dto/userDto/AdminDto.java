@@ -4,6 +4,7 @@ package com.overlook.hotel.dto.userDto;
 import com.overlook.hotel.dto.logisticDto.EventRoomDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
@@ -11,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDate;
 
 
-@SuperBuilder @Setter @Getter
+@SuperBuilder @Setter @Getter @NoArgsConstructor
 public class AdminDto extends UserDto {
 
     private String role;

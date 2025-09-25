@@ -1,8 +1,11 @@
 package com.overlook.hotel.service.frontDtoService;
 
 
+import org.springframework.stereotype.Service;
+
 /**
  * placeholder for Dto to Front communications
  */
-public class DtoToFront {
+@Service
+public class DtoToFrontService {
 }
