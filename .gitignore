@@ -1,5 +1,6 @@
 HELP.md
 target/
+node_modules/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -33,3 +34,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### application.properties ###
+
+src/main/resources/application.properties
+### application.yml   ###
+src/main/resources/application.yml
+
+### user story ###
+ignoreMe/

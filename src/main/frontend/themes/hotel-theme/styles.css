@@ -1,0 +1,154 @@
+@import "theme-editor.css";
+/* === Thème global pour Vaadin (styles.css) === */
+
+/* ---- Couleurs Lumo ---- */
+:root {
+  /* Couleurs principales */
+  --lumo-primary-color: #FFC549;        /* ta couleur bouton / liens */
+  --lumo-secondary-color: #4A8687;
+  --lumo-primary-text-color: #1b1b1b;
+  --lumo-secondary-text-color: #ffffff;/* texte sur les boutons primaires */
+
+  /* Couleur de fond générale */
+  --lumo-base-color: #ffffff;
+
+  /* Texte et titres */
+  --lumo-body-text-color: #4A8687;
+  --lumo-header-text-color: #FFC549;
+
+  /* Optionnel : couleur accent pour hover/focus */
+  --lumo-primary-color-50pct: rgba(255, 197, 73, 0.5);
+  --lumo-primary-color-10pct: rgba(255, 197, 73, 0.1);
+}
+
+/* ---- Polices ---- */
+.amiri-regular {
+  font-family: "Amiri", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.amiri-bold {
+  font-family: "Amiri", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.amiri-regular-italic {
+  font-family: "Amiri", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.amiri-bold-italic {
+  font-family: "Amiri", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+html {
+  font-family: "Poppins", "Segoe UI", Roboto, sans-serif;
+  font-size: var(--lumo-font-size-m);
+  color: var(--lumo-body-text-color);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Amiri", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+h1 {
+  color: var(--lumo-base-color);
+}
+
+h2, h3, h4, h5 {
+  color: var(--lumo-secondary-color);
+}
+
+
+/* ---- Boutons ---- */
+vaadin-button[theme~="primary"] {
+  background-color: var(--lumo-primary-color);
+  color: var(--lumo-secondary-text-color);
+  border-radius: 6px;
+  letter-spacing: .02em;
+  font-weight: 600;
+}
+
+vaadin-button[theme~="primary"]:hover {
+  filter: brightness(1.05);
+}
+
+vaadin-text-field.phone::part(value) {
+  text-align: center;
+}
+
+vaadin-text-field.phone {
+  --vaadin-input-field-border-width: 1px;
+  --vaadin-input-field-border-color: #c7d5d8;
+  --vaadin-input-field-border-radius: 6px;
+  --vaadin-input-field-background: #fff;
+}
+
+/* ---- Hero Section ---- */
+.hero {
+  background-image: linear-gradient(
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.35)
+    ),
+    url("https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero .hero-content h1,
+.hero .hero-content p {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+/* ---- Localisation Section ---- */
+h3.yellow-header {
+  color: var(--lumo-primary-color) !important;
+}
+
+vaadin-text-field.phone::part(input-field) {
+  box-shadow: none;
+  border: 1px solid #c7d5d8;
+  border-radius: 8px;
+  background: white;
+  color: var(--lumo-secondary-color);
+}
+
+.form-card {
+  width: min(560px, 92vw);
+  margin: 24px auto;               /* centre horizontal */
+  padding: var(--lumo-space-l);
+  background: var(--lumo-base-color);
+  border-radius: var(--lumo-border-radius-l);
+  box-shadow: var(--lumo-box-shadow-m);
+}
+
+/* Toujours afficher les labels des champs Vaadin */
+vaadin-text-field::part(label),
+vaadin-email-field::part(label),
+vaadin-date-picker::part(label),
+vaadin-text-area::part(label),
+vaadin-number-field::part(label),
+vaadin-password-field::part(label),
+vaadin-combo-box::part(label) {
+  color: var(--lumo-secondary-color);
+  opacity: 1 !important;
+  transform: none;         /* au cas où un “floating label” custom traîne */
+  transition: none;
+}
+
+.form-card vaadin-text-field::part(value),
+.form-card vaadin-email-field::part(value),
+.form-card vaadin-password-field::part(value),
+.form-card vaadin-date-picker::part(value) {
+  color: var(--lumo-body-text-color) !important;
+  font-weight: 400 !important;
+}
