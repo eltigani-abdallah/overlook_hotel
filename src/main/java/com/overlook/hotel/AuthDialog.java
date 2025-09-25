@@ -5,6 +5,7 @@ import com.overlook.hotel.dto.userDto.UserDto;
 import com.overlook.hotel.service.databseDtoService.DtoToDatabaseService;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.component.button.Button;
@@ -83,11 +84,26 @@ public class AuthDialog extends Dialog {
         TextField firstName = new TextField("First name");
         binder.bind(firstName, UserDto::getFirstName, UserDto::setFirstName);
 
+        TextField lastName = new TextField("Last name");
+        binder.bind(lastName, UserDto::getLastName, UserDto::setLastName);
+
+        IntegerField age = new IntegerField("Age");
+        binder.bind(age, UserDto::getAge, UserDto::setAge);
+
+        TextField gender = new TextField("Gender");
+        binder.bind(gender, UserDto::getGender, UserDto::setGender);
+
+        TextField address = new TextField("Address");
+        binder.bind(address, UserDto::getAddress, UserDto::setAddress);
+
+        TextField phoneNumber = new TextField("Phone number");
+        binder.bind(phoneNumber, UserDto::getPhoneNumber, UserDto::setPhoneNumber);
+
         EmailField email = new EmailField("Email");
-        binder.bind(email, UserDto::getEmail, UserDto::setEmail);
+        //binder.bind(email, UserDto::getEmail, UserDto::setEmail);
 
         PasswordField password = new PasswordField("Password");
-        binder.bind(password, UserDto::getPassword, UserDto::setPassword);
+        //binder.bind(password, UserDto::getPassword, UserDto::setPassword);
 
 
         PasswordField confirm  = new PasswordField("Confirm Password");
@@ -126,7 +142,7 @@ public class AuthDialog extends Dialog {
                 .set("right", "32px")
                 .set("color", "var(--lumo-secondary-color)");
 
-        VerticalLayout form = new VerticalLayout(firstName, email, password, confirm, create, back, closeButton);
+        VerticalLayout form = new VerticalLayout(firstName, lastName, age, gender, address, phoneNumber, email, password, confirm, create, back, closeButton);
         form.setPadding(false);
         form.setSpacing(true);
         form.setWidthFull();
