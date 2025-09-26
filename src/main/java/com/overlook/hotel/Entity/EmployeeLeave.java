@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-import com.overlook.hotel.Entity.Employee;
+//import com.overlook.hotel.Entity.Employee;
 
 /**
  * EmployeeLeave entity mapped to the "employee_leave" table.
