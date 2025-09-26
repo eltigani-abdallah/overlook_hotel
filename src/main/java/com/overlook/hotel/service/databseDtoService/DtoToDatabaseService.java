@@ -6,25 +6,42 @@ import com.overlook.hotel.dto.userDto.*;
 import com.overlook.hotel.dto.logisticDto.EventDto;
 import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
+import com.overlook.hotel.repository.UserRepository;
+import com.overlook.hotel.Entity.User;
+import com.overlook.hotel.dto.userDto.ClientDto;
+import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+
+@Service
+@RequiredArgsConstructor  // ✅ génère un ctor pour userRepository
 public class DtoToDatabaseService {
 
-    /**
-     * create a User database object from a clientDto
-     */
-    public User createUserFromDto(ClientDto clientDto){
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    private User toUserEntity(@NotNull ClientDto dto) {
         return User.builder()
-                .age(clientDto.getAge())
-                .gender(clientDto.getGender())
-                .firstName(clientDto.getFirstName())
-                .lastName(clientDto.getLastName())
-                .email(clientDto.getEmail())
-                .password(clientDto.getPassword())
-                .phoneNumber(clientDto.getPhoneNumber())
-                .note(clientDto.getNote())
-                .address(clientDto.getAddress())
+                .age(dto.getAge())
+                .gender(dto.getGender())
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
+                .email(dto.getEmail())
+                .password(passwordEncoder.encode(dto.getPassword()))
+                .phoneNumber(dto.getPhoneNumber())
+                .note(dto.getNote())
+                .address(dto.getAddress())
                 .build();
     }
+
+    @Transactional
+    public User createUserFromDto(@NotNull ClientDto dto) {
+        return userRepository.save(toUserEntity(dto));
+    }
+
 
     /**
      * create Admin database object from a AdminDto object
@@ -61,7 +78,6 @@ public class DtoToDatabaseService {
      */
     public Room createRoomFromDto(RoomDto room){
         return Room.builder()
-            .id(room.getId())
             .type(room.getType())
             .roomNumber(room.getRoomNumber())
             .price(room.getPrice())
@@ -73,7 +89,6 @@ public class DtoToDatabaseService {
 
     public Event createEventFromDto(EventDto event){
         return Event.builder()
-                .id(event.getId())
                 .eventName(event.getEventName())
                 .eventDescription(event.getEventDescription())
                 .eventDate(event.getEventDate())
@@ -82,7 +97,6 @@ public class DtoToDatabaseService {
 
     public Reservation createReservationFromDto(ReservationDto reservation){
         return Reservation.builder()
-                .id(reservation.getId())
                 .reservationDateStart(reservation.getStartDate())
                 .reservationDateEnd(reservation.getEndDate())
                 .adultNumber(reservation.getAdultAmount())
@@ -95,7 +109,6 @@ public class DtoToDatabaseService {
 
     public Feedback createFeedbackFromDto(FeedbackDto feedback){
         return Feedback.builder()
-                .id(feedback.getId())
                 .message(feedback.getMessage())
                 .stars(feedback.getStars())
                 .feedbackDate(feedback.getCommentDate())
@@ -105,16 +118,14 @@ public class DtoToDatabaseService {
 
     public Loyalty createLoyaltyFromDto(LoyaltyDto loyalty){
         return Loyalty.builder()
-                .id(loyalty.getId())
                 .visitedNumber(loyalty.getVisitedNumber())
                 .status(loyalty.getStatus())
-                .user(createUserFromDto((ClientDto)loyalty.getClient()))
+                .user(createUserFromDto(loyalty.getClient()))
                 .build();
     }
 
     public EmployeeLeave createEmployeeLeaveFromDto(LeaveRequestDto leave){
         return EmployeeLeave.builder()
-                .id(leave.getId())
                 .startDate(leave.getStartDate())
                 .endDate(leave.getEndDate())
                 .status(leave.getStatus())

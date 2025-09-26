@@ -7,6 +7,7 @@ import { typography } from '@vaadin/vaadin-lumo-styles/typography.js';
 import { color } from '@vaadin/vaadin-lumo-styles/color.js';
 import { spacing } from '@vaadin/vaadin-lumo-styles/spacing.js';
 import { badge } from '@vaadin/vaadin-lumo-styles/badge.js';
+import stylesCss from 'themes/hotel-theme/styles.css?inline';
 
   let themeRemovers = new WeakMap();
   let targets = [];
@@ -18,7 +19,8 @@ import { badge } from '@vaadin/vaadin-lumo-styles/badge.js';
 removers.push(injectGlobalCss(color.cssText, '', target, true));
 removers.push(injectGlobalCss(spacing.cssText, '', target, true));
 removers.push(injectGlobalCss(badge.cssText, '', target, true));
-
+removers.push(injectGlobalCss(stylesCss.toString(), '', target));
+    
       
     }
     

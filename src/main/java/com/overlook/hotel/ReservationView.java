@@ -32,11 +32,13 @@ import com.vaadin.flow.component.html.*;
 @AnonymousAllowed
 @Route("reservation")
 @CssImport(themeFor = "vaadin-button", value = "./themes/hotel-theme/styles.css")
-public class Reservation extends Div {
+public class ReservationView extends Div {
 
-    private final AuthDialog authDialog = new AuthDialog();
+    private final AuthDialog authDialog;
 
-    public Reservation() {
+
+    public ReservationView(AuthDialog authDialog) {
+        this.authDialog= authDialog;
         setSizeFull();
         getStyle()
                 .set("display", "flex")
