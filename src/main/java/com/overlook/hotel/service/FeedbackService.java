@@ -1,6 +1,6 @@
 package com.overlook.hotel.service;
 
-import com.overlook.hotel.database.Entity.Feedback;
+import com.overlook.hotel.Entity.Feedback;
 import com.overlook.hotel.repository.FeedbackRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

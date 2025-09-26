@@ -1,6 +1,6 @@
 package com.overlook.hotel.controller;
 
-import com.overlook.hotel.database.Entity.EmployeeLeave;
+import com.overlook.hotel.Entity.EmployeeLeave;
 import com.overlook.hotel.service.EmployeeLeaveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.overlook.hotel.service;
 
-import com.overlook.hotel.database.Entity.EmployeeLeave;
+import com.overlook.hotel.Entity.EmployeeLeave;
 import com.overlook.hotel.repository.EmployeeLeaveRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.overlook.hotel.service;
 
-import com.overlook.hotel.database.Entity.Employee;
+import com.overlook.hotel.Entity.Employee;
 import com.overlook.hotel.repository.EmployeeRepository; // Import Employee repository
 import lombok.RequiredArgsConstructor; // Lombok annotation for constructor injection
 import org.springframework.stereotype.Service; // Marks class as Spring service

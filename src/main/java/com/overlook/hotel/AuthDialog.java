@@ -1,7 +1,14 @@
 package com.overlook.hotel;
 
+import com.overlook.hotel.dto.userDto.ClientDto;
+import com.overlook.hotel.dto.userDto.UserDto;
+import com.overlook.hotel.service.databseDtoService.DtoToDatabaseService;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.spring.annotation.SpringComponent;
+import com.vaadin.flow.spring.annotation.UIScope;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -15,10 +22,17 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 
+
+@SpringComponent
+@UIScope
 public class AuthDialog extends Dialog {
     private final VerticalLayout root = new VerticalLayout();
+    private Binder<ClientDto> binder = new Binder<>(ClientDto.class);
+    private DtoToDatabaseService dtoToDatabaseService;
+    private ClientDto clientDto= new ClientDto();
 
-    public AuthDialog() {
+    public AuthDialog(DtoToDatabaseService dtoToDatabaseService) {
+        this.dtoToDatabaseService=dtoToDatabaseService;
         setModal(true);
         setCloseOnEsc(true);
         setCloseOnOutsideClick(false);
@@ -73,15 +87,51 @@ public class AuthDialog extends Dialog {
         H2 title = new H2("Overlook Hotel");
         Paragraph desc = new Paragraph("Please create an account");
 
-        TextField username = new TextField("Username");
+        TextField firstName = new TextField("First name");
+        binder.bind(firstName, UserDto::getFirstName, UserDto::setFirstName);
+
+        TextField lastName = new TextField("Last name");
+        binder.bind(lastName, UserDto::getLastName, UserDto::setLastName);
+
+        IntegerField age = new IntegerField("Age");
+        binder.bind(age, UserDto::getAge, UserDto::setAge);
+
+        TextField gender = new TextField("Gender");
+        binder.bind(gender, UserDto::getGender, UserDto::setGender);
+
+        TextField address = new TextField("Address");
+        binder.bind(address, UserDto::getAddress, UserDto::setAddress);
+
+        TextField phoneNumber = new TextField("Phone number");
+        binder.bind(phoneNumber, UserDto::getPhoneNumber, UserDto::setPhoneNumber);
+
         EmailField email = new EmailField("Email");
+        binder.bind(email, UserDto::getEmail, UserDto::setEmail);
+
         PasswordField password = new PasswordField("Password");
+        binder.bind(password, UserDto::getPassword, UserDto::setPassword);
+
+
         PasswordField confirm  = new PasswordField("Confirm Password");
 
+        //confirm that the two passwords match ↓
+        binder.forField(confirm)
+                .asRequired("Confirm Password")
+                .withValidator(p ->p.equals(password.getValue()), "passwords do not match")
+                .bind(dto->null, (dto,value) ->{});
+        // confirm that the two passwords match ↑
+
+
         Button create = new Button("Create account", e -> {
-            // TODO: créer l’utilisateur puis close();
+            if(binder.writeBeanIfValid(clientDto)){
+                System.err.println("USER CREATED SUCCESSFULLY");
+                dtoToDatabaseService.createUserFromDto(clientDto);
+            } else {
+                System.err.println("INVALID BEAN MOTHERFU****");
+            }
             close();
         });
+
         create.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         create.setWidth("190px");
         create.getStyle().set("margin", "24px");
@@ -100,7 +150,7 @@ public class AuthDialog extends Dialog {
                 .set("right", "32px")
                 .set("color", "var(--lumo-secondary-color)");
 
-        VerticalLayout form = new VerticalLayout(username, email, password, confirm, create, back, closeButton);
+        VerticalLayout form = new VerticalLayout(firstName, lastName, age, gender, address, phoneNumber, email, password, confirm, create, back, closeButton);
         form.setPadding(false);
         form.setSpacing(true);
         form.setWidthFull();

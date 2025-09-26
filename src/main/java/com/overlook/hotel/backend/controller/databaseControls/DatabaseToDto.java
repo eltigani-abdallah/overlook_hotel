@@ -5,7 +5,7 @@ import com.overlook.hotel.backend.model.classes.dto.hr.user.*;
 import com.overlook.hotel.backend.model.classes.dto.logistic.EventDto;
 import com.overlook.hotel.backend.model.classes.dto.logistic.ReservationDto;
 import com.overlook.hotel.backend.model.classes.dto.logistic.RoomDto;
-import com.overlook.hotel.database.Entity.*;
+import com.overlook.hotel.Entity.*;
 
 
 /**

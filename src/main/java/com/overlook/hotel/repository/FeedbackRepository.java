@@ -1,7 +1,7 @@
 
 package com.overlook.hotel.repository;
 
-import com.overlook.hotel.database.Entity.Feedback;
+import com.overlook.hotel.Entity.Feedback;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

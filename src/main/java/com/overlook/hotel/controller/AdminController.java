@@ -1,7 +1,7 @@
 // Package declaration for the controller layer of the application
 package com.overlook.hotel.controller;
 
-import com.overlook.hotel.database.Entity.Admin;
+import com.overlook.hotel.Entity.Admin;
 // Import AdminService to delegate business logic
 import com.overlook.hotel.service.AdminService;
 // Import Lombok annotation to generate constructor for final fields

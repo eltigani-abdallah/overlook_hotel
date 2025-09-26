@@ -1,6 +1,6 @@
 package com.overlook.hotel.repository;
 
-import com.overlook.hotel.database.Entity.Room;
+import com.overlook.hotel.Entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
