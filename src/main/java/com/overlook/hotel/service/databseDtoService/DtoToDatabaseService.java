@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 public class DtoToDatabaseService {
 
     /**
-     * create a User database object from a clientDto
+     * create a Client database object from a clientDto
      */
-    public User createUserFromDto(ClientDto clientDto){
-        return User.builder()
+    public Client createUserFromDto(ClientDto clientDto){
+        return Client.builder()
                 .age(clientDto.getAge())
                 .gender(clientDto.getGender())
                 .firstName(clientDto.getFirstName())
@@ -86,7 +86,7 @@ public class DtoToDatabaseService {
                 .reservationDateEnd(reservation.getEndDate())
                 .adultNumber(reservation.getAdultAmount())
                 .childrenNumber(reservation.getChildAmount())
-                .user(createUserFromDto(reservation.getCustomer()))
+                .client(createUserFromDto(reservation.getCustomer()))
                 .room(createRoomFromDto(reservation.getRoomToReserve()))
                 .event(createEventFromDto(reservation.getEvent()))
                 .build();
@@ -97,7 +97,7 @@ public class DtoToDatabaseService {
                 .message(feedback.getMessage())
                 .stars(feedback.getStars())
                 .feedbackDate(feedback.getCommentDate())
-                .user(createUserFromDto((ClientDto)feedback.getCommenter()))
+                .client(createUserFromDto((ClientDto)feedback.getCommenter()))
                 .build();
     }
 
@@ -105,7 +105,7 @@ public class DtoToDatabaseService {
         return Loyalty.builder()
                 .visitedNumber(loyalty.getVisitedNumber())
                 .status(loyalty.getStatus())
-                .user(createUserFromDto(loyalty.getClient()))
+                .client(createUserFromDto(loyalty.getClient()))
                 .build();
     }
 

@@ -2,7 +2,7 @@
 package com.overlook.hotel.service;
 
 // Import Room entity class for database operations
-import com.overlook.hotel.database.Entity.Room;
+import com.overlook.hotel.Entity.Room;
 // Import RoomRepository interface for database access
 import com.overlook.hotel.repository.RoomRepository;
 // Import Lombok annotation to generate constructor for final fields
@@ -72,13 +72,13 @@ public class RoomService {
         Room room = getRoomById(id);
 
         // Updates the room's number with the new value
-        room.setNumber(roomDetails.getNumber());
+        //room.setNumber(roomDetails.getNumber());
         // Updates the room's type with the new value
         room.setType(roomDetails.getType());
         // Updates the room's price with the new value
         room.setPrice(roomDetails.getPrice());
         // Updates the room's availability with the new value
-        room.setAvailable(roomDetails.isAvailable());
+        //room.setAvailable(roomDetails.isAvailable());
 
         // Saves the updated room entity back to the database
         return roomRepository.save(room);

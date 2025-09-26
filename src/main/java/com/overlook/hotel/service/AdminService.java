@@ -2,7 +2,7 @@
 package com.overlook.hotel.service;
 
 // Import the Admin entity class from the database package
-import com.overlook.hotel.database.Entity.Admin;
+import com.overlook.hotel.Entity.Admin;
 // Import the AdminRepository interface for database operations
 import com.overlook.hotel.repository.AdminRepository;
 // Import Lombok annotation to generate a constructor for final fields

@@ -1,6 +1,6 @@
 package com.overlook.hotel.controller;
 
-import com.overlook.hotel.database.Entity.Employee; // Import Employee entity
+import com.overlook.hotel.Entity.Employee; // Import Employee entity
 import com.overlook.hotel.service.EmployeeService; // Import service
 import lombok.RequiredArgsConstructor; // Constructor injection with Lombok
 import org.springframework.web.bind.annotation.*; // REST annotations

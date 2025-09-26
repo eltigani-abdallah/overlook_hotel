@@ -1,6 +1,6 @@
 package com.overlook.hotel.controller;
 
-import com.overlook.hotel.database.Entity.Room;
+import com.overlook.hotel.Entity.Room;
 import com.overlook.hotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

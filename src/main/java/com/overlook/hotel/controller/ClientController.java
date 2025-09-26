@@ -1,6 +1,6 @@
 package com.overlook.hotel.controller;
 
-import com.overlook.hotel.database.Entity.Client; // Import User entity (represents Client)
+import com.overlook.hotel.Entity.Client; // Import User entity (represents Client)
 import com.overlook.hotel.service.ClientService; // Import service class
 import lombok.RequiredArgsConstructor; // Lombok for constructor injection
 import org.springframework.web.bind.annotation.*; // REST annotations

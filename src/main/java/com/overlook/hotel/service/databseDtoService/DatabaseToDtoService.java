@@ -45,7 +45,7 @@ public class DatabaseToDtoService {
     /**
      * take a User from the database and return them as a UserDto (Client)
      */
-    public UserDto createClientDtoFromDatabase(User user) {
+    public UserDto createClientDtoFromDatabase(Client user) {
         return UserService.createUserDto(
                 UserDto.UserType.CLIENT,
                 user.getId(),
@@ -105,7 +105,7 @@ public class DatabaseToDtoService {
     public ReservationDto createReservationDtoFromDatabase(Reservation reservation) {
         return ReservationDto.builder()
                 .id(reservation.getId())
-                .customer((ClientDto) createClientDtoFromDatabase(reservation.getUser()))
+                .customer((ClientDto) createClientDtoFromDatabase(reservation.getClient()))
                 .adultAmount(reservation.getAdultNumber())
                 .childAmount(reservation.getChildrenNumber())
                 .startDate(reservation.getReservationDateStart())
@@ -122,7 +122,7 @@ public class DatabaseToDtoService {
     public FeedbackDto createFeedbackDtoFromDatabase(Feedback feedback){
         return FeedbackDto.builder()
                 .id(feedback.getId())
-                .commenter(createClientDtoFromDatabase(feedback.getUser()))
+                .commenter(createClientDtoFromDatabase(feedback.getClient()))
                 .message(feedback.getMessage())
                 .commentDate(feedback.getFeedbackDate())
                 .stars(feedback.getStars())
@@ -137,7 +137,7 @@ public class DatabaseToDtoService {
                 .id(loyalty.getId())
                 .visitedNumber(loyalty.getVisitedNumber())
                 .status(loyalty.getStatus())
-                .client((ClientDto)createClientDtoFromDatabase(loyalty.getUser()))
+                .client((ClientDto)createClientDtoFromDatabase(loyalty.getClient()))
                 .build();
     }
 

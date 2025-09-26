@@ -1,6 +1,6 @@
 package com.overlook.hotel.service;
 
-import com.overlook.hotel.database.Entity.Employee; // Import Employee entity
+import com.overlook.hotel.Entity.Employee; // Import Employee entity
 import com.overlook.hotel.repository.EmployeeRepository; // Import Employee repository
 import lombok.RequiredArgsConstructor; // Lombok annotation for constructor injection
 import org.springframework.stereotype.Service; // Marks class as Spring service
@@ -42,7 +42,7 @@ public class EmployeeService {
         employee.setPhoneNumber(employeeDetails.getPhoneNumber());
         employee.setAddress(employeeDetails.getAddress());
         employee.setRole(employeeDetails.getRole());
-        employee.setTitle(employeeDetails.getTitle());
+        //employee.setTitle(employeeDetails.getTitle());
 
         // Save updated employee
         return employeeRepository.save(employee);

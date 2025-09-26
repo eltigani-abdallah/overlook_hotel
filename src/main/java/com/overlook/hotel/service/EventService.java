@@ -1,6 +1,6 @@
 package com.overlook.hotel.service;
 
-import com.overlook.hotel.database.Entity.Event;
+import com.overlook.hotel.Entity.Event;
 import com.overlook.hotel.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,10 +28,10 @@ public class EventService {
 
     public Event updateEvent(Long id, Event details) {
         Event event = getEventById(id);
-        event.setTitle(details.getTitle());
-        event.setDescription(details.getDescription());
-        event.setDate(details.getDate());
-        event.setLocation(details.getLocation());
+        //event.setTitle(details.getTitle());
+        //event.setDescription(details.getDescription());
+        //event.setDate(details.getDate());
+        //event.setLocation(details.getLocation());
         return eventRepository.save(event);
     }
 
