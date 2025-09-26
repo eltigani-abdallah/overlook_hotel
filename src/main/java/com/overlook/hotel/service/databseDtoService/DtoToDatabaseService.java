@@ -6,27 +6,40 @@ import com.overlook.hotel.dto.userDto.*;
 import com.overlook.hotel.dto.logisticDto.EventDto;
 import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
+import com.overlook.hotel.repository.UserRepository;
+import com.overlook.hotel.Entity.User;
+import com.overlook.hotel.dto.userDto.ClientDto;
+import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
+@RequiredArgsConstructor  // ✅ génère un ctor pour userRepository
 public class DtoToDatabaseService {
 
-    /**
-     * create a Client database object from a clientDto
-     */
-    public Client createUserFromDto(ClientDto clientDto){
-        return Client.builder()
-                .age(clientDto.getAge())
-                .gender(clientDto.getGender())
-                .firstName(clientDto.getFirstName())
-                .lastName(clientDto.getLastName())
-                .email(clientDto.getEmail())
-                .password(clientDto.getPassword())
-                .phoneNumber(clientDto.getPhoneNumber())
-                .note(clientDto.getNote())
-                .address(clientDto.getAddress())
+    private final UserRepository userRepository;
+
+    private User toUserEntity(@NotNull ClientDto dto) {
+        return User.builder()
+                .age(dto.getAge())
+                .gender(dto.getGender())
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
+                .email(dto.getEmail())
+                .password(dto.getPassword())
+                .phoneNumber(dto.getPhoneNumber())
+                .note(dto.getNote())
+                .address(dto.getAddress())
                 .build();
     }
+
+    @Transactional
+    public User createUserFromDto(@NotNull ClientDto dto) {
+        return userRepository.save(toUserEntity(dto));
+    }
+
 
     /**
      * create Admin database object from a AdminDto object
