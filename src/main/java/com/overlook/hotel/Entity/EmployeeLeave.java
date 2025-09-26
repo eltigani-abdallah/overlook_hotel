@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+import com.overlook.hotel.database.Entity.Employee;
+
 /**
  * EmployeeLeave entity mapped to the "employee_leave" table.
  * Represents leave requests for either an Employee or an Admin.

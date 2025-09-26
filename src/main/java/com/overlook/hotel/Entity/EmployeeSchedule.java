@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.overlook.hotel.database.Entity.Employee;
+
 /**
  * EmployeeSchedule entity mapped to the "employee_schedule" table.
  * Represents a work schedule for either an Employee or an Admin.
