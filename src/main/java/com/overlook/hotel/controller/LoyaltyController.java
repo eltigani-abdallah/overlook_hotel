@@ -1,6 +1,6 @@
 package com.overlook.hotel.controller;
 
-import com.overlook.hotel.database.Entity.Loyalty;
+import com.overlook.hotel.Entity.Loyalty;
 import com.overlook.hotel.service.LoyaltyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

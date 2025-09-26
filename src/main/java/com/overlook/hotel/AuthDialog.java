@@ -124,8 +124,8 @@ public class AuthDialog extends Dialog {
 
         Button create = new Button("Create account", e -> {
             if(binder.writeBeanIfValid(clientDto)){
-                System.err.println("USER CREATED SUCCESSFULLY");
                 dtoToDatabaseService.createUserFromDto(clientDto);
+                System.err.println("USER CREATED SUCCESSFULLY");
             } else {
                 System.err.println("INVALID BEAN MOTHERFU****");
             }

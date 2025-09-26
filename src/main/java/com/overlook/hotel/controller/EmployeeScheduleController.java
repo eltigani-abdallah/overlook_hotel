@@ -1,6 +1,6 @@
 package com.overlook.hotel.controller;
 
-import com.overlook.hotel.database.Entity.EmployeeSchedule;
+import com.overlook.hotel.Entity.EmployeeSchedule;
 import com.overlook.hotel.service.EmployeeScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

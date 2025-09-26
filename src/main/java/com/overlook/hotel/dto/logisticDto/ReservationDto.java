@@ -19,8 +19,8 @@ public class ReservationDto {
     private final Long id;
     @NonNull
     private ClientDto customer;
-    @NonNull private int adultAmount;
-    @NonNull private int childAmount;
+    private int adultAmount;
+    private int childAmount;
     @NonNull private LocalDate startDate;
     @NonNull private LocalDate endDate;
     private String eventName;
