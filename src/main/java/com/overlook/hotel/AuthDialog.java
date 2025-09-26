@@ -28,7 +28,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class AuthDialog extends Dialog {
     private final VerticalLayout root = new VerticalLayout();
     private Binder<ClientDto> binder = new Binder<>(ClientDto.class);
-    private DtoToDatabaseService dtoToDatabaseService;
+    private final DtoToDatabaseService dtoToDatabaseService;
     private ClientDto clientDto= new ClientDto();
 
     public AuthDialog(DtoToDatabaseService dtoToDatabaseService) {
