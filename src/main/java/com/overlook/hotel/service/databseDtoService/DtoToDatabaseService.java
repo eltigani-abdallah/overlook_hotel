@@ -11,6 +11,7 @@ import com.overlook.hotel.Entity.User;
 import com.overlook.hotel.dto.userDto.ClientDto;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class DtoToDatabaseService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     private User toUserEntity(@NotNull ClientDto dto) {
         return User.builder()
@@ -28,7 +30,7 @@ public class DtoToDatabaseService {
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .email(dto.getEmail())
-                .password(dto.getPassword())
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .phoneNumber(dto.getPhoneNumber())
                 .note(dto.getNote())
                 .address(dto.getAddress())
