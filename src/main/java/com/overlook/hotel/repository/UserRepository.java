@@ -1,6 +1,6 @@
 package com.overlook.hotel.repository;
 
-import com.overlook.hotel.Entity.User;
+import com.overlook.hotel.Entity.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {}
+public interface UserRepository extends JpaRepository<Client, Long> {}

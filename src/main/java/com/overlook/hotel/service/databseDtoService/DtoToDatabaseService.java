@@ -7,7 +7,7 @@ import com.overlook.hotel.dto.logisticDto.EventDto;
 import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
 import com.overlook.hotel.repository.UserRepository;
-import com.overlook.hotel.Entity.User;
+import com.overlook.hotel.Entity.Client;
 import com.overlook.hotel.dto.userDto.ClientDto;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +23,8 @@ public class DtoToDatabaseService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    private User toUserEntity(@NotNull ClientDto dto) {
-        return User.builder()
+    private Client toClientEntity(@NotNull ClientDto dto) {
+        return Client.builder()
                 .age(dto.getAge())
                 .gender(dto.getGender())
                 .firstName(dto.getFirstName())
@@ -38,8 +38,8 @@ public class DtoToDatabaseService {
     }
 
     @Transactional
-    public User createUserFromDto(@NotNull ClientDto dto) {
-        return userRepository.save(toUserEntity(dto));
+    public Client createClientFromDto(@NotNull ClientDto dto) {
+        return userRepository.save(toClientEntity(dto));
     }
 
 
@@ -101,7 +101,7 @@ public class DtoToDatabaseService {
                 .reservationDateEnd(reservation.getEndDate())
                 .adultNumber(reservation.getAdultAmount())
                 .childrenNumber(reservation.getChildAmount())
-                .client(createUserFromDto(reservation.getCustomer()))
+                .client(createClientFromDto(reservation.getCustomer()))
                 .room(createRoomFromDto(reservation.getRoomToReserve()))
                 .event(createEventFromDto(reservation.getEvent()))
                 .build();
@@ -112,7 +112,7 @@ public class DtoToDatabaseService {
                 .message(feedback.getMessage())
                 .stars(feedback.getStars())
                 .feedbackDate(feedback.getCommentDate())
-                .client(createUserFromDto((ClientDto)feedback.getCommenter()))
+                .client(createClientFromDto((ClientDto)feedback.getCommenter()))
                 .build();
     }
 
@@ -120,7 +120,7 @@ public class DtoToDatabaseService {
         return Loyalty.builder()
                 .visitedNumber(loyalty.getVisitedNumber())
                 .status(loyalty.getStatus())
-                .client(createUserFromDto(loyalty.getClient()))
+                .client(createClientFromDto(loyalty.getClient()))
                 .build();
     }
 

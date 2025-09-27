@@ -28,10 +28,9 @@ public class EventService {
 
     public Event updateEvent(Long id, Event details) {
         Event event = getEventById(id);
-        //event.setTitle(details.getTitle());
-        //event.setDescription(details.getDescription());
-        //event.setDate(details.getDate());
-        //event.setLocation(details.getLocation());
+        event.setEventName(details.getEventName());
+        event.setEventDescription(details.getEventDescription());
+        event.setEventDate(details.getEventDate());
         return eventRepository.save(event);
     }
 

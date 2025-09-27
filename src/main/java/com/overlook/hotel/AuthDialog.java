@@ -7,6 +7,7 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.validator.EmailValidator;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import com.vaadin.flow.theme.lumo.LumoUtility;
@@ -128,7 +129,7 @@ public class AuthDialog extends Dialog {
 
         EmailField email = new EmailField("Email");
         binder.forField(email).asRequired("Required")
-                .withValidator(new com.vaadin.flow.data.validator.EmailValidator("Invalid email"))
+                .withValidator(new EmailValidator("Invalid email"))
                 .bind(UserDto::getEmail, UserDto::setEmail);
 
         PasswordField password = new PasswordField("Password");
@@ -148,7 +149,7 @@ public class AuthDialog extends Dialog {
 
         Button create = new Button("Create account", e -> {
             if(binder.writeBeanIfValid(clientDto)){
-                dtoToDatabaseService.createUserFromDto(clientDto);
+                dtoToDatabaseService.createClientFromDto(clientDto);
                 System.err.println("USER CREATED SUCCESSFULLY");
             } else {
                 System.err.println("INVALID BEAN MOTHERFU****");
