@@ -1,8 +1,9 @@
 package com.overlook.hotel.dto.logisticDto;
 
 
-import com.overlook.hotel.dto.userDto.FeedbackDto;
 
+
+import com.overlook.hotel.dto.userDto.FeedbackDto;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.experimental.SuperBuilder;

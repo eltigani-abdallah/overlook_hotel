@@ -2,9 +2,12 @@ package com.overlook.hotel;
 
 import com.overlook.hotel.dto.userDto.ClientDto;
 import com.overlook.hotel.dto.userDto.UserDto;
+import com.overlook.hotel.repository.ClientRepository;
 import com.overlook.hotel.service.databseDtoService.DtoToDatabaseService;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.login.LoginI18n;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.EmailValidator;
@@ -22,6 +25,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @SpringComponent
@@ -31,9 +37,15 @@ public class AuthDialog extends Dialog {
     private Binder<ClientDto> binder = new Binder<>(ClientDto.class);
     private final DtoToDatabaseService dtoToDatabaseService;
     private ClientDto clientDto= new ClientDto();
+    private ClientRepository clientRepository;
+    private PasswordEncoder passwordEncoder;
 
-    public AuthDialog(DtoToDatabaseService dtoToDatabaseService) {
+    public AuthDialog(DtoToDatabaseService dtoToDatabaseService,
+                      ClientRepository clientRepository,
+                      PasswordEncoder passwordEncoder) {
+        this.clientRepository=clientRepository;
         this.dtoToDatabaseService=dtoToDatabaseService;
+        this.passwordEncoder=passwordEncoder;
         setModal(true);
         setCloseOnEsc(true);
         setCloseOnOutsideClick(false);
@@ -56,8 +68,28 @@ public class AuthDialog extends Dialog {
         Paragraph desc = new Paragraph("Please sign in");
 
         LoginForm form = new LoginForm();
-        form.setAction("login");
+        //form.setAction("login");
         form.setForgotPasswordButtonVisible(false);
+
+        LoginI18n i18n = LoginI18n.createDefault();
+        i18n.getForm().setUsername("Email");
+        form.setI18n(i18n);
+
+        form.addLoginListener(loginEvent -> {
+                    String email = loginEvent.getUsername();
+                    String password = loginEvent.getPassword();
+
+                    clientRepository.findByEmail(email).ifPresentOrElse(client -> {
+                                if (passwordEncoder.matches(password, client.getPassword())) {
+                                    Notification.show("login success!", 3000, Notification.Position.MIDDLE);
+                                    close();
+                                } else {
+                                    form.setError(true);
+
+                                }
+                            }, () -> form.setError(true)
+                    );
+                });
 
         Button toForgotPassword = new Button("Forgot password", e -> showForgotPassword());
         toForgotPassword.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);

@@ -6,7 +6,7 @@ import com.overlook.hotel.dto.userDto.*;
 import com.overlook.hotel.dto.logisticDto.EventDto;
 import com.overlook.hotel.dto.logisticDto.ReservationDto;
 import com.overlook.hotel.dto.logisticDto.RoomDto;
-import com.overlook.hotel.repository.UserRepository;
+import com.overlook.hotel.repository.ClientRepository;
 import com.overlook.hotel.Entity.Client;
 import com.overlook.hotel.dto.userDto.ClientDto;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor  // ✅ génère un ctor pour userRepository
 public class DtoToDatabaseService {
 
-    private final UserRepository userRepository;
+    private final ClientRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     private Client toClientEntity(@NotNull ClientDto dto) {
